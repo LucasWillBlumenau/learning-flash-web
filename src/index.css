@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: montserrat;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    color: #fff;
+    background-image: linear-gradient(-120deg, #111111ee, #040C0Eee,#132226dd);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+}
+
+.pageContent {
+    position: relative;
+}
+
+@media screen and (min-width: 900px) {
+    .pageContent {
+        width: calc(100vw - 4rem);
+        height: 100vh;
+        left: 4rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .pageContent {
+        width: 100vw;
+        height: 100%;
+        margin-bottom: 3rem;
+    }
+}

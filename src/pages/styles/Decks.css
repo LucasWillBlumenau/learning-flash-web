@@ -1,0 +1,65 @@
+.decksWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tableWrapper {
+    height: 60vh;
+    width: 50vw;
+    overflow: auto;
+    margin-top: 2rem;
+    background-color: #22222264;
+    box-shadow: 10px 10px 45px #00000066;
+}
+
+.deckFormWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.deckForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    width: 40%;
+}
+
+.deckForm .inputFieldWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    width: 100%;
+}
+
+.deckForm div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.inputFieldWrapper input {
+    padding: 3px 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.inputFieldWrapper input:focus {
+    outline: 2px solid #3a3a98;
+}
+.deckForm button {
+    padding: 5px 8px;
+    background-color: #299696cc;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

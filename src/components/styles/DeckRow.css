@@ -1,0 +1,26 @@
+.optionButtonsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 140px;
+}
+
+.optionButton {
+    border: none;
+    padding: 3px 5px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #299696cc;
+    color: #fff;
+}
+
+
+.flashcardRow:nth-child(odd) {
+    background-color: #22222264;
+}
+
+.flashcardRow:nth-child(even) {
+    background-color: #00000055;
+}

@@ -1,0 +1,28 @@
+.bookTextContainer {
+    
+    width: 80%;
+    transform: translateX(10%);
+}
+
+.bookTitle {
+    display: flex;
+    flex-direction: column;
+}
+
+.bookTitle span:first-child {
+    font-size: 48px;
+}
+
+.bookTitle span:last-child {
+    font-size: 32px;
+}
+
+.bookContent {
+    font-size: 20px;
+    margin-top: 1rem;
+    padding: 35px 15px;
+    height: 75vh;
+    background: linear-gradient(-120deg, #1a4e5cdd, #2a444add);
+    border-radius: 10px;
+    overflow-y: auto;
+}

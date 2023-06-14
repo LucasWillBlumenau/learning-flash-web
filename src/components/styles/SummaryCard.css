@@ -1,0 +1,44 @@
+.summaryCard {
+    background-color: #299696cc;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.bookImage {
+    width: 100%;
+    height: 70%;
+    /* background-color: #fff; */
+}
+
+.bookImage img {
+    width: 100%;
+    height: 100%;
+}
+
+.bookInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 100%;
+    height: 30%;
+
+    padding: 10px 15px;
+
+    background-color: #fff;
+    color: #000;
+}
+
+
+.bookTitle {
+    font-weight: 500;
+}
+
+.bookAuthor {
+    white-space: nowrap;
+}
+
+.bookTitle, .bookAuthor {
+    text-align: center;
+}
+

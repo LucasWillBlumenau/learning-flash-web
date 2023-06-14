@@ -1,0 +1,43 @@
+.flashcard {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 175px;
+    background-color: #00000055;
+    border-radius: 15px;
+    padding: 10px 15px;
+}
+
+.flashcard .flashcardPhrase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    height: 75%;
+}
+
+.flashcard .flashcardButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.flashcard .flashcardButtons div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.flashcard .flashcardButtons button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 8px;
+    background-color: #299696cc;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
