@@ -10,6 +10,7 @@ import getFlashcards from '../context/flashcards'
 export default () => {
     const { deckID } = useParams()
     const [flashcards, setFlashcards] = useState([])
+    const [index, setIndex] = useState(0)
     useEffect(() => {
         getFlashcards(deckID).then(data => {
             setFlashcards(data)
@@ -20,7 +21,10 @@ export default () => {
             <ul>
                
             </ul>
-            <FlashcardsSlider>
+            <FlashcardsSlider 
+                index={index}
+                setIndex={setIndex}
+            >
                 {flashcards.map((flashcard, idx) => {
                     return (
                         <Flashcard key={idx}

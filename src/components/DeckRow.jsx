@@ -6,7 +6,9 @@ export default props => {
         <tr className="flashcardRow">
             <td>
                 <div className="optionButtonsContainer">
-                    <button className="optionButton">Editar</button>
+                    <Link to={`/decks/${props.id}/edit`}>
+                        <button className="optionButton">Editar</button>
+                    </Link>
                     <Link to={`/decks/${props.id}`}>
                         <button className="optionButton">Treinar</button>
                     </Link>

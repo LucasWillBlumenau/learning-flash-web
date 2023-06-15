@@ -53,6 +53,7 @@
 .inputFieldWrapper input:focus {
     outline: 2px solid #3a3a98;
 }
+
 .deckForm button {
     padding: 5px 8px;
     background-color: #299696cc;

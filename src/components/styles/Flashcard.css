@@ -12,6 +12,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    animation: flashcardAnimation;
+    animation-duration: 200ms;
     font-size: 22px;
     height: 75%;
 }
@@ -40,4 +43,12 @@
     color: #fff;
     font-size: 18px;
     cursor: pointer;
+}
+
+@keyframes flashcardAnimation {
+    from {
+        font-size: 0;
+    } to {
+        font-size: 22px;
+    }
 }

@@ -2,6 +2,7 @@
     background-color: #299696cc;
     border-radius: 15px;
     overflow: hidden;
+    box-shadow: 10px 10px 45px #02404822;
 }
 
 .bookImage {

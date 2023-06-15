@@ -8,7 +8,7 @@ export default props => {
             <div className="flashcardPhrase" onClick={() => {
                 setPhrase(phrase === props.phrase? props.translatedPhrase: props.phrase)
             }}>
-                {phrase}
+                { phrase } 
             </div>
             <div className="flashcardButtons">
                 <span>Nível de domínio</span>

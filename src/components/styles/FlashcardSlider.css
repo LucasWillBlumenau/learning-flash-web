@@ -1,0 +1,22 @@
+.arrowIcon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    background-color: #000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.arrowIcon:first-child {
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.arrowIcon:last-child {
+    right: 0;
+    transform: translateX(50%);
+}
+
+

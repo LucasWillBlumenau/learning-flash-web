@@ -1,28 +1,31 @@
 import { useEffect, useState } from "react"
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
+import './styles/FlashcardSlider.css'
+
 
 export default props => {
-    const [index, setIndex] = useState(0)
     const [flashcard, setFlashcard] = useState()
+    const flashCardsAmount = props.children.length - 1
     useEffect(() => {
-        console.log(props.children)
-        let newFlashcard = props.children.filter((child, idx) => idx === index)
-        console.log(newFlashcard)
-        setFlashcard(newFlashcard)
-    }, [index])
+        setFlashcard(props.children[props.index])
+    }, [props.index])
     return (
-        <div style={{display: 'flex', alignItems: 'center', gap: '15px'}}>
-            <FaArrowLeft onClick={() => {
-                if(index > 0) {
-                    setFlashcard('')
-                    setIndex(index - 1)
+        <div style={{display: 'flex', alignItems: 'center', gap: '15px', position: 'relative'}}>
+            <div className="arrowIcon" onClick={() => {
+                if(props.index > 0) {
+                    props.setIndex(props.index - 1)
                 }
-            }} />
+            }} >
+                <FaArrowLeft />
+            </div>
             { flashcard }
-            <FaArrowRight onClick={() => {
-                setFlashcard('')
-                setIndex(index + 1)
-            }}/>
+            <div className="arrowIcon" onClick={() => {
+                if (props.index < flashCardsAmount) {
+                    props.setIndex(props.index + 1)
+                }
+            }}>
+                <FaArrowRight />
+            </div>
         </div>
     )
 }

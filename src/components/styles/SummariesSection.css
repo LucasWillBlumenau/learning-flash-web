@@ -4,7 +4,6 @@
     width: 90%;
     transform: translateX(3.33%);
     margin-top: 1rem;
-
 }
 
 .sectionTitle {
@@ -14,11 +13,8 @@
 
 .summariesContainer {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     gap: 55px;
-
     padding: 25px 55px;
     overflow: auto;
-
 }
