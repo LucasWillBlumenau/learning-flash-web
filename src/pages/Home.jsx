@@ -14,7 +14,7 @@ export default () => {
         })
     }, [])
     return (
-        <div>
+        <div className="homePageWrapper">
             <div className="mainSummary">
                 <div className="summaryInfoContainer">
                     <span>Principal Resumo da Semana</span>

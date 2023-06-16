@@ -62,11 +62,11 @@ export default () => {
                 <span className="formTitle">Adicione um novo flashcard:</span>
                 <div className="flashcardsPhraseInput">
                     <label htmlFor="phraseInput">Frente: </label>
-                    <input ref={phraseInput} type="text" id="phraseInput" />
+                    <input ref={phraseInput} type="text" id="phraseInput" required/>
                 </div>
                 <div className="flashcardsPhraseInput">
                     <label htmlFor="translatedPhraseInput">Verso: </label>
-                    <input ref={translatedPhraseInput} type="text" id="translatedPhraseInput" />
+                    <input ref={translatedPhraseInput} type="text" id="translatedPhraseInput" required/>
                 </div>
                 <div className="flashcardsSubmitertter">
                     <button type="submit">Criar Flashcard</button>

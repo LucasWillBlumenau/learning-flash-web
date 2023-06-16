@@ -6,6 +6,7 @@
     max-height: 60vh;
     max-width: 500px;
     overflow: auto;
+    background-color: #22222264;
 }
 
 .flashcardsList li {
@@ -28,16 +29,6 @@
     border-radius: 5px;
     cursor: pointer;
     margin-right: 15px;
-}
-
-
-
-.flashcardsList li:nth-child(odd) {
-    background-color: #22222264;
-}
-
-.flashcardsList li:nth-child(even) {
-    background-color: #00000055;
 }
 
 .addFlashcardsForm {

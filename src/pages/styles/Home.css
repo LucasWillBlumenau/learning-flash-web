@@ -35,6 +35,10 @@
 }
 
 @media screen and (max-width: 900px) {
+    .homePageWrapper {
+        margin-bottom: 3rem;
+    }
+    
     .mainSummary {
         flex-direction: column;
         align-items: center;
