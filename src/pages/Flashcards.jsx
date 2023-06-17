@@ -28,6 +28,7 @@ export default () => {
                 {flashcards.map((flashcard, idx) => {
                     return (
                         <Flashcard key={idx}
+                            id={flashcard.id}
                             phrase={flashcard.phrase}
                             translatedPhrase={flashcard.translated_phrase}
                         />

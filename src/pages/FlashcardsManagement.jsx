@@ -15,7 +15,6 @@ function addFlashcard(deckID, phraseEl, translatedPhraseEl) {
         headers: {
             'Content-Type': 'Application/JSON',
             'Authorization': `Basic ${localStorage.getItem('userkey')}`,
-
         },
         body: JSON.stringify(data)
     }).then(() => {
@@ -41,14 +40,16 @@ function deleteFlashcard(deckID) {
 export default () => {
     const { deckID } = useParams()
     const [flashcards, setFlashcards] = useState([])
+    const [isListLoading, setIsTableLoading] = useState(true)
     const phraseInput = useRef()
     const translatedPhraseInput = useRef()
 
     useEffect(() => {
         getFlashcards(deckID).then(data => {
             setFlashcards(data)
+            setIsTableLoading(false)
         })
-    }, [flashcards])
+    }, [isListLoading])
     return (
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height:'100vh', gap: '2rem'}}>
             <form 
@@ -57,6 +58,7 @@ export default () => {
                 onSubmit={(event) => {
                     event.preventDefault()
                     addFlashcard(deckID, phraseInput.current, translatedPhraseInput.current)
+                    setIsTableLoading(true)
                 }}
             >
                 <span className="formTitle">Adicione um novo flashcard:</span>
@@ -73,12 +75,13 @@ export default () => {
                 </div>
             </form>
             <ul className="flashcardsList">
-                <li style={{justifyContent: 'center', position: 'sticky', top: 0, zIndex: 3, backgroundColor: '#000', fontSize: '22px', fontWeight: 600}}>Confira Todos os Seus Cards</li>
-                {flashcards.map((flashcard, idx) => {
+                <li style={{justifyContent: 'center', position: 'sticky', top: 0, left: 0, zIndex: 3, backgroundColor: '#000', fontSize: '22px', fontWeight: 600}}>Confira Todos os Seus Cards</li>
+                {!isListLoading && flashcards.map((flashcard, idx) => {
                     return (
                         <li key={idx}>
                             <button onClick={() => {
                                 deleteFlashcard(flashcard.id)
+                                setIsTableLoading(true)
                             }}>Deletar</button>
                             { flashcard.phrase }
                         </li>

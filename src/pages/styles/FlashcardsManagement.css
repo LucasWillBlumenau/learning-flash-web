@@ -4,7 +4,7 @@
     border-radius: 15px;
     min-height: 300px;
     max-height: 60vh;
-    max-width: 500px;
+    width: 500px;
     overflow: auto;
     background-color: #22222264;
 }
