@@ -3,6 +3,6 @@ export default async () => {
         headers: {
             'Authorization': `Basic ${localStorage.getItem('userkey')}`
         }
-    }).then(res => res.json())
+    })
     return decks
 }

@@ -4,6 +4,7 @@ import { Outlet, Link } from 'react-router-dom';
 import LoginPage from './LoginPage'
 import './styles/Layout.css'
 
+
 function NavBar() {
     return (
         <div className="navbarWrapper">

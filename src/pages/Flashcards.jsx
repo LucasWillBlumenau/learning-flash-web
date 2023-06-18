@@ -11,11 +11,17 @@ export default () => {
     const { deckID } = useParams()
     const [flashcards, setFlashcards] = useState([])
     const [index, setIndex] = useState(0)
+    
     useEffect(() => {
-        getFlashcards(deckID).then(data => {
-            setFlashcards(data)
+        getFlashcards(deckID).then(res => {
+            if (res.status === 200) {
+                res.json().then(data => {
+                    setFlashcards(data)
+                })
+            } 
         })
     }, [])
+    
     return (
         <div style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <ul>

@@ -5,52 +5,57 @@ import getDecks from '../context/decks'
 import './styles/Decks.css'
 
 
-function addFlashcard(event, deckNameInput, deckDescriptionInput, setTableVisible) {
-    event.preventDefault()
-    const [name, description] = [deckNameInput.current.value, deckDescriptionInput.current.value]
-    deckNameInput.current.value = '' 
-    deckDescriptionInput.current.value = ''
-    const body = {
-        name: name,
-        description: description,
-    }
-    fetch('http://127.0.0.1:8000/api/decks/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'Application/json', 
-            'Authorization': `Basic ${localStorage.getItem('userkey')}`
-        },
-        body: JSON.stringify(body),
-    }).then(res => res.json())
-    .then(jsonData => {
-        if(jsonData.name && jsonData.description) {
-            setTableVisible(false)
-        }
-    })
-}
-
-
 export default () => {
-    const [data, setData] = useState()
+    const [decks, setDecks] = useState()
     const [tableVisible, setTableVisible] = useState(false)
     const deckNameInput = useRef()
     const deckDescriptionInput = useRef()
+
     useEffect(() => {
-        getDecks().then(data => {
-            setData(data)
-            setTimeout(() => {
+        getDecks().then(res => {
+            if (res.status === 200) {
+                res.json().then(data => {
+                    setDecks(data)
+                    setTableVisible(true)
+                })
+            } else {
+                setDecks([])
                 setTableVisible(true)
-            }, 500)
+            }
         })
-    }, [tableVisible])
+    }, [])
+
+    function addFlashcard() {
+        const [name, description] = [deckNameInput.current.value, deckDescriptionInput.current.value]
+        deckNameInput.current.value = '' 
+        deckDescriptionInput.current.value = ''
+        const body = {
+            name: name,
+            description: description,
+        }
+        fetch('http://127.0.0.1:8000/api/decks/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json', 
+                'Authorization': `Basic ${localStorage.getItem('userkey')}`
+            },
+            body: JSON.stringify(body),
+        }).then(res => res.json())
+        .then(data => {
+            if(data.name && data.description) {
+                setDecks([...decks, data])
+            }
+        })
+    }
+
     return (
         <div className="decksWrapper">
             <div className="tableWrapper">
                 {tableVisible?  
-                    <DecksTable onHover={() => setData(data)}>
-                        {data === []? 
+                    <DecksTable>
+                        {decks === []? 
                             'vazio...':
-                            data.map((deck, idx) => {
+                            decks.map((deck, idx) => {
                                 return (
                                     <DeckRow 
                                     key={idx}
@@ -68,7 +73,8 @@ export default () => {
             </div>
             <div className="deckFormWrapper">
                 <form className="deckForm" method="POST" onSubmit={(event) => {
-                    addFlashcard(event, deckNameInput, deckDescriptionInput, setTableVisible)
+                    event.preventDefault()
+                    addFlashcard()
                 }}>
                     <div className="inputFieldWrapper">
                         <div>

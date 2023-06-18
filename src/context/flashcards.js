@@ -4,6 +4,6 @@ export default async (deckID) => {
         headers: {
             'Authorization': `Basic ${localStorage.getItem('userkey')}`
         }
-    }).then(res => res.json())
+    })
     return flashcards
 }

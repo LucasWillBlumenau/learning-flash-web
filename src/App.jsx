@@ -18,7 +18,7 @@ function App() {
                     <Route path='/summaries/:bookID/' element={<Summary />} />
                     <Route path='/decks/' element={<Decks />} />
                     <Route path='/decks/:deckID/' element={<Flashcards />}/>
-                        <Route path='/decks/:deckID/edit/' element={<FlashcardsManagement />} />
+                    <Route path='/decks/:deckID/edit/' element={<FlashcardsManagement />} />
                 </Route>
             </Routes>
         </BrowserRouter>

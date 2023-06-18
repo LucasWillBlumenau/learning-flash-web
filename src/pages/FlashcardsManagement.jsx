@@ -12,9 +12,13 @@ export default () => {
     const translatedPhraseInput = useRef()
 
     useEffect(() => {
-        getFlashcards(deckID).then(data => {
-            setFlashcards(data)
-            setIsTableLoading(false)
+        getFlashcards(deckID).then(res => {
+            if (res.status === 200) {
+                res.json().then(data => {
+                    setFlashcards(data)
+                    setIsTableLoading(false)
+                })
+            }
         })
     }, [isListLoading])
 
@@ -59,7 +63,7 @@ export default () => {
     }
 
     return (
-        <div class="flashcardManagement">
+        <div className="flashcardManagement">
             <form 
                 method="POST" 
                 className="addFlashcardsForm"
