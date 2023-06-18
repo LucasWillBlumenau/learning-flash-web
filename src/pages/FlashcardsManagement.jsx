@@ -4,39 +4,6 @@ import getFlashcards from '../context/flashcards'
 import './styles/FlashcardsManagement.css'
 
 
-function addFlashcard(deckID, phraseEl, translatedPhraseEl) {
-    const [phrase, translatedPhrase] = [phraseEl.value, translatedPhraseEl.value]
-    const data = {
-        phrase: phrase,
-        translated_phrase: translatedPhrase
-    }
-    fetch(`http://127.0.0.1:8000/api/decks/${deckID}/flashcards/`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'Application/JSON',
-            'Authorization': `Basic ${localStorage.getItem('userkey')}`,
-        },
-        body: JSON.stringify(data)
-    }).then(() => {
-        phraseEl.value = ''
-        translatedPhraseEl.value = ''
-    })
-}
-
-function deleteFlashcard(deckID) {
-    fetch(`http://127.0.0.1:8000/api/flashcards/${deckID}/`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'Application/JSON',
-            'Authorization': `Basic ${localStorage.getItem('userkey')}`
-        }
-    }).then(res => {
-        if (res.status === 201) {
-            console.log('flashcard deletado')
-        }
-    })
-}
-
 export default () => {
     const { deckID } = useParams()
     const [flashcards, setFlashcards] = useState([])
@@ -50,15 +17,55 @@ export default () => {
             setIsTableLoading(false)
         })
     }, [isListLoading])
+
+    function addFlashcard() {
+        const [phrase, translatedPhrase] = [phraseInput.current.value, translatedPhraseInput.current.value]
+        const data = {
+            phrase: phrase,
+            translated_phrase: translatedPhrase
+        }
+        fetch(`http://127.0.0.1:8000/api/decks/${deckID}/flashcards/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/JSON',
+                'Authorization': `Basic ${localStorage.getItem('userkey')}`,
+            },
+            body: JSON.stringify(data)
+        }).then(res => {
+            phraseInput.current.value = ''
+            translatedPhraseInput.current.value = ''
+            if (res.status === 201) {
+                res.json().then(data => {
+                    setFlashcards([...flashcards, data])
+                })
+            }
+        })
+    }
+
+    function deleteFlashcard(flascardID, flashcardIndex) {
+        fetch(`http://127.0.0.1:8000/api/flashcards/${flascardID}/`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'Application/JSON',
+                'Authorization': `Basic ${localStorage.getItem('userkey')}`
+            }
+        }).then(res => {
+            if (res.status === 201) {
+                const newFlashcards = Array.from(flashcards)
+                newFlashcards.splice(flashcardIndex, 1)
+                setFlashcards(newFlashcards)
+            }
+        })
+    }
+
     return (
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height:'100vh', gap: '2rem'}}>
+        <div class="flashcardManagement">
             <form 
                 method="POST" 
                 className="addFlashcardsForm"
                 onSubmit={(event) => {
                     event.preventDefault()
-                    addFlashcard(deckID, phraseInput.current, translatedPhraseInput.current)
-                    setIsTableLoading(true)
+                    addFlashcard()
                 }}
             >
                 <span className="formTitle">Adicione um novo flashcard:</span>
@@ -80,8 +87,7 @@ export default () => {
                     return (
                         <li key={idx}>
                             <button onClick={() => {
-                                deleteFlashcard(flashcard.id)
-                                setIsTableLoading(true)
+                                deleteFlashcard(flashcard.id, idx)
                             }}>Deletar</button>
                             { flashcard.phrase }
                         </li>

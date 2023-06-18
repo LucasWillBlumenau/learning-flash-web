@@ -7,7 +7,6 @@
 
 .tableWrapper {
     height: 60vh;
-    width: 50vw;
     overflow: auto;
     margin-top: 2rem;
     background-color: #22222264;
@@ -26,22 +25,20 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 15px;
-    width: 40%;
 }
 
 .deckForm .inputFieldWrapper {
     display: flex;
-    flex-direction: row;
     gap: 25px;
     width: 100%;
 }
 
-.deckForm div {
+.deckForm .inputFieldWrapper div {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 50%;
 }
 
 .inputFieldWrapper input {
@@ -63,4 +60,49 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+@media screen and (min-width: 900px){
+    .tableWrapper {
+        width: 50vw;
+    }
+    
+    .deckForm {
+        width: 40%;
+    }
+
+    .deckForm .inputFieldWrapper {
+        flex-direction: row;
+    }
+
+    .deckForm .inputFieldWrapper div {
+        width: 50%;
+    }
+
+    .deckForm button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .tableWrapper {
+        width: 95vw;
+    }
+    
+    .deckForm {
+        width: 95%;
+    }
+
+    .deckForm .inputFieldWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .deckForm .inputFieldWrapper div {
+        width: 90%;
+    }
+
+    .deckForm button {
+        width: 90%;
+    }
 }

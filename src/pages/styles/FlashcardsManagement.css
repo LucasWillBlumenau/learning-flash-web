@@ -1,3 +1,11 @@
+.flashcardManagement {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh;
+    gap: 2rem;
+}
+
 .flashcardsList {
     display: flex;
     flex-direction: column;
@@ -5,6 +13,7 @@
     min-height: 300px;
     max-height: 60vh;
     width: 500px;
+    max-width: 95vw;
     overflow: auto;
     background-color: #22222264;
 }
@@ -76,4 +85,10 @@
     border-radius: 5px;
     cursor: pointer;
     flex: 1;
+}
+
+@media screen and (max-width: 900px){
+    .flashcardManagement {
+        flex-direction: column-reverse;
+    }
 }

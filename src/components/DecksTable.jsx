@@ -8,7 +8,7 @@ export default props => {
                     <th style={{textAlign: 'center'}}>Opções</th>
                     <th>Nome</th>
                     <th>Descrição</th>
-                    <th>Qtde. Flashcards</th>
+                    {/* <th>Qtde. Flashcards</th> */}
                 </tr>
             </thead>
             <tbody>

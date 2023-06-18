@@ -24,11 +24,11 @@ export default props => {
                     {props.description}
                 </div>
             </td>
-            <td>
+            {/* <td>
                 <div>
-                    0
+                    {props.amount}
                 </div>
-            </td>
+            </td> */}
         </tr>
     )   
 }

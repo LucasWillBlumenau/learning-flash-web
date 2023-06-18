@@ -57,6 +57,7 @@ export default () => {
                                     id={deck.id}
                                     name={deck.name}
                                     description={deck.description}
+                                    amount={deck.flashcards_amount}
                                     />
                                 )
                             })
