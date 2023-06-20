@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useRef, useState } from 'react'
+import { FaInfoCircle } from 'react-icons/fa'
 import './styles/LoginPage.css'
 
 export default ({ setContentVisible }) => {
@@ -7,6 +8,7 @@ export default ({ setContentVisible }) => {
     const passwordInput = useRef()
     const loginButton = useRef()
     const [loginMessage, setLoginMessage] = useState('Entrar')
+    const [warningVisible, setWarningVisible] = useState(false)
 
     function logIn(event) {
         event.preventDefault()
@@ -32,6 +34,10 @@ export default ({ setContentVisible }) => {
             } else {
                 setLoginMessage('Entrar')
                 loginButton.current.disabled = false
+                setWarningVisible(true)
+                setTimeout(() => {
+                    setWarningVisible(false)
+                }, 5000)
             }
         })
     }
@@ -44,6 +50,12 @@ export default ({ setContentVisible }) => {
             <form method="POST" className="form" onSubmit={(event) => {
                 logIn(event)
             }}>
+                {warningVisible &&
+                    <span className="warningMessage" style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
+                        <FaInfoCircle />
+                        <span>email ou senha incorretos</span>
+                    </span>
+                }
                 <p style={{fontSize: '30px', fontWeight: '600', marginBottom: '15px'}}>Faça seu login</p>
                 <div className="inputWrapper">
                     <label htmlFor="usernameInput">Nome de Usuário:</label>

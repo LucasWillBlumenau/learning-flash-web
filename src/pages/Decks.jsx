@@ -58,11 +58,11 @@ export default () => {
                             decks.map((deck, idx) => {
                                 return (
                                     <DeckRow 
-                                    key={idx}
-                                    id={deck.id}
-                                    name={deck.name}
-                                    description={deck.description}
-                                    amount={deck.flashcards_amount}
+                                        key={idx}
+                                        id={deck.id}
+                                        name={deck.name}
+                                        description={deck.description}
+                                        amount={deck.flashcards_amount}
                                     />
                                 )
                             })

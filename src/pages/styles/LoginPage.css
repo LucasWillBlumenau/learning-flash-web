@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .learningFlashInformation {
@@ -77,6 +77,29 @@
     color: #299696;
     font-weight: 600;
 }
+
 .accountCreationLink:hover {
     text-decoration: underline;
+}
+
+.warningMessage {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: #950d0d;
+    color: #cf6b6b;
+    animation: changeVisibility;
+    animation-duration: 5s;
+}
+
+@keyframes changeVisibility {
+    25% {
+        opacity: 1;
+    } 100% {
+        opacity: 0;
+    }
 }
