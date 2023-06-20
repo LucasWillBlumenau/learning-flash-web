@@ -3,12 +3,12 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding: 2rem 0;
 }
 
 .tableWrapper {
     height: 60vh;
     overflow: auto;
-    margin-top: 2rem;
     background-color: #22222264;
     box-shadow: 10px 10px 45px #00000066;
 }

@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center; 
     align-items: center;
-    height: 100vh;
     gap: 2rem;
 }
 
@@ -87,8 +86,16 @@
     flex: 1;
 }
 
+@media screen and (min-width: 900px) {
+    .flashcardManagement {
+        height: 100vh;
+    }
+}
+
 @media screen and (max-width: 900px){
     .flashcardManagement {
         flex-direction: column-reverse;
+        height: auto;
+        padding: 2rem 0;
     }
 }

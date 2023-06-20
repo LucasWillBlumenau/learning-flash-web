@@ -8,8 +8,9 @@ export default props => {
     const flashCardsAmount = props.children.length - 1
     useEffect(() => {
         setFlashcard(props.children[props.index])
-    }, [props.index])
+    }, [props.index, props.children])
     return (
+        
         <div style={{display: 'flex', alignItems: 'center', gap: '15px', position: 'relative'}}>
             <div className="arrowIcon" onClick={() => {
                 if(props.index > 0) {
@@ -18,7 +19,7 @@ export default props => {
             }} >
                 <FaArrowLeft />
             </div>
-            { flashcard }
+                { flashcard }
             <div className="arrowIcon" onClick={() => {
                 if (props.index < flashCardsAmount) {
                     props.setIndex(props.index + 1)

@@ -48,12 +48,12 @@ export default () => {
     }, [])
     return (
         contentVisible ?
-            <>
-                <NavBar />
-                <div className='pageContent'>
-                    <Outlet />
-                </div> 
-            </>:
+        <>
+            <NavBar />
+            <div className='pageContent'>
+                <Outlet />
+            </div> 
+        </>:
         <LoginPage 
             setContentVisible={setContentVisible} 
         />

@@ -9,12 +9,11 @@ html {
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
     color: #fff;
     background-image: linear-gradient(-120deg, #1f3121ee, #0d1a1dee,#294b55dd);
     background-attachment: fixed;
     background-repeat: no-repeat;
+    overflow-x: hidden;
 }
 
 a {
@@ -33,7 +32,7 @@ ul {
 @media screen and (min-width: 900px) {
     .pageContent {
         width: calc(100vw - 4rem);
-        height: 100vh;
+        height: auto;
         left: 4rem;
     }
 }
