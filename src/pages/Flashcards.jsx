@@ -10,8 +10,19 @@ import getFlashcards from '../context/flashcards'
 export default () => {
     const { deckID } = useParams()
     const [flashcards, setFlashcards] = useState([])
-    const [index, setIndex] = useState(0)
-    
+    const [cardVisible, setCardVisible] = useState(false)
+
+    function handleFlashcardClick(id, hasGoodDomainLevel) {
+        setCardVisible(false)
+        const newFlashcards = flashcards.filter(flashcard => flashcard.id !== id) 
+        if (hasGoodDomainLevel) {
+            setFlashcards(newFlashcards)
+        } else {
+            const remaingFlashcard = flashcards.filter(flashcard => flashcard.id === id)[0]
+            setFlashcards([...newFlashcards, remaingFlashcard])
+        }
+    }
+
     useEffect(() => {
         getFlashcards(deckID).then(res => {
             if (res.status === 200) {
@@ -28,8 +39,8 @@ export default () => {
                
             </ul>
             <FlashcardsSlider 
-                index={index}
-                setIndex={setIndex}
+                cardVisible={cardVisible}
+                setCardVisible={setCardVisible}
             >
                 {flashcards.map((flashcard, idx) => {
                     return (
@@ -37,6 +48,7 @@ export default () => {
                             id={flashcard.id}
                             phrase={flashcard.phrase}
                             translatedPhrase={flashcard.translated_phrase}
+                            handleFlashcardClick={handleFlashcardClick}
                         />
                     )
                     })

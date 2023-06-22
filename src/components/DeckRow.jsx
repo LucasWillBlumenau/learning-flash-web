@@ -5,8 +5,10 @@ import {
     FaPlay,
 } from 'react-icons/fa'
 import  { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 export default props => {
+    const [deletePopupVisible, setDeletePopupVisible] = useState(false)
     function deleteDeck() {
         fetch(`http://127.0.0.1:8000/api/decks/${props.id}/`, {
             method: 'DELETE',

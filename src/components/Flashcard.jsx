@@ -20,6 +20,7 @@ function updateFlashcard(flashcardID, hasGoodDomainLevel) {
 
 export default props => {
     const [phrase, setPhrase] = useState(props.phrase)
+    const { handleFlashcardClick } = props
     return (
         <div className="flashcard">
             <div className="flashcardPhrase" onClick={() => {
@@ -32,11 +33,13 @@ export default props => {
                 <div>
                     <button
                         onClick={() => {
+                            handleFlashcardClick(props.id, false)
                             updateFlashcard(props.id, false)
                         }}
                     >Ruim</button>
                     <button
                         onClick={() => {
+                            handleFlashcardClick(props.id, true)
                             updateFlashcard(props.id, true)
                         }}
                     >Bom</button>

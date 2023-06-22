@@ -86,7 +86,7 @@ export default () => {
                             <input ref={deckDescriptionInput} type="text" id="deckDescription" required/>
                         </div>
                     </div>
-                    <button type="submit">Adicionar Deck</button>
+                    <button className="button" type="submit">Adicionar Deck</button>
                 </form>
             </div>
         </div>
