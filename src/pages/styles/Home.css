@@ -16,6 +16,11 @@
 }
 
 @media screen and (min-width: 900px) {
+
+    .mainSummary {
+        gap: 2rem;
+    }
+
     .summaryInfoContainer {
         justify-content: flex-end;
         font-size: 48px;

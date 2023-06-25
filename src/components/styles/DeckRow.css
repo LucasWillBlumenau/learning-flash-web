@@ -1,3 +1,4 @@
+
 .optionButtonsContainer {
     display: flex;
     align-items: center;
@@ -33,9 +34,11 @@
     
     .optionButtonsContainer a {
         width: 100%;
+        display: flex;
+        justify-content: center;
     }
     
     .optionButton {
-        width: 100%;
+        width: 45%;
     }
 }

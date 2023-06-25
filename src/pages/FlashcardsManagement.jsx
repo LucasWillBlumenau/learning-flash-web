@@ -12,7 +12,7 @@ export default () => {
     const translatedPhraseInput = useRef()
 
     useEffect(() => {
-        getFlashcards(deckID).then(res => {
+        getFlashcards(deckID, true).then(res => {
             if (res.status === 200) {
                 res.json().then(data => {
                     setFlashcards(data)

@@ -4,12 +4,11 @@ import './styles/FlashcardSlider.css'
 
 
 export default props => {
-    const { children, cardVisible, setCardVisible } = props
+    const { children, cardVisible, setCardVisible, lastIndex, setLastIndex } = props
     const [flashcard, setFlashcard] = useState()
-    const flashCardsAmount = children.length - 1
     const [index, setIndex] = useState(0)
     useEffect(() => {        
-        setFlashcard(children[index])
+        setFlashcard(children[index > lastIndex? lastIndex: index])
         setCardVisible(true)
     }, [index, children])
     return (
@@ -24,7 +23,7 @@ export default props => {
             </div>
                 { cardVisible && flashcard }
             <div className="arrowIcon" onClick={() => {
-                if (index < flashCardsAmount) {
+                if (index < lastIndex) {
                     setIndex(index + 1)
                 }
             }}>

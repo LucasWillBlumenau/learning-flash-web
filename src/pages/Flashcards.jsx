@@ -11,12 +11,14 @@ export default () => {
     const { deckID } = useParams()
     const [flashcards, setFlashcards] = useState([])
     const [cardVisible, setCardVisible] = useState(false)
+    const [lastIndex, setLastIndex] = useState(flashcards.length - 1)
 
     function handleFlashcardClick(id, hasGoodDomainLevel) {
         setCardVisible(false)
         const newFlashcards = flashcards.filter(flashcard => flashcard.id !== id) 
         if (hasGoodDomainLevel) {
             setFlashcards(newFlashcards)
+            setLastIndex(lastIndex - 1)
         } else {
             const remaingFlashcard = flashcards.filter(flashcard => flashcard.id === id)[0]
             setFlashcards([...newFlashcards, remaingFlashcard])
@@ -24,10 +26,11 @@ export default () => {
     }
 
     useEffect(() => {
-        getFlashcards(deckID).then(res => {
+        getFlashcards(deckID, false).then(res => {
             if (res.status === 200) {
                 res.json().then(data => {
                     setFlashcards(data)
+                    setLastIndex(data.length - 1)
                 })
             } 
         })
@@ -41,6 +44,8 @@ export default () => {
             <FlashcardsSlider 
                 cardVisible={cardVisible}
                 setCardVisible={setCardVisible}
+                lastIndex={lastIndex}
+                setLastIndex={setLastIndex}
             >
                 {flashcards.map((flashcard, idx) => {
                     return (
