@@ -9,12 +9,12 @@ export default () => {
     const [textContent, setTextContent] = useState([])
     const removeWhiteSpaces = content => content !== '' && content !== ' '
 
-    function getQueryBasedOnPhrase(phrase) {
+    const getQueryBasedOnPhrase = (phrase) => {
         const chars = phrase.toLowerCase().split(' ')
         return chars.filter(removeWhiteSpaces).join('_')
     }
     
-    function renderTextContent(textContent) {
+    const renderTextContent = (textContent) => {
         const splitedText = textContent.split('.').filter(removeWhiteSpaces)
         const content = splitedText.map(phrase => {
             const query = getQueryBasedOnPhrase(phrase)

@@ -25,7 +25,7 @@ export default () => {
         })
     }, [])
 
-    function addFlashcard() {
+    const addFlashcard = () => {
         const [name, description] = [deckNameInput.current.value, deckDescriptionInput.current.value]
         deckNameInput.current.value = '' 
         deckDescriptionInput.current.value = ''

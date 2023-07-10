@@ -1,16 +1,18 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
 import { FaInfoCircle } from 'react-icons/fa'
 import './styles/LoginPage.css'
 
-export default ({ setContentVisible }) => {
+
+export default () => {
     const usernameInput = useRef()
     const passwordInput = useRef()
     const loginButton = useRef()
     const [loginMessage, setLoginMessage] = useState('Entrar')
     const [warningVisible, setWarningVisible] = useState(false)
+    const navigate = useNavigate()
 
-    function logIn(event) {
+    const logIn = (event) => {
         event.preventDefault()
         const requestBody = {
             username: usernameInput.current.value,
@@ -29,7 +31,7 @@ export default ({ setContentVisible }) => {
             if (res.status === 200) {
                 res.json().then(data => {
                     localStorage.setItem('userkey', data.key)
-                    setContentVisible(true)
+                    navigate('/')
                 })  
             } else {
                 setLoginMessage('Entrar')

@@ -13,7 +13,7 @@ export default () => {
     const [cardVisible, setCardVisible] = useState(false)
     const [lastIndex, setLastIndex] = useState(flashcards.length - 1)
 
-    function handleFlashcardClick(id, hasGoodDomainLevel) {
+    const handleFlashcardClick = (id, hasGoodDomainLevel) => {
         setCardVisible(false)
         const newFlashcards = flashcards.filter(flashcard => flashcard.id !== id) 
         if (hasGoodDomainLevel) {

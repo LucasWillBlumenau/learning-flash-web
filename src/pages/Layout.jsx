@@ -5,7 +5,7 @@ import LoginPage from './LoginPage'
 import './styles/Layout.css'
 
 
-function NavBar() {
+const NavBar = () => {
     return (
         <div className="navbarWrapper">
             <ul className="navList">
@@ -39,23 +39,12 @@ function NavBar() {
 }
 
 export default () => {
-    const [contentVisible, setContentVisible] = useState(false)
-    useEffect(() => {
-        const userKey = localStorage.getItem('userkey')
-        if(userKey) {
-            setContentVisible(true)
-        } 
-    }, [])
     return (
-        contentVisible ?
         <>
             <NavBar />
             <div className='pageContent'>
                 <Outlet />
             </div> 
-        </>:
-        <LoginPage 
-            setContentVisible={setContentVisible} 
-        />
+        </>
     )
 }

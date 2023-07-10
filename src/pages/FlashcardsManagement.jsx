@@ -22,7 +22,7 @@ export default () => {
         })
     }, [isListLoading])
 
-    function addFlashcard() {
+    const addFlashcard = () => {
         const [phrase, translatedPhrase] = [phraseInput.current.value, translatedPhraseInput.current.value]
         const data = {
             phrase: phrase,
@@ -46,7 +46,7 @@ export default () => {
         })
     }
 
-    function deleteFlashcard(flascardID, flashcardIndex) {
+    const deleteFlashcard = (flascardID, flashcardIndex) => {
         fetch(`http://127.0.0.1:8000/api/flashcards/${flascardID}/`, {
             method: 'DELETE',
             headers: {
