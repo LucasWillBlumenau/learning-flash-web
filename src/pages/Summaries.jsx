@@ -27,8 +27,8 @@ export default () => {
             <SummariesGrid>
                 {books.map((book, idx) => {
                     return (
-                        <Link to={`/summaries/${book.id}`}>
-                            <SummaryCard key={idx}
+                        <Link key={idx} to={`/summaries/${book.id}`}>
+                            <SummaryCard 
                                 title={book.title}
                                 author={book.author}
                                 width="300px"

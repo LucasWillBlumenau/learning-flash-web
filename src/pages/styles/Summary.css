@@ -1,5 +1,4 @@
 .bookTextContainer {
-    
     width: 80%;
     transform: translateX(10%);
 }
@@ -25,4 +24,48 @@
     background: linear-gradient(-120deg, #1a4e5cdd, #2a444add);
     border-radius: 10px;
     overflow-y: auto;
+}
+
+.modalWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #11111188;
+    z-index: 5;
+}
+
+.modalPopup {
+    background: linear-gradient(-120deg, #1a4e5c, #2a444a);
+    width: 400px;
+    height: 300px;
+    border-radius: 15px;
+}
+
+.decksList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60%;
+    width: 100%;
+    padding-top: 15px;
+}
+
+.deckOption {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    padding: 5px 25px;
+}
+
+.modalPhraseContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    font-size: 22px;
 }
