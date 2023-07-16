@@ -54,7 +54,7 @@ export default () => {
                 'Authorization': `Basic ${localStorage.getItem('userkey')}`
             }
         }).then(res => {
-            if (res.status === 201) {
+            if (res.status === 204) {
                 const newFlashcards = Array.from(flashcards)
                 newFlashcards.splice(flashcardIndex, 1)
                 setFlashcards(newFlashcards)

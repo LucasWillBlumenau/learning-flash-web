@@ -8,6 +8,8 @@ import Decks from './pages/Decks'
 import Flashcards from './pages/Flashcards'
 import FlashcardsManagement from './pages/FlashcardsManagement'
 import LoginPage from './pages/LoginPage'
+import SignUpPage from './pages/SignUpPage'
+
 
 const Protected = ({ children }) => {
     const userkey = localStorage.getItem('userkey')
@@ -21,14 +23,15 @@ const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/login' element={<LoginPage />}></Route>
-                <Route element={<Layout />}>
-                    <Route path='/' element={<Protected><Home /></Protected>} />
-                    <Route path='/summaries/' element={<Protected><Summaries /></Protected>} />
-                    <Route path='/summaries/:bookID/' element={<Protected><Summary /></Protected>} />
-                    <Route path='/decks/' element={<Protected><Decks /></Protected>} />
-                    <Route path='/decks/:deckID/' element={<Protected><Flashcards /></Protected>}/>
-                    <Route path='/decks/:deckID/edit/' element={<Protected><FlashcardsManagement /></Protected>} />
+                <Route path='/signup/' element={<SignUpPage />}/>
+                <Route path='/login/' element={<LoginPage />}></Route>
+                <Route element={<Protected><Layout /></Protected>}>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/summaries/' element={<Summaries />} />
+                    <Route path='/summaries/:bookID/' element={<Summary />} />
+                    <Route path='/decks/' element={<Decks />} />
+                    <Route path='/decks/:deckID/' element={<Flashcards />}/>
+                    <Route path='/decks/:deckID/edit/' element={<FlashcardsManagement />} />
                 </Route>
             </Routes>
         </BrowserRouter>

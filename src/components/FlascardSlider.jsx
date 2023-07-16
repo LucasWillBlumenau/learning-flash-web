@@ -3,8 +3,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import './styles/FlashcardSlider.css'
 
 
-export default props => {
-    const { children, cardVisible, setCardVisible, lastIndex, setLastIndex } = props
+export default ({ children, cardVisible, setCardVisible, lastIndex }) => {
     const [flashcard, setFlashcard] = useState()
     const [index, setIndex] = useState(0)
     useEffect(() => {        
