@@ -5,14 +5,14 @@ import {
     FaPlay,
 } from 'react-icons/fa'
 import  { Link } from 'react-router-dom'
-import { useState } from 'react'
+
 
 export default ({ id, name, description }) => {
     const deleteDeck = () => {
         fetch(`http://127.0.0.1:8000/api/decks/${id}/`, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Basic ${localStorage.getItem('userkey')}`
+                'Authorization': `Token ${localStorage.getItem('authtoken')}`
             }
         }).then(res => {
             if (res.status === 204) {

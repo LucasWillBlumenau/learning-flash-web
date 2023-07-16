@@ -42,6 +42,7 @@
 .modalPopup {
     background: linear-gradient(-120deg, #1a4e5c, #2a444a);
     width: 400px;
+    max-width: 90vw;
     height: 300px;
     border-radius: 15px;
 }

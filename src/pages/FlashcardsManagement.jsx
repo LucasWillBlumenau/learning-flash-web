@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
-import getFlashcards from '../context/flashcards'
+import { fetchFlashcards } from '../context/flashcards'
 import './styles/FlashcardsManagement.css'
 
 
@@ -12,7 +12,7 @@ export default () => {
     const translatedPhraseInput = useRef()
 
     useEffect(() => {
-        getFlashcards(deckID, true).then(res => {
+        fetchFlashcards(deckID, true).then(res => {
             if (res.status === 200) {
                 res.json().then(data => {
                     setFlashcards(data)
@@ -32,7 +32,7 @@ export default () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'Application/JSON',
-                'Authorization': `Basic ${localStorage.getItem('userkey')}`,
+                'Authorization': `Token ${localStorage.getItem('authtoken')}`,
             },
             body: JSON.stringify(data)
         }).then(res => {
@@ -51,7 +51,7 @@ export default () => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'Application/JSON',
-                'Authorization': `Basic ${localStorage.getItem('userkey')}`
+                'Authorization': `Token ${localStorage.getItem('authtoken')}`
             }
         }).then(res => {
             if (res.status === 204) {

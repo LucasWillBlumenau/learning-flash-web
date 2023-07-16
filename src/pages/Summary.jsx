@@ -1,13 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import getSummary from '../context/summary'
-import getDecks from '../context/decks'
+import { fetchDecks } from '../context/decks'
 import './styles/Summary.css'
 
-const FlashcardsModal = props => {
+
+const FlashcardsModal = ({ phrase, translatedPhrase }) => {
     const [decks, setDecks] = useState([])
     useEffect(() => {
-        getDecks().then(res => {
+        fetchDecks().then(res => {
             res.json().then(data => {
                 setDecks(data)
             })
@@ -26,8 +27,8 @@ const FlashcardsModal = props => {
                     )}
                 </div>  
                 <div className="modalPhraseContainer">
-                    <span>{props.phrase} </span>
-                    <span>{props.translatedPhrase}</span>
+                    <span>{ phrase } </span>
+                    <span>{ translatedPhrase }</span>
                 </div>
             </div>
         </div>
@@ -43,7 +44,7 @@ export default () => {
     const removeWhiteSpaces = content => content !== '' && content !== ' '
 
     
-    function renderTextContent(textContent) {
+    const renderTextContent = (textContent) => {
         const splitedText = textContent.split('.').filter(removeWhiteSpaces)
         const content = splitedText.map((phrase, idx) => {
             const query = phrase.trim().toLowerCase().split(' ').join('%20')

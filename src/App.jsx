@@ -12,30 +12,32 @@ import SignUpPage from './pages/SignUpPage'
 
 
 const Protected = ({ children }) => {
-    const userkey = localStorage.getItem('userkey')
-    if (userkey) {
+    const token = localStorage.getItem('authtoken')
+    if (token) {
         return children
     }
     return <Navigate to="/login" />
 }
  
+
 const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/signup/' element={<SignUpPage />}/>
-                <Route path='/login/' element={<LoginPage />}></Route>
+                <Route path='/signup/' element={<SignUpPage />} />
+                <Route path='/login/' element={<LoginPage />} />
                 <Route element={<Protected><Layout /></Protected>}>
                     <Route path='/' element={<Home />} />
                     <Route path='/summaries/' element={<Summaries />} />
                     <Route path='/summaries/:bookID/' element={<Summary />} />
                     <Route path='/decks/' element={<Decks />} />
-                    <Route path='/decks/:deckID/' element={<Flashcards />}/>
+                    <Route path='/decks/:deckID/' element={<Flashcards />} />
                     <Route path='/decks/:deckID/edit/' element={<FlashcardsManagement />} />
                 </Route>
             </Routes>
         </BrowserRouter>
     )
 }
+
 
 export default App

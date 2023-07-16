@@ -13,7 +13,7 @@ export default ({ id, phrase, translatedPhrase, handleFlashcardClick }) => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'Application/JSON',
-                'Authorization': `Basic ${localStorage.getItem('userkey')}`
+                'Authorization': `Token ${localStorage.getItem('authtoken')}`
             },
             body: JSON.stringify(data)
         }).then(res => {

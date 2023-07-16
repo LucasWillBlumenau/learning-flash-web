@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import Flashcard from "../components/Flashcard"
 import FlashcardsSlider from '../components/FlascardSlider'
 
-import getFlashcards from '../context/flashcards'
+import { fetchFlashcards } from '../context/flashcards'
 
 
 export default () => {
@@ -26,7 +26,7 @@ export default () => {
     }
 
     useEffect(() => {
-        getFlashcards(deckID, false).then(res => {
+        fetchFlashcards(deckID, false).then(res => {
             if (res.status === 200) {
                 res.json().then(data => {
                     setFlashcards(data)

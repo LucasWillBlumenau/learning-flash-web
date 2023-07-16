@@ -1,8 +1,11 @@
-export default async () => {
-    const decks = await fetch('http://127.0.0.1:8000/api/decks/', {
+const fetchDecks = async () => {
+    const response = await fetch('http://127.0.0.1:8000/api/decks/', {
         headers: {
-            'Authorization': `Basic ${localStorage.getItem('userkey')}`
+            'Authorization': `Token ${localStorage.getItem('authtoken')}`
         }
     })
-    return decks
+    return response
 }
+
+
+export { fetchDecks }

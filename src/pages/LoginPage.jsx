@@ -30,7 +30,7 @@ export default () => {
         }).then(res => {
             if (res.status === 200) {
                 res.json().then(data => {
-                    localStorage.setItem('userkey', data.key)
+                    localStorage.setItem('authtoken', data.token)
                     navigate('/')
                 })  
             } else {
@@ -71,7 +71,7 @@ export default () => {
                     {/* <button id="createAccountButton">Criar Conta</button> */}
                     <button ref={loginButton} id="submitButton">{loginMessage}</button>
                 </div>
-                <p>Novo Por Aqui? <Link className="accountCreationLink" to="#">Crie Sua Conta!</Link></p>
+                <p>Novo Por Aqui? <Link className="accountCreationLink" to="/signup">Crie Sua Conta!</Link></p>
             </form>
         </div>
     )
