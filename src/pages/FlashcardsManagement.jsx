@@ -22,44 +22,43 @@ export default () => {
         })
     }, [isListLoading])
 
-    const addFlashcard = () => {
+    const addFlashcard = async () => {
         const [phrase, translatedPhrase] = [phraseInput.current.value, translatedPhraseInput.current.value]
         const data = {
             phrase: phrase,
             translated_phrase: translatedPhrase
         }
-        fetch(`http://127.0.0.1:8000/api/decks/${deckID}/flashcards/`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/decks/${deckID}/flashcards/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'Application/JSON',
                 'Authorization': `Token ${localStorage.getItem('authtoken')}`,
             },
             body: JSON.stringify(data)
-        }).then(res => {
-            phraseInput.current.value = ''
-            translatedPhraseInput.current.value = ''
-            if (res.status === 201) {
-                res.json().then(data => {
-                    setFlashcards([...flashcards, data])
-                })
-            }
         })
+        phraseInput.current.value = ''
+        translatedPhraseInput.current.value = ''
+        if (response.status === 201) {
+            const data = await response.json()
+            setFlashcards([...flashcards, data])
+        }
+     
     }
 
-    const deleteFlashcard = (flascardID, flashcardIndex) => {
-        fetch(`http://127.0.0.1:8000/api/flashcards/${flascardID}/`, {
+    const deleteFlashcard = async (flascardID, flashcardIndex) => {
+        const response = await fetch(`http://127.0.0.1:8000/api/flashcards/${flascardID}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'Application/JSON',
                 'Authorization': `Token ${localStorage.getItem('authtoken')}`
             }
-        }).then(res => {
-            if (res.status === 204) {
-                const newFlashcards = Array.from(flashcards)
-                newFlashcards.splice(flashcardIndex, 1)
-                setFlashcards(newFlashcards)
-            }
         })
+        if (response.status === 204) {
+            const newFlashcards = Array.from(flashcards)
+            newFlashcards.splice(flashcardIndex, 1)
+            setFlashcards(newFlashcards)
+        }
+    
     }
 
     return (

@@ -1,7 +1,5 @@
 import { FaUser, FaHome, FaBook, FaEnvelopeSquare } from 'react-icons/fa'
-import { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import LoginPage from './LoginPage'
 import './styles/Layout.css'
 
 

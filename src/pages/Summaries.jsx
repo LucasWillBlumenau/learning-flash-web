@@ -8,10 +8,14 @@ import './styles/Summaries.css'
 
 export default () => {
     const [books, setBooks] = useState([])
+    
+    const renderSummaries = async () => {
+        const data = await getSummaries()
+        setBooks(data)
+    }
+
     useEffect(() => {
-        getSummaries().then(data => {
-            setBooks(data)
-        })
+        renderSummaries()
     }, [])
     return (
         <div>

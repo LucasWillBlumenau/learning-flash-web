@@ -1,18 +1,27 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
 import { FaInfoCircle } from 'react-icons/fa'
-import './styles/LoginPage.css'
+import './styles/Forms.css'
 
 
 export default () => {
     const usernameInput = useRef()
     const passwordInput = useRef()
     const loginButton = useRef()
+    const [warning, setWarning] = useState(null)
     const [loginMessage, setLoginMessage] = useState('Entrar')
     const [warningVisible, setWarningVisible] = useState(false)
     const navigate = useNavigate()
 
-    const logIn = (event) => {
+    const showWarning = (message) => {
+        setWarning(message)
+        setWarningVisible(true)
+        setTimeout(() => {
+            setWarningVisible(false)
+        }, 5000)
+    }
+
+    const logIn = async (event) => {
         event.preventDefault()
         const requestBody = {
             username: usernameInput.current.value,
@@ -21,27 +30,28 @@ export default () => {
     
         setLoginMessage('Carrengando...')
         loginButton.current.disabled = true
-        fetch('http://127.0.0.1:8000/api/login/', {
+        const response = await fetch('http://127.0.0.1:8000/api/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'Application/JSON'
             },
             body: JSON.stringify(requestBody)
-        }).then(res => {
-            if (res.status === 200) {
-                res.json().then(data => {
-                    localStorage.setItem('authtoken', data.token)
-                    navigate('/')
-                })  
-            } else {
-                setLoginMessage('Entrar')
-                loginButton.current.disabled = false
-                setWarningVisible(true)
-                setTimeout(() => {
-                    setWarningVisible(false)
-                }, 5000)
-            }
         })
+    
+        if (response.status === 200) {
+            const data =  await response.json() 
+            localStorage.setItem('authtoken', data.token)
+            navigate('/')
+            
+        } else if (response.status === 400) {
+            setLoginMessage('Entrar')
+            loginButton.current.disabled = false
+            showWarning('email ou senha incorretos!')
+        } else {
+            setLoginMessage('Entrar')
+            loginButton.current.disabled = false
+            showWarning('algum erro ocurreu durante a requisição')
+        }
     }
 
     return (
@@ -55,7 +65,7 @@ export default () => {
                 {warningVisible &&
                     <span className="warningMessage" style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
                         <FaInfoCircle />
-                        <span>email ou senha incorretos</span>
+                        <span>{ warning }</span>
                     </span>
                 }
                 <p style={{fontSize: '30px', fontWeight: '600', marginBottom: '15px'}}>Faça seu login</p>
@@ -69,7 +79,7 @@ export default () => {
                 </div>
                 <div className="buttonsWrapper">
                     {/* <button id="createAccountButton">Criar Conta</button> */}
-                    <button ref={loginButton} id="submitButton">{loginMessage}</button>
+                    <button ref={loginButton}>{loginMessage}</button>
                 </div>
                 <p>Novo Por Aqui? <Link className="accountCreationLink" to="/signup">Crie Sua Conta!</Link></p>
             </form>

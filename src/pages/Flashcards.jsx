@@ -25,15 +25,17 @@ export default () => {
         }
     }
 
+    const renderFlashcards = async () => {
+        const response = await fetchFlashcards(deckID, false)
+        if (response.status === 200) {
+            const data = await response.json()
+            setFlashcards(data)
+            setLastIndex(data.length - 1)
+        } 
+    }
+
     useEffect(() => {
-        fetchFlashcards(deckID, false).then(res => {
-            if (res.status === 200) {
-                res.json().then(data => {
-                    setFlashcards(data)
-                    setLastIndex(data.length - 1)
-                })
-            } 
-        })
+        renderFlashcards()
     }, [])
     
     return (

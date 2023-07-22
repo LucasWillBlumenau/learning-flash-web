@@ -49,19 +49,16 @@ export default () => {
         const content = splitedText.map((phrase, idx) => {
             const query = phrase.trim().toLowerCase().split(' ').join('%20')
             return (
-                <span key={idx} onClick={() => {
+                <span key={idx} onClick={async () => {
                     const url = `http://127.0.0.1:8000/api/phrases/${query}`
-                    fetch(url).then(res => {
-                        if (res.status === 200) {
-                            res.json().then(data => {
-                                console.log(data)
-                                setModalVisible(true)
-                            })
-                        } else if (res.status === 404) {
-                            console.log(query)
-                            console.log('esta frase não foi adicionada ainda')
-                        }
-                    })
+                    const response = await fetch(url)
+                    if (response.status === 200) {
+                        const data = await response.json()
+                        console.log(data)
+                        setModalVisible(true)
+                    } else if (response.status === 404) {
+                        console.log('esta frase não foi adicionada ainda')
+                    }
                 }}>
                     {phrase}.
                 </span>
@@ -70,11 +67,12 @@ export default () => {
         setTextContent(content)
     }
 
+    const renderSummary = async () => {
+        const data = await getSummary(bookID)
+        renderTextContent(data.text_content)
+    }
     useEffect(() => {
-        getSummary(bookID).then(data => {
-            setBook(data)
-            renderTextContent(data.text_content)
-        })
+        renderSummary()
     }, [])
     return (
         <>
