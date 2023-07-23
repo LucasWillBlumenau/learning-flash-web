@@ -50,21 +50,6 @@ export default () => {
         const content = splitedText.map((phrase, idx) => {
             const query = phrase.trim().toLowerCase().split(' ').join('%20')
             return (
-<<<<<<< HEAD
-                <span key={idx} onClick={() => {
-                    const url = `http://127.0.0.1:8000/api/phrases/${query}`
-                    fetch(url).then(res => {
-                        if (res.status === 200) {
-                            res.json().then(data => {
-                                console.log(data)
-                                setModalVisible(true)
-                            })
-                        } else if (res.status === 404) {
-                            console.log(query)
-                            console.log('esta frase não foi adicionada ainda')
-                        }
-                    })
-=======
                 <span key={idx} onClick={async () => {
                     const url = `http://127.0.0.1:8000/api/phrases/${query}`
                     const response = await fetch(url)
@@ -75,7 +60,6 @@ export default () => {
                     } else if (response.status === 404) {
                         console.log('esta frase não foi adicionada ainda')
                     }
->>>>>>> auth
                 }}>
                     {phrase}.
                 </span>
@@ -106,13 +90,8 @@ export default () => {
             </div>
             {modalVisible &&
                 <FlashcardsModal 
-<<<<<<< HEAD
-                phrase="This is a phrase" 
-                translatedPhrase="Isso é uma frase" 
-=======
                     phrase="This is a phrase" 
                     translatedPhrase="Isso é uma frase" 
->>>>>>> auth
                 />
             }
         </>
