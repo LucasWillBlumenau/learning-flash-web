@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
-import { FaInfoCircle } from 'react-icons/fa'
-import './styles/LoginPage.css'
+import './styles/Forms.css'
+
 
 export default () => {
     const usernameInput = useRef()
@@ -53,13 +53,6 @@ export default () => {
         }
     }
 
-    useEffect(() => {
-        const location = 'http://localhost:5173/'
-        if (window.location.href !== location) {
-            console.log(location)
-            window.location.href = location
-        }
-    }, [])
     return (
         <div className="loginFormWrapper">
             <div className="learningFlashInformation">
