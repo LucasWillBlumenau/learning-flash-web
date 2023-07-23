@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
-import { FaInfoCircle } from 'react-icons/fa'
 import './styles/Forms.css'
 
 
@@ -64,7 +63,6 @@ export default () => {
             }}>
                 {warningVisible &&
                     <span className="warningMessage" style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
-                        <FaInfoCircle />
                         <span>{ warning }</span>
                     </span>
                 }
