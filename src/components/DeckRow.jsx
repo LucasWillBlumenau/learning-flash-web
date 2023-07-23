@@ -5,15 +5,14 @@ import {
     FaPlay,
 } from 'react-icons/fa'
 import  { Link } from 'react-router-dom'
-import { useState } from 'react'
 
-export default props => {
-    const [deletePopupVisible, setDeletePopupVisible] = useState(false)
-    function deleteDeck() {
-        fetch(`http://127.0.0.1:8000/api/decks/${props.id}/`, {
+
+export default ({ id, name, description }) => {
+    const deleteDeck = () => {
+        fetch(`http://127.0.0.1:8000/api/decks/${id}/`, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Basic ${localStorage.getItem('userkey')}`
+                'Authorization': `Token ${localStorage.getItem('authtoken')}`
             }
         }).then(res => {
             if (res.status === 204) {
@@ -26,12 +25,12 @@ export default props => {
         <tr className="flashcardRow">
             <td>
                 <div className="optionButtonsContainer">
-                    <Link to={`/decks/${props.id}/edit`}>
+                    <Link to={`/decks/${id}/edit`}>
                         <button className="optionButton">
                             <FaPencilAlt />
                         </button>
                     </Link>
-                    <Link to={`/decks/${props.id}`}>
+                    <Link to={`/decks/${id}`}>
                         <button className="optionButton">
                             <FaPlay />
                         </button>
@@ -47,12 +46,12 @@ export default props => {
             </td>
             <td>
                 <div>
-                    {props.name}
+                    { name }
                 </div>
             </td>
             <td>
                 <div>
-                    {props.description}
+                    { description }
                 </div>
             </td>
         </tr>

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import Flashcard from "../components/Flashcard"
 import FlashcardsSlider from '../components/FlascardSlider'
 
-import getFlashcards from '../context/flashcards'
+import { fetchFlashcards } from '../context/flashcards'
 
 
 export default () => {
@@ -13,7 +13,7 @@ export default () => {
     const [cardVisible, setCardVisible] = useState(false)
     const [lastIndex, setLastIndex] = useState(flashcards.length - 1)
 
-    function handleFlashcardClick(id, hasGoodDomainLevel) {
+    const handleFlashcardClick = (id, hasGoodDomainLevel) => {
         setCardVisible(false)
         const newFlashcards = flashcards.filter(flashcard => flashcard.id !== id) 
         if (hasGoodDomainLevel) {
@@ -25,15 +25,17 @@ export default () => {
         }
     }
 
+    const renderFlashcards = async () => {
+        const response = await fetchFlashcards(deckID, false)
+        if (response.status === 200) {
+            const data = await response.json()
+            setFlashcards(data)
+            setLastIndex(data.length - 1)
+        } 
+    }
+
     useEffect(() => {
-        getFlashcards(deckID, false).then(res => {
-            if (res.status === 200) {
-                res.json().then(data => {
-                    setFlashcards(data)
-                    setLastIndex(data.length - 1)
-                })
-            } 
-        })
+        renderFlashcards()
     }, [])
     
     return (

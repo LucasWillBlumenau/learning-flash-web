@@ -1,6 +1,6 @@
 import './styles/DecksTable.css'
 
-export default props => {
+export default ({ children }) => {
     return ( 
         <table className="decksTable">
             <thead>
@@ -12,7 +12,7 @@ export default props => {
                 </tr>
             </thead>
             <tbody>
-                { props.children }
+                { children }
             </tbody>
         </table>
     )

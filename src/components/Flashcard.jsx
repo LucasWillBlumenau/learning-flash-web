@@ -2,45 +2,51 @@ import { useState } from 'react'
 import './styles/Flashcard.css'
 
 
-function updateFlashcard(flashcardID, hasGoodDomainLevel) {
-    const data = { has_good_domain_level: hasGoodDomainLevel }
-    fetch(`http://127.0.0.1:8000/api/flashcards/${flashcardID}/`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'Application/JSON',
-            'Authorization': `Basic ${localStorage.getItem('userkey')}`
-        },
-        body: JSON.stringify(data)
-    }).then(res => {
-        if(res.status == 201) {
-            console.log('flashcard atualizado')
-        }
-    })
-}
 
-export default props => {
-    const [phrase, setPhrase] = useState(props.phrase)
-    const { handleFlashcardClick } = props
+
+export default ({ id, phrase, translatedPhrase, handleFlashcardClick }) => {
+    const [cardPhrase, setPhrase] = useState(phrase)
+
+    const updateFlashcard = (flashcardID, hasGoodDomainLevel) => {
+        const data = { has_good_domain_level: hasGoodDomainLevel }
+        fetch(`http://127.0.0.1:8000/api/flashcards/${flashcardID}/`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'Application/JSON',
+                'Authorization': `Token ${localStorage.getItem('authtoken')}`
+            },
+            body: JSON.stringify(data)
+        }).then(res => {
+            if(res.status == 201) {
+                console.log('flashcard atualizado')
+            } else {
+                res.json().then(data => {
+                        console.log(data)
+                    }
+                )
+            }
+        })
+    }
     return (
         <div className="flashcard">
             <div className="flashcardPhrase" onClick={() => {
-                setPhrase(phrase === props.phrase? props.translatedPhrase: props.phrase)
+                setPhrase(cardPhrase === phrase? translatedPhrase: phrase)
             }}>
-                { phrase } 
+                { cardPhrase } 
             </div>
             <div className="flashcardButtons">
                 <span>Nível de domínio</span>
                 <div>
                     <button
                         onClick={() => {
-                            handleFlashcardClick(props.id, false)
-                            updateFlashcard(props.id, false)
+                            handleFlashcardClick(id, false)
+                            updateFlashcard(id, false)
                         }}
                     >Ruim</button>
                     <button
                         onClick={() => {
-                            handleFlashcardClick(props.id, true)
-                            updateFlashcard(props.id, true)
+                            handleFlashcardClick(id, true)
+                            updateFlashcard(id, true)
                         }}
                     >Bom</button>
                 </div>

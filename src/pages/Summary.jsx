@@ -1,13 +1,15 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import getSummary from '../context/summary'
-import getDecks from '../context/decks'
+
+import { fetchDecks } from '../context/decks'
 import './styles/Summary.css'
 
-const FlashcardsModal = props => {
+
+const FlashcardsModal = ({ phrase, translatedPhrase }) => {
     const [decks, setDecks] = useState([])
     useEffect(() => {
-        getDecks().then(res => {
+        fetchDecks().then(res => {
             res.json().then(data => {
                 setDecks(data)
             })
@@ -26,8 +28,8 @@ const FlashcardsModal = props => {
                     )}
                 </div>  
                 <div className="modalPhraseContainer">
-                    <span>{props.phrase} </span>
-                    <span>{props.translatedPhrase}</span>
+                    <span>{ phrase } </span>
+                    <span>{ translatedPhrase }</span>
                 </div>
             </div>
         </div>
@@ -43,11 +45,12 @@ export default () => {
     const removeWhiteSpaces = content => content !== '' && content !== ' '
 
     
-    function renderTextContent(textContent) {
+    const renderTextContent = (textContent) => {
         const splitedText = textContent.split('.').filter(removeWhiteSpaces)
         const content = splitedText.map((phrase, idx) => {
             const query = phrase.trim().toLowerCase().split(' ').join('%20')
             return (
+<<<<<<< HEAD
                 <span key={idx} onClick={() => {
                     const url = `http://127.0.0.1:8000/api/phrases/${query}`
                     fetch(url).then(res => {
@@ -61,6 +64,18 @@ export default () => {
                             console.log('esta frase não foi adicionada ainda')
                         }
                     })
+=======
+                <span key={idx} onClick={async () => {
+                    const url = `http://127.0.0.1:8000/api/phrases/${query}`
+                    const response = await fetch(url)
+                    if (response.status === 200) {
+                        const data = await response.json()
+                        console.log(data)
+                        setModalVisible(true)
+                    } else if (response.status === 404) {
+                        console.log('esta frase não foi adicionada ainda')
+                    }
+>>>>>>> auth
                 }}>
                     {phrase}.
                 </span>
@@ -69,11 +84,12 @@ export default () => {
         setTextContent(content)
     }
 
+    const renderSummary = async () => {
+        const data = await getSummary(bookID)
+        renderTextContent(data.text_content)
+    }
     useEffect(() => {
-        getSummary(bookID).then(data => {
-            setBook(data)
-            renderTextContent(data.text_content)
-        })
+        renderSummary()
     }, [])
     return (
         <>
@@ -90,8 +106,13 @@ export default () => {
             </div>
             {modalVisible &&
                 <FlashcardsModal 
+<<<<<<< HEAD
                 phrase="This is a phrase" 
                 translatedPhrase="Isso é uma frase" 
+=======
+                    phrase="This is a phrase" 
+                    translatedPhrase="Isso é uma frase" 
+>>>>>>> auth
                 />
             }
         </>

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import DeckRow from "../components/DeckRow"
 import DecksTable from '../components/DecksTable'
-import getDecks from '../context/decks'
+import { fetchDecks } from '../context/decks'
 import './styles/Decks.css'
 
 
@@ -12,20 +12,20 @@ export default () => {
     const deckDescriptionInput = useRef()
 
     useEffect(() => {
-        getDecks().then(res => {
+        fetchDecks().then(res => {
             if (res.status === 200) {
                 res.json().then(data => {
                     setDecks(data)
                     setTableVisible(true)
-                })
+                })  
             } else {
-                setDecks([])
-                setTableVisible(true)
+                window.alert(res.status)
             }
+
         })
     }, [])
 
-    function addFlashcard() {
+    const addFlashcard = () => {
         const [name, description] = [deckNameInput.current.value, deckDescriptionInput.current.value]
         deckNameInput.current.value = '' 
         deckDescriptionInput.current.value = ''
@@ -37,7 +37,7 @@ export default () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'Application/json', 
-                'Authorization': `Basic ${localStorage.getItem('userkey')}`
+                'Authorization': `Token ${localStorage.getItem('authtoken')}`
             },
             body: JSON.stringify(body),
         }).then(res => res.json())
