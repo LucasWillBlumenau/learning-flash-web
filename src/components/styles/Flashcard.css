@@ -1,8 +1,9 @@
 .flashcard {
     display: flex;
     flex-direction: column;
-    width: 350px;
-    height: 175px;
+    justify-content: space-evenly;
+    width: 600px;
+    min-height: 200px;
     background-color: #00000055;
     border-radius: 15px;
     padding: 10px 15px;
@@ -15,7 +16,7 @@
     text-align: center;
     animation: flashcardAnimation;
     animation-duration: 200ms;
-    font-size: 22px;
+    font-size: 20px;
     height: 75%;
 }
 
@@ -49,6 +50,6 @@
     from {
         font-size: 0;
     } to {
-        font-size: 22px;
+        font-size: 20px;
     }
 }

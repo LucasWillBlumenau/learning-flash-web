@@ -13,7 +13,7 @@ export default ({ children, cardVisible, setCardVisible, lastIndex }) => {
     return (
         
         <div style={{display: 'flex', alignItems: 'center', gap: '15px', position: 'relative', maxWidth: '85vw'}}>
-            <div className="arrowIcon" onClick={() => {
+            <div className="arrowIcon" style={{opacity: index === 0? 0.3: 1}} onClick={() => {
                 if(index > 0) {
                     setIndex(index - 1)
                 }
@@ -21,7 +21,7 @@ export default ({ children, cardVisible, setCardVisible, lastIndex }) => {
                 <FaArrowLeft />
             </div>
                 { cardVisible && flashcard }
-            <div className="arrowIcon" onClick={() => {
+            <div className="arrowIcon" style={{opacity: index === lastIndex? 0.3: 1}} onClick={() => {
                 if (index < lastIndex) {
                     setIndex(index + 1)
                 }

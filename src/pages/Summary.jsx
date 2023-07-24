@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import getSummary from '../context/summary'
 
 import { fetchDecks } from '../context/decks'
@@ -103,9 +103,12 @@ export default () => {
     }
 
     const renderBookInfo = async () => {
-        const data = await getSummary(bookID)
-        renderTextContent(data.text_content)
-        setBook(data)
+        const response = await getSummary(bookID)
+        if (response.ok) {
+            const data = await response.json()
+            renderTextContent(data.text_content)
+            setBook(data)
+        }
     }
 
     useEffect(() => {
