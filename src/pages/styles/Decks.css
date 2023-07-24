@@ -27,7 +27,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 15px 25px;
     gap: 15px;
+    background: linear-gradient(-120deg, #1a4e5cdd, #2a444add);
+    border-radius: 15px;
 }
 
 .deckForm .inputFieldWrapper {
@@ -50,17 +53,6 @@
 
 .inputFieldWrapper input:focus {
     outline: 2px solid #3a3a98;
-}
-
-.button {
-    padding: 5px 8px;
-    background-color: #299696cc;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 600;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 @media screen and (min-width: 900px){

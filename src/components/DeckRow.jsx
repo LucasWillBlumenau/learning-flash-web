@@ -7,18 +7,20 @@ import {
 import  { Link } from 'react-router-dom'
 
 
-export default ({ id, name, description }) => {
-    const deleteDeck = () => {
-        fetch(`http://127.0.0.1:8000/api/decks/${id}/`, {
+export default ({ id, name, description, renderDecks }) => {
+    const deleteDeck = async () => {
+        const response = await fetch(`http://127.0.0.1:8000/api/decks/${id}/`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Token ${localStorage.getItem('authtoken')}`
             }
-        }).then(res => {
-            if (res.status === 204) {
-                console.log('deletado')
-            }
         })
+        if (response.ok) {
+            renderDecks()
+        } else {
+            alert('Erro ao deletar flashcard')
+            
+        }
     }
 
     return (
@@ -35,7 +37,7 @@ export default ({ id, name, description }) => {
                             <FaPlay />
                         </button>
                     </Link>
-                    <Link>
+                    <Link to="/decks/">
                         <button className="optionButton"
                             onClick={deleteDeck}
                         >

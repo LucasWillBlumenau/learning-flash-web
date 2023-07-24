@@ -6,63 +6,62 @@ import './styles/Decks.css'
 
 
 export default () => {
-    const [decks, setDecks] = useState()
-    const [tableVisible, setTableVisible] = useState(false)
+    const [decks, setDecks] = useState(null)
     const deckNameInput = useRef()
     const deckDescriptionInput = useRef()
+    const form = useRef()
+
+    const renderDecks = async () => {
+        const response = await fetchDecks()
+        if (response.ok) {
+            const data = await response.json()
+            setDecks(data)
+        } else {
+            alert('Problemas ao carregar decks...')
+        }
+    }
 
     useEffect(() => {
-        fetchDecks().then(res => {
-            if (res.status === 200) {
-                res.json().then(data => {
-                    setDecks(data)
-                    setTableVisible(true)
-                })  
-            } else {
-                window.alert(res.status)
-            }
-
-        })
+        renderDecks()
     }, [])
 
-    const addFlashcard = () => {
+    const addDeck = async () => {
         const [name, description] = [deckNameInput.current.value, deckDescriptionInput.current.value]
-        deckNameInput.current.value = '' 
-        deckDescriptionInput.current.value = ''
+        form.current.reset()
         const body = {
             name: name,
             description: description,
         }
-        fetch('http://127.0.0.1:8000/api/decks/', {
+        
+        const response = await fetch('http://127.0.0.1:8000/api/decks/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'Application/json', 
                 'Authorization': `Token ${localStorage.getItem('authtoken')}`
             },
             body: JSON.stringify(body),
-        }).then(res => res.json())
-        .then(data => {
-            if(data.name && data.description) {
-                setDecks([...decks, data])
-            }
         })
+        if (response.ok) {
+            const data = await response.json()
+            setDecks([...decks, data])
+        }
     }
 
     return (
         <div className="decksWrapper">
             <div className="tableWrapper">
-                {tableVisible?  
+                {decks !== null?  
                     <DecksTable>
                         {decks === []? 
                             'vazio...':
-                            decks.map((deck, idx) => {
+                            decks.map(({id, name, description}, idx) => {
                                 return (
                                     <DeckRow 
                                         key={idx}
-                                        id={deck.id}
-                                        name={deck.name}
-                                        description={deck.description}
-                                        amount={deck.flashcards_amount}
+                                        id={id}
+                                        name={name}
+                                        description={description}
+                                        renderDecks={renderDecks}
                                     />
                                 )
                             })
@@ -72,9 +71,9 @@ export default () => {
                 }
             </div>
             <div className="deckFormWrapper">
-                <form className="deckForm" method="POST" onSubmit={(event) => {
+                <form ref={form} className="deckForm" method="POST" onSubmit={(event) => {
                     event.preventDefault()
-                    addFlashcard()
+                    addDeck()
                 }}>
                     <div className="inputFieldWrapper">
                         <div>

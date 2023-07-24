@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
 import { fetchFlashcards } from '../context/flashcards'
 import './styles/FlashcardsManagement.css'
-
+import './styles/Base.css'
 
 export default () => {
     const { deckID } = useParams()
@@ -62,10 +62,10 @@ export default () => {
     }
 
     return (
-        <div className="flashcardManagement">
+        <div className="flashcardManagement centralized">
             <form 
                 method="POST" 
-                className="addFlashcardsForm"
+                className="addFlashcardsForm centralized"
                 onSubmit={(event) => {
                     event.preventDefault()
                     addFlashcard()
@@ -81,7 +81,7 @@ export default () => {
                     <input ref={translatedPhraseInput} type="text" id="translatedPhraseInput" required/>
                 </div>
                 <div className="flashcardsSubmitertter">
-                    <button type="submit">Criar Flashcard</button>
+                    <button className="button" type="submit">Criar Flashcard</button>
                 </div>
             </form>
             <ul className="flashcardsList">

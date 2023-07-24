@@ -11,7 +11,6 @@ export default ({ children, cardVisible, setCardVisible, lastIndex }) => {
         setCardVisible(true)
     }, [index, children])
     return (
-        
         <div style={{display: 'flex', alignItems: 'center', gap: '15px', position: 'relative', maxWidth: '85vw'}}>
             <div className="arrowIcon" style={{opacity: index === 0? 0.3: 1}} onClick={() => {
                 if(index > 0) {

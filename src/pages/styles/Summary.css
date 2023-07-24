@@ -66,6 +66,10 @@
     border-bottom: 3px solid #1a4e5c;
 }
 
+.decksList p {
+    font-size: 20px;
+}
+
 .deckOption {
     display: flex;
     align-items: center;

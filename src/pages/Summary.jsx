@@ -15,12 +15,13 @@ export default () => {
     const [translatedPhrase, setTranslatedPhrase] = useState()
 
     const FlashcardsModal = ({ phrase, translatedPhrase }) => {
-        const [decks, setDecks] = useState([])
+        const [decks, setDecks] = useState(null)
         const [selectedDeck, setSelectedDeck] = useState()
 
         const getDecks = async () => {
             const response = await fetchDecks()
             const data = await response.json()
+            console.log(data);
             setDecks(data)
         }
 
@@ -41,6 +42,16 @@ export default () => {
             }
         }
 
+        const decksList = () => {
+            return decks.map((deck, i) => 
+                <div key={i} className="deckOption">
+                    <input type="radio" name="deckOption" onChange={() => {
+                        setSelectedDeck(deck)
+                    }}/>
+                    { deck.name }
+                </div>
+            )
+        }
         useEffect(() => {
             getDecks()
         }, [])
@@ -51,14 +62,7 @@ export default () => {
                 <div className="modalPopup">
                     <h2>Selecione o deck:</h2>
                     <div className="decksList">
-                        {decks.map((deck, i) => 
-                            <div key={i} className="deckOption">
-                                <input type="radio" name="deckOption" onChange={() => {
-                                    setSelectedDeck(deck)
-                                }}/>
-                                { deck.name }
-                            </div>
-                        )}
+                        {decks !== null && (decks.length === 0? <p>Você ainda não possui nenhum deck</p>: decksList())}
                     </div>  
                     <h2>Card a ser adicionado:</h2>
                     <div className="modalPhraseContainer">
@@ -117,20 +121,19 @@ export default () => {
     return (
         <div className="bookTextContainer">
             <div className="bookTitle">
-                <span>{book.title}</span>
-                <span>{book.author}</span>
+                <span>{ book.title }</span>
+                <span>{ book.author }</span>
             </div>
             <div className="bookContent">
                 <p>
-                    {textContent}
+                    { textContent }
                 </p>
             </div>
             {modalVisible &&
             <FlashcardsModal 
                 phrase={phrase}
                 translatedPhrase={translatedPhrase}
-            />
-        }
+            />}
         </div>
     )
 }
