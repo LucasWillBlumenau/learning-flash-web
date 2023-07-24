@@ -1,0 +1,22 @@
+.gameContainer {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.startGameMenu {
+    text-align: center;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 20px;
+    width: 600px;
+    max-width: 95vw;
+    min-height: 200px;
+    background-color: #00000055;
+    border-radius: 15px;
+    padding: 10px 15px;
+}
+
+.startGameMenu .button {
+    min-width: min-content;
+    width: 175px;
+}
