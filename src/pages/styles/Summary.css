@@ -44,7 +44,6 @@
 }
 
 .modalPopup {
-    background: linear-gradient(-120deg, #1a4e5c, #2a444a);
     width: 475px;
     max-width: 95vw;
     height: min-content;
@@ -59,14 +58,14 @@
 
 .decksList {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 60%;
+    flex-direction: column;
+    max-height: 100px;
+    overflow: auto;
     width: 100%;
     border-bottom: 3px solid #1a4e5c;
 }
 
-.decksList p {
+.decksList span {
     font-size: 20px;
 }
 
@@ -74,16 +73,16 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    width: 33%;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .modalPhraseContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    font-size: 22px;
+    text-align: left;
+    font-size: 20px;
+    line-height: 30px;
 }
 
 .modalPhraseContainer span:first-child{

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 import Flashcard from "../components/Flashcard"
 import FlashcardsSlider from '../components/FlascardSlider'
@@ -16,6 +16,7 @@ export default () => {
     const [flashcards, setFlashcards] = useState(null)
     const [cardVisible, setCardVisible] = useState(false)
     const [lastIndex, setLastIndex] = useState()
+    const navigate = useNavigate()
 
     const handleFlashcardClick = (id, hasGoodDomainLevel) => {
         setCardVisible(false)
@@ -69,8 +70,14 @@ export default () => {
             </FlashcardsSlider>):
             (flashcards !== null && 
                 <div className="startGameMenu centralized">
+                    
                     {(flashcards.length === 0? 
-                        <p>Você não tem nenhum flashcard para estudar hoje!</p>:
+                        <>
+                            <p>Você não tem nenhum flashcard para estudar hoje!</p>
+                            <button className="button" onClick={() => {
+                                navigate('/decks')
+                            }}>Ver decks</button>
+                        </>:
                         <>
                             <p>Você tem {flashcards.length} flashcards para estudar!</p>
                             <button className="button" onClick={() => {

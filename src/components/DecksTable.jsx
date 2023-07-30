@@ -5,9 +5,9 @@ export default ({ children }) => {
         <table className="decksTable">
             <thead>
                 <tr>
-                    <th style={{textAlign: 'center'}}>Opções</th>
-                    <th>Nome</th>
-                    <th>Descrição</th>
+                    <th className="tableHeader">Opções</th>
+                    <th className="tableHeader">Nome</th>
+                    <th className="tableHeader">Descrição</th>
                     {/* <th>Qtde. Flashcards</th> */}
                 </tr>
             </thead>

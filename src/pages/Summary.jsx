@@ -4,6 +4,7 @@ import getSummary from '../context/summary'
 
 import { fetchDecks } from '../context/decks'
 import './styles/Summary.css'
+import './styles/Base.css'
 
 
 export default () => {
@@ -16,7 +17,8 @@ export default () => {
 
     const FlashcardsModal = ({ phrase, translatedPhrase }) => {
         const [decks, setDecks] = useState(null)
-        const [selectedDeck, setSelectedDeck] = useState()
+        const [deckID, setDeckID] = useState()
+        const [selectedDeck, setSelectedDeck] = useState({checked: null})
 
         const getDecks = async () => {
             const response = await fetchDecks()
@@ -27,7 +29,7 @@ export default () => {
 
         const addFlashcard = async () => {
             const body = { phrase: phrase, translated_phrase: translatedPhrase }    
-            const response = await fetch(`http://127.0.0.1:8000/api/decks/${selectedDeck.id}/flashcards/`, {
+            const response = await fetch(`http://127.0.0.1:8000/api/decks/${deckID}/flashcards/`, {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'Application/JSON',
@@ -45,10 +47,12 @@ export default () => {
         const decksList = () => {
             return decks.map((deck, i) => 
                 <div key={i} className="deckOption">
-                    <input type="radio" name="deckOption" onChange={() => {
-                        setSelectedDeck(deck)
+                    <input type="checkbox" name="deckOption" onChange={(event) => {
+                        selectedDeck.checked = false
+                        setSelectedDeck(event.target)
+                        setDeckID(deck.id)
                     }}/>
-                    { deck.name }
+                    <span>{ deck.name }</span>
                 </div>
             )
         }
@@ -58,8 +62,8 @@ export default () => {
 
 
         return (
-            <div className="modalWrapper">
-                <div className="modalPopup">
+            <div className="modal">
+                <div className="modalPopup popup">
                     <h2>Selecione o deck:</h2>
                     <div className="decksList">
                         {decks !== null && (decks.length === 0? <p>Você ainda não possui nenhum deck</p>: decksList())}

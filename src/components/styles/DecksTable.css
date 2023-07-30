@@ -5,15 +5,10 @@
     border-collapse: collapse;
 }
 
-.decksTable th {
-    width: min-content;
-}
-
 .decksTable thead {
     position: sticky;
     top: 0;
 }
-
 
 .decksTable th, .decksTable td {
     text-align: left;
@@ -27,7 +22,6 @@
 
 @media screen and (min-width: 900px) {
     .decksTable th {
-        min-width: 150px;
         white-space: nowrap;
     }
 }

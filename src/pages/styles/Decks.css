@@ -1,10 +1,11 @@
-.decksWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.content {
     align-items: center;
     padding: 2rem 0;
     min-height: 100vh;
+}
+
+.decksWrapper {
+    position: relative;
 }
 
 .tableWrapper {
@@ -14,27 +15,16 @@
     box-shadow: 10px 10px 45px #00000066;
 }
 
-.deckFormWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-    width: 100%;
-}
-
 .deckForm {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 15px 25px;
     gap: 15px;
-    background: linear-gradient(-120deg, #1a4e5cdd, #2a444add);
     border-radius: 15px;
 }
 
 .deckForm .inputFieldWrapper {
     display: flex;
+    flex-direction: column;
     gap: 25px;
     width: 100%;
 }
@@ -43,16 +33,48 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    gap: 5px;
 }
+
+.deckForm .inputFieldWrapper label {
+    font-size: 22px;
+    font-weight: 600;
+}
+
 
 .inputFieldWrapper input {
     padding: 3px 5px;
     border: none;
     border-radius: 5px;
+    flex-basis: 100%;
 }
 
 .inputFieldWrapper input:focus {
     outline: 2px solid #3a3a98;
+}
+
+.addDeckIconContainer {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: grid;
+    place-items: center;
+    background-color: #299696cc;
+    border-radius: 50%;
+    width: 40px;
+    aspect-ratio: 1;
+    font-size: 22px;
+    box-shadow: 5px 5px 45px #000000;
+    cursor: pointer;
+}
+
+.buttonsContainer {
+    display: flex;
+    gap: 5px;
+}
+
+.buttonsContainer button {
+    flex: 1;
 }
 
 @media screen and (min-width: 900px){
@@ -61,18 +83,10 @@
     }
     
     .deckForm {
-        width: 40%;
+        width: 500px;
     }
 
-    .deckForm .inputFieldWrapper {
-        flex-direction: row;
-    }
-
-    .deckForm .inputFieldWrapper div {
-        width: 50%;
-    }
-
-    .deckForm button {
+    .buttonsContainer {
         width: 100%;
     }
 }
@@ -87,7 +101,6 @@
     }
 
     .deckForm .inputFieldWrapper {
-        flex-direction: column;
         align-items: center;
     }
 
@@ -95,7 +108,8 @@
         width: 90%;
     }
 
-    .deckForm button {
+    .buttonsContainer {
         width: 90%;
     }
+
 }
