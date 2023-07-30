@@ -32,6 +32,7 @@
     background: linear-gradient(-120deg, #1a4e5c, #2a444a);
     animation: showModal;
     animation-duration: 500ms;
+    z-index: 10;
 }
 
 

@@ -27,14 +27,14 @@ export default ({ id, name, description, renderDecks }) => {
         <tr className="flashcardRow">
             <td>
                 <div className="optionButtonsContainer">
-                    <Link to={`/decks/${id}/edit`}>
-                        <button className="optionButton">
-                            <FaPencilAlt />
-                        </button>
-                    </Link>
                     <Link to={`/decks/${id}`}>
                         <button className="optionButton">
                             <FaPlay />
+                        </button>
+                    </Link>
+                    <Link to={`/decks/${id}/edit`}>
+                        <button className="optionButton">
+                            <FaPencilAlt />
                         </button>
                     </Link>
                     <Link to="/decks/">

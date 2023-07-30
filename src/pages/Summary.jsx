@@ -28,6 +28,11 @@ export default () => {
         }
 
         const addFlashcard = async () => {
+            if (!deckID) {
+                alert('Selecione um deck para adicionar o flashcard!')
+                return
+            }
+            
             const body = { phrase: phrase, translated_phrase: translatedPhrase }    
             const response = await fetch(`http://127.0.0.1:8000/api/decks/${deckID}/flashcards/`, {
                 method: 'POST', 

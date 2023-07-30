@@ -3,8 +3,7 @@ import DeckRow from "../components/DeckRow"
 import DecksTable from '../components/DecksTable'
 import { fetchDecks } from '../context/decks'
 import './styles/Decks.css'
-import { FaPlus } from "react-icons/fa"
-
+import PlusIcon from '../components/PlusIcon'
 
 export default () => {
     const [decks, setDecks] = useState(null)
@@ -43,6 +42,7 @@ export default () => {
                     event.preventDefault()
                     addDeck()
                 }}>
+                    <h1>Crie seu novo deck</h1>
                     <div className="inputFieldWrapper">
                         <div>
                             <label htmlFor="deckName">Nome:</label>
@@ -54,7 +54,7 @@ export default () => {
                         </div>
                     </div>
                     <div className="buttonsContainer">
-                        <button className="button" type="submit">Adicionar Deck</button>
+                        <button className="button" type="submit">Adicionar</button>
                         <button className="button" onClick={() => {
                             setModalVisible(false)
                         }}>Fechar</button>
@@ -103,11 +103,9 @@ export default () => {
                         <div style={{width: "100%", height: '100%', display: 'flex', justifyContent: 'center', alignItems:'center', fontSize: '35px'}}>Carregando...</div>
                     }
                 </div>
-                <div className="addDeckIconContainer" onClick={() => {
+                <PlusIcon onClick={() => {
                     setModalVisible(true)
-                }}>
-                    <FaPlus />
-                </div>
+                }}/>
             </div>
             {modalVisible && <Modal />}
         </div>

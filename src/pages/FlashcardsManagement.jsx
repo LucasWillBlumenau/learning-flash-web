@@ -1,49 +1,83 @@
 import { useState, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
+import PlusIcon from '../components/PlusIcon'
 import { fetchFlashcards } from '../context/flashcards'
 import './styles/FlashcardsManagement.css'
 import './styles/Base.css'
 
+
 export default () => {
     const { deckID } = useParams()
-    const [flashcards, setFlashcards] = useState([])
-    const [isListLoading, setIsTableLoading] = useState(true)
-    const phraseInput = useRef()
-    const translatedPhraseInput = useRef()
+    const [flashcards, setFlashcards] = useState(null)
+    const [modalVisible, setModalVisible] = useState(false)
+    
+    const Modal = () => {
+        const phraseInput = useRef()
+        const translatedPhraseInput = useRef()
+
+        const addFlashcard = async () => {
+            const [phrase, translatedPhrase] = [phraseInput.current.value, translatedPhraseInput.current.value]
+            const data = {
+                phrase: phrase,
+                translated_phrase: translatedPhrase
+            }
+            const response = await fetch(`http://127.0.0.1:8000/api/decks/${deckID}/flashcards/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'Application/JSON',
+                    'Authorization': `Token ${localStorage.getItem('authtoken')}`,
+                },
+                body: JSON.stringify(data)
+            })
+            if (response.ok) {
+                setModalVisible(false)
+                renderFlashcards()
+            }
+         
+        }
+
+        return (
+            <div className="modal">
+                <form 
+                    method="POST" 
+                    className="addFlashcardsForm centralized popup"
+                    onSubmit={(event) => {
+                        event.preventDefault()
+                        addFlashcard()
+                    }}
+                    >
+                    <span className="formTitle">Adicione um novo flashcard:</span>
+                    <div className="flashcardsPhraseInput">
+                        <label htmlFor="phraseInput">Frente: </label>
+                        <input ref={phraseInput} type="text" id="phraseInput" required/>
+                    </div>
+                    <div className="flashcardsPhraseInput">
+                        <label htmlFor="translatedPhraseInput">Verso: </label>
+                        <input ref={translatedPhraseInput} type="text" id="translatedPhraseInput" required/>
+                    </div>
+                    <div className="buttonsContainer">
+                        <button className="button" type="submit">Adicionar</button>
+                        <button className="button" type="submit" onClick={() => {
+                            setModalVisible(false)
+                        }}>Fechar</button>
+                    </div>
+                </form>
+            </div>
+        )
+    }
+
+    const renderFlashcards = async () => {
+        const response = await fetchFlashcards(deckID, true)
+        if (response.ok) {
+            const data = await response.json()
+            setFlashcards(data)
+        }
+    }
 
     useEffect(() => {
-        fetchFlashcards(deckID, true).then(res => {
-            if (res.status === 200) {
-                res.json().then(data => {
-                    setFlashcards(data)
-                    setIsTableLoading(false)
-                })
-            }
-        })
-    }, [isListLoading])
+        renderFlashcards()
+    }, [])
 
-    const addFlashcard = async () => {
-        const [phrase, translatedPhrase] = [phraseInput.current.value, translatedPhraseInput.current.value]
-        const data = {
-            phrase: phrase,
-            translated_phrase: translatedPhrase
-        }
-        const response = await fetch(`http://127.0.0.1:8000/api/decks/${deckID}/flashcards/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'Application/JSON',
-                'Authorization': `Token ${localStorage.getItem('authtoken')}`,
-            },
-            body: JSON.stringify(data)
-        })
-        phraseInput.current.value = ''
-        translatedPhraseInput.current.value = ''
-        if (response.status === 201) {
-            const data = await response.json()
-            setFlashcards([...flashcards, data])
-        }
-     
-    }
 
     const deleteFlashcard = async (flascardID, flashcardIndex) => {
         const response = await fetch(`http://127.0.0.1:8000/api/flashcards/${flascardID}/`, {
@@ -63,40 +97,25 @@ export default () => {
 
     return (
         <div className="flashcardManagement centralized">
-            <form 
-                method="POST" 
-                className="addFlashcardsForm centralized"
-                onSubmit={(event) => {
-                    event.preventDefault()
-                    addFlashcard()
-                }}
-            >
-                <span className="formTitle">Adicione um novo flashcard:</span>
-                <div className="flashcardsPhraseInput">
-                    <label htmlFor="phraseInput">Frente: </label>
-                    <input ref={phraseInput} type="text" id="phraseInput" required/>
-                </div>
-                <div className="flashcardsPhraseInput">
-                    <label htmlFor="translatedPhraseInput">Verso: </label>
-                    <input ref={translatedPhraseInput} type="text" id="translatedPhraseInput" required/>
-                </div>
-                <div className="flashcardsSubmitertter">
-                    <button className="button" type="submit">Criar Flashcard</button>
-                </div>
-            </form>
-            <ul className="flashcardsList">
-                <li style={{justifyContent: 'center', position: 'sticky', top: 0, left: 0, zIndex: 3, backgroundColor: '#000', fontSize: '22px', fontWeight: 600}}>Confira Todos os Seus Cards</li>
-                {!isListLoading && flashcards.map((flashcard, idx) => {
-                    return (
-                        <li key={idx}>
-                            <button onClick={() => {
-                                deleteFlashcard(flashcard.id, idx)
-                            }}>Deletar</button>
-                            { flashcard.phrase }
-                        </li>
-                    )
-                })}
-            </ul>
+            <div style={{position: 'relative'}}>
+                <ul className="flashcardsList">
+                    <li className="listTop centralized">Confira Todos os Seus Cards</li>
+                    {flashcards !== null && flashcards.map((flashcard, idx) => {
+                        return (
+                            <li className="listItem" key={idx}>
+                                <button className="button   " onClick={() => {
+                                    deleteFlashcard(flashcard.id, idx)
+                                }}>Deletar</button>
+                                <span>{ flashcard.phrase }</span>
+                            </li>
+                        )
+                    })}
+                </ul>
+                <PlusIcon onClick={() => {
+                    setModalVisible(true)
+                }}/>
+            </div>
+            {modalVisible && <Modal />}
         </div>
     )
 }
