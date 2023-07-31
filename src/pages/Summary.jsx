@@ -92,10 +92,10 @@ export default () => {
     }
 
     const renderTextContent = (textContent) => {
-        const splitedText = textContent.match(/[^\.!\?]+[\.\!\?]/)
-        const content = splitedText.map((phrase, idx) => {
+        const splitedText = textContent.match(/[^\.!\?]+[\.\!\?]/g)
+        const content = splitedText.map((phrase, i) => {
             return (
-                <span key={idx} onClick={async () => {
+                <span key={i} onClick={async () => {
                     const query = phrase.trim().toLowerCase().split(' ').join('%20')
                     const url = `http://127.0.0.1:8000/api/phrases/${query}`
                     const response = await fetch(url)

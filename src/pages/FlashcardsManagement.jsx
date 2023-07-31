@@ -4,7 +4,7 @@ import PlusIcon from '../components/PlusIcon'
 import { fetchFlashcards } from '../context/flashcards'
 import './styles/FlashcardsManagement.css'
 import './styles/Base.css'
-
+import { FaTrashAlt } from "react-icons/fa"
 
 export default () => {
     const { deckID } = useParams()
@@ -46,7 +46,7 @@ export default () => {
                         addFlashcard()
                     }}
                     >
-                    <span className="formTitle">Adicione um novo flashcard:</span>
+                    <h2 className="formTitle">Adicione um novo flashcard:</h2>
                     <div className="flashcardsPhraseInput">
                         <label htmlFor="phraseInput">Frente: </label>
                         <input ref={phraseInput} type="text" id="phraseInput" required/>
@@ -105,7 +105,7 @@ export default () => {
                             <li className="listItem" key={idx}>
                                 <button className="button   " onClick={() => {
                                     deleteFlashcard(flashcard.id, idx)
-                                }}>Deletar</button>
+                                }}><FaTrashAlt /></button>
                                 <span>{ flashcard.phrase }</span>
                             </li>
                         )

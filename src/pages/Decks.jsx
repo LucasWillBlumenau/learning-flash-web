@@ -42,7 +42,7 @@ export default () => {
                     event.preventDefault()
                     addDeck()
                 }}>
-                    <h1>Crie seu novo deck</h1>
+                    <h2>Crie seu novo deck</h2>
                     <div className="inputFieldWrapper">
                         <div>
                             <label htmlFor="deckName">Nome:</label>
