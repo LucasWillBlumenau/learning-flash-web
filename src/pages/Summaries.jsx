@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { FaSearch } from 'react-icons/fa'
 import { Link } from "react-router-dom"
 import SummaryCard from "../components/SummaryCard"
@@ -8,10 +8,15 @@ import './styles/Summaries.css'
 
 export default () => {
     const [books, setBooks] = useState([])
+    const input = useRef()
     
-    const renderSummaries = async () => {
-        const data = await getSummaries()
+    const renderSummaries = async (filter) => {
+        const data = await getSummaries(filter)
         setBooks(data)
+    }
+
+    const searchBook = () => {
+        renderSummaries(input.current.value)
     }
 
     useEffect(() => {
@@ -22,10 +27,12 @@ export default () => {
             <div className="summariesPageTop">
                 <span>Confira Todos os Resumos:</span>
                 <div className="searchBarContainer">
-                    <label htmlFor="searchInput">
-                        <FaSearch />
-                    </label>
-                    <input id="searchInput" type="text" placeholder="Pesquisar resumos:"/>
+                    <FaSearch onClick={searchBook} />
+                    <input ref={input} type="text" placeholder="Pesquisar resumos:" onKeyDown={(event) => {
+                        if (event.key == 'Enter') {
+                            searchBook()
+                        }
+                    }}/>
                 </div>
             </div>
             <SummariesGrid>
