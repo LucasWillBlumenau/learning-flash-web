@@ -1,3 +1,10 @@
+.summariesPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
 .summariesPageTop {
     display: flex;
     align-items: center;
@@ -33,12 +40,20 @@
 }
 
 @media screen and (min-width:900px) {
+    .summariesPage {
+        min-height: 100vh;
+    }
+
     .summariesPageTop {
         justify-content: space-around;
     }
 }
 
 @media screen and (max-width:900px) {
+    .summariesPage {
+        min-height: calc(100vh - 3rem);
+    }
+ 
     .summariesPageTop {
         flex-direction: column;
         text-align: center;

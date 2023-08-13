@@ -79,7 +79,10 @@ export default () => {
                             }}>Ver decks</button>
                         </>:
                         <>
+                            {(flashcards.length === 1?
+                            <p>Você tem {flashcards.length} flashcard para estudar!</p>:
                             <p>Você tem {flashcards.length} flashcards para estudar!</p>
+                            )}
                             <button className="button" onClick={() => {
                                 setGameStarted(true)
                             }}>Começar jogo</button>

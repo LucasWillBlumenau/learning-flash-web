@@ -1,3 +1,10 @@
+.homePageWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+
 .mainSummary {
     display: flex;
     padding-top: 2rem;
@@ -16,6 +23,9 @@
 }
 
 @media screen and (min-width: 900px) {
+    .homePageWrapper {
+        min-height: 100vh;
+    }
 
     .mainSummary {
         gap: 2rem;
@@ -41,7 +51,8 @@
 
 @media screen and (max-width: 900px) {
     .homePageWrapper {
-        margin-bottom: 3rem;
+        min-height: calc(100vh - 3rem);
+        padding-bottom: 2rem;
     }
     
     .mainSummary {

@@ -45,7 +45,6 @@ ul {
 @media screen and (max-width: 900px) {
     .pageContent {
         width: 100vw;
-        height: 100%;
-        padding-bottom: 3rem;
+        min-height: 100vh;
     }
 }

@@ -23,7 +23,6 @@ export default () => {
         const getDecks = async () => {
             const response = await fetchDecks()
             const data = await response.json()
-            console.log(data);
             setDecks(data)
         }
 
@@ -128,7 +127,7 @@ export default () => {
         renderBookInfo()
     }, [])
     return (
-        <div className="bookTextContainer">
+        <div className="bookTextContainer centralized">
             <div className="bookTitle">
                 <span>{ book.title }</span>
                 <span>{ book.author }</span>

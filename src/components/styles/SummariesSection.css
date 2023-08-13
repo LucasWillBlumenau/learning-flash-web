@@ -1,21 +1,41 @@
 .summariesSection {
     display: flex;
+    align-items: center;
     flex-direction: column;    
-    width: 90%;
-    transform: translateX(3.33%);
-    margin-top: 1rem;
+    width: 100%;
 }
 
 .sectionTitle {
     font-size: 22px;
     font-weight: 600;
+    width: 90%;
 }
 
 .summariesContainer {
     display: flex;
     align-items: center;
+    width: 90%;
     gap: 55px;
-    padding: 25px 55px;
+    padding: 25px 15px;
     overflow: auto;
+}
+
+.summariesContainer::-webkit-scrollbar {
+    height: 6px;
+}
+
+.summariesContainer::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background: #ffffffaa;
+}
+
+.summariesContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.summariesContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 

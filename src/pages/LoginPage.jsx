@@ -45,7 +45,7 @@ export default () => {
         } else if (response.status === 400) {
             setLoginMessage('Entrar')
             loginButton.current.disabled = false
-            showWarning('email ou senha incorretos!')
+            showWarning('nome de usuário ou senha incorretos!')
         } else {
             setLoginMessage('Entrar')
             loginButton.current.disabled = false

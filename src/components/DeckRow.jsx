@@ -28,18 +28,19 @@ export default ({ id, name, description, renderDecks }) => {
             <td>
                 <div className="optionButtonsContainer">
                     <Link to={`/decks/${id}`}>
-                        <button className="optionButton">
+                        <button className="optionButton" title="Praticar Deck">
                             <FaPlay />
                         </button>
                     </Link>
                     <Link to={`/decks/${id}/edit`}>
-                        <button className="optionButton">
+                        <button className="optionButton" title="Editar Deck">
                             <FaPencilAlt />
                         </button>
                     </Link>
                     <Link to="/decks/">
                         <button className="optionButton"
                             onClick={deleteDeck}
+                            title="Deletar Deck"
                         >
                             <FaTrashAlt />
                         </button>

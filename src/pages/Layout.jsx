@@ -26,9 +26,9 @@ const NavBar = () => {
                     </Link>
                 </li>
                 <li className="navItem">
-                    <Link to="#">
+                    <Link to="/user">
                         <FaUser />
-                        <span className="navItemText">Preferências</span>
+                        <span className="navItemText">Conta</span>
                     </Link>
                 </li>
             </ul>

@@ -23,16 +23,19 @@
     height: 42px;
     border-radius: 8px;
     font-size: 22px;
-    cursor: pointer;
-}
-
-.navItem a {
     padding: 3px 5px;
+    cursor: pointer;
 }
 
 .navItem:hover {
     background-color: #ffffff22;
     transition: 200ms ease;
+}
+
+.navItem a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .navItemText {
@@ -68,10 +71,9 @@
         display: inline;
     }
     
-    .navbarWrapper:hover a {
+    .navbarWrapper a {
         display: flex;
         align-items: center;
-        width: 100%;
         gap: 5px;
     }
 

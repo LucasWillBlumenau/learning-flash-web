@@ -3,7 +3,9 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 90%;
-    padding: 2rem 75px;
     gap: 45px;
-    transform: translateX(5%);
+}
+
+.summariesGrid div:last-child {
+    margin-bottom: 2rem;
 }

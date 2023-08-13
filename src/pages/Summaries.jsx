@@ -23,7 +23,7 @@ export default () => {
         renderSummaries()
     }, [])
     return (
-        <div>
+        <div className="summariesPage">
             <div className="summariesPageTop">
                 <span>Confira Todos os Resumos:</span>
                 <div className="searchBarContainer">

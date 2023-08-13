@@ -9,6 +9,7 @@ import Flashcards from './pages/Flashcards'
 import FlashcardsManagement from './pages/FlashcardsManagement'
 import LoginPage from './pages/LoginPage'
 import SignUpPage from './pages/SignUpPage'
+import UserPage from './pages/UserPage'
 
 
 const Protected = ({ children }) => {
@@ -33,6 +34,7 @@ const App = () => {
                     <Route path='/decks/' element={<Decks />} />
                     <Route path='/decks/:deckID/' element={<Flashcards />} />
                     <Route path='/decks/:deckID/edit/' element={<FlashcardsManagement />} />
+                    <Route path='/user/' element={<UserPage />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -19,27 +19,17 @@
 .bookInfo {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
-
     width: 100%;
     height: 30%;
-
     padding: 10px 15px;
-
     background-color: #fff;
     color: #000;
 }
 
-
-.bookTitle {
+.bookInfo span {
     font-weight: 500;
-}
-
-.bookAuthor {
-    white-space: nowrap;
-}
-
-.bookTitle, .bookAuthor {
     text-align: center;
 }
 
