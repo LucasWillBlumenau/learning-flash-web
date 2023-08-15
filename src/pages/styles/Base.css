@@ -1,6 +1,6 @@
 .button {
     padding: 5px 8px;
-    background-color: #299696cc;
+    background-color: var(--secondary-bg-color);
     color: #fff;
     font-size: 18px;
     font-weight: 600;
@@ -29,7 +29,7 @@
 }
 
 .popup {
-    background: linear-gradient(-120deg, #1a4e5c, #2a444a);
+    background: linear-gradient(-120deg, var(--primary-bg-color), #2a444a);
     animation: showModal;
     animation-duration: 500ms;
     z-index: 10;

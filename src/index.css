@@ -1,3 +1,8 @@
+:root {
+    --primary-bg-color: #1a4e5c;
+    --secondary-bg-color: #299696cc;
+}
+
 * {
     padding: 0;
     margin: 0;

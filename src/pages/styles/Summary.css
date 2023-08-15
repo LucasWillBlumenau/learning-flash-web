@@ -23,7 +23,7 @@
     font-size: 20px;
     padding: 35px 15px;
     height: 75vh;
-    background: linear-gradient(-120deg, #1a4e5cdd, #2a444add);
+    background: linear-gradient(-120deg, var(--primary-bg-color), #2a444add);
     border-radius: 10px;
     overflow-y: auto;
     width: 95%;
@@ -48,7 +48,7 @@
     max-height: 100px;
     overflow: auto;
     width: 100%;
-    border-bottom: 3px solid #1a4e5c;
+    border-bottom: 3px solid var(--primary-bg-color);
 }
 
 .decksList span {
@@ -93,7 +93,7 @@
 }
 
 .modalPhraseContainer span:first-child{
-    border-bottom: 3px solid #1a4e5c;
+    border-bottom: 3px solid var(--primary-bg-color);
     padding-bottom: 5px;
 }
 
@@ -112,7 +112,7 @@
 .addCardButtonsContainer button {
     font-size: 18px;
     font-weight: 600;
-    background-color: #299696cc;
+    background-color: var(--secondary-bg-color);
     color: #fff;
     cursor: pointer;
     border: none;
