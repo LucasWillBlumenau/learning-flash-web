@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
+import './styles/Base.css'
 import './styles/Forms.css'
 
 
@@ -79,7 +80,7 @@ export default () => {
                     {/* <button id="createAccountButton">Criar Conta</button> */}
                     <button ref={loginButton}>{loginMessage}</button>
                 </div>
-                <p>Novo Por Aqui? <Link className="accountCreationLink" to="/signup">Crie Sua Conta!</Link></p>
+                <p>Novo Por Aqui? <Link className="link" to="/signup">Crie Sua Conta!</Link></p>
             </form>
         </div>
     )

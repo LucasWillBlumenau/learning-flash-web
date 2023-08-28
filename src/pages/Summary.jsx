@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import getSummary from '../context/summary'
 
@@ -69,8 +69,9 @@ export default () => {
             <div className="modal">
                 <div className="modalPopup popup">
                     <h2>Selecione o deck:</h2>
+                    
                     <div className="decksList">
-                        {decks !== null && (decks.length === 0? <p>Você ainda não possui nenhum deck</p>: decksList())}
+                        {decks !== null && (decks.length === 0? <p>Você ainda não possui nenhum deck. <Link to="/decks" className="link">Adicione um novo!</Link></p>: decksList())}
                     </div>  
                     <h2>Card a ser adicionado:</h2>
                     <div className="modalPhraseContainer">

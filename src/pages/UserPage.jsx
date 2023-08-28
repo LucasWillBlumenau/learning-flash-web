@@ -1,35 +1,31 @@
 import './styles/UserPage.css'
 import './styles/Base.css'
-import { FaArrowRight } from 'react-icons/fa'
+
+import { ProfileOptions, ProfileOption } from '../components/ProfileOptions'
+import { useNavigate } from 'react-router-dom'
 
 
 export default () =>  {
+    
+    const navigate = useNavigate()
+
+    const logout = () => {
+        localStorage.removeItem('authtoken')
+        navigate('/login')
+    }
+
     return (
         <div className="userPageWrapper centralized">
             <div className="infoWrapper">
-                <h2 className="optionsTitle">Opções</h2>
-                <ul className="profileOptions">
-                    <li className="profileOption">
-                        <span>Alterar nome de usuário</span>
-                        <FaArrowRight />
-                    </li>
-                    <li className="profileOption">
-                        <span>Alterar email</span>
-                        <FaArrowRight />
-                    </li>
-                    <li className="profileOption">
-                        <span>Alterar senha</span>
-                        <FaArrowRight />
-                    </li>
-                </ul>
-
-                <h2 className="optionsTitle">Preferências</h2>
-                <ul className="profileOptions">
-                    <li className="profileOption">
-                        <span>Conferir Favoritos</span>
-                        <FaArrowRight />
-                    </li>
-                </ul>
+                <ProfileOptions title="Opções">
+                    <ProfileOption title="Alterar nome de usuário" onClick={() => alert('It works')} />
+                    <ProfileOption title="Alterar email" />
+                    <ProfileOption title="Alterar senha" />
+                    <ProfileOption title="Fazer logout" onClick={logout}/>
+                </ProfileOptions>
+                <ProfileOptions title="Preferências">
+                    <ProfileOption title="Favoritos" />
+                </ProfileOptions>
             </div>
         </div>
     )

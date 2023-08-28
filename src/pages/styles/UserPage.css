@@ -11,38 +11,7 @@
     max-width: 90vw;
     height: 80vh;
     max-height: 80vh;
-    aspect-ratio: 1;    
+    aspect-ratio: 1;
     background-color: #22222264;
     box-shadow: 10px 10px 45px #00000066;
-}
-
-.optionsTitle {
-    width: 100%;
-    text-align: center;
-    background-color: #ffffff11;
-}
-
-.profileOptions {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-}
-
-.profileOption {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 15px;
-    cursor: pointer;
-}
-
-.profileOption:hover {
-    background-color: #ffffff33;
-    transition: 200ms ease-in-out;
-}
-
-.profileOption span, .profileOption svg {
-    font-size: 26px;
-    font-weight: 500;
 }

@@ -72,15 +72,6 @@
     flex: 0.9;
 }
 
-.accountCreationLink {
-    color: #299696;
-    font-weight: 600;
-}
-
-.accountCreationLink:hover {
-    text-decoration: underline;
-}
-
 .warningMessage {
     position: fixed;
     top: 25px;

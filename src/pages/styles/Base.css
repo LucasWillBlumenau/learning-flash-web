@@ -35,6 +35,15 @@
     z-index: 10;
 }
 
+.link {
+    color: #299696;
+    font-weight: 600;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
 
 @keyframes showModal {
     0% {

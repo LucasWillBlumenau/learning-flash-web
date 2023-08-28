@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useRef, useState } from 'react'
+import './styles/Base.css'
 import './styles/Forms.css'
 
 
@@ -108,7 +109,7 @@ export default () => {
                 <div className="buttonsWrapper">
                     <button ref={signUpButton}>Criar</button>
                 </div>
-                <p>Já tem uma conta? <Link className="accountCreationLink" to="/login">Faça Login!</Link></p>
+                <p>Já tem uma conta? <Link className="link" to="/login">Faça Login!</Link></p>
             </form>
         </div>
     )
