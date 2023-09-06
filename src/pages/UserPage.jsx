@@ -2,7 +2,7 @@ import './styles/UserPage.css'
 import './styles/Base.css'
 
 import { ProfileOptions, ProfileOption } from '../components/ProfileOptions'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate , Link } from 'react-router-dom'
 
 
 export default () =>  {
@@ -24,7 +24,9 @@ export default () =>  {
                     <ProfileOption title="Fazer logout" onClick={logout}/>
                 </ProfileOptions>
                 <ProfileOptions title="Preferências">
-                    <ProfileOption title="Favoritos" />
+                    <Link to='/favorites/'>
+                        <ProfileOption title="Favoritos" />
+                    </Link>
                 </ProfileOptions>
             </div>
         </div>

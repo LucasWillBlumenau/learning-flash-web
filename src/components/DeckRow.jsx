@@ -1,7 +1,7 @@
 import './styles/DeckRow.css'
 import {
     FaTrashAlt,
-    FaPencilAlt,
+    FaPlus,
     FaPlay,
 } from 'react-icons/fa'
 import  { Link } from 'react-router-dom'
@@ -34,7 +34,7 @@ export default ({ id, name, description, renderDecks }) => {
                     </Link>
                     <Link to={`/decks/${id}/edit`}>
                         <button className="optionButton" title="Editar Deck">
-                            <FaPencilAlt />
+                            <FaPlus />
                         </button>
                     </Link>
                     <Link to="/decks/">

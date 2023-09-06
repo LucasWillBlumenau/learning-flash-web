@@ -1,8 +1,10 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import getSummary from '../context/summary'
+import { FaBookmark } from 'react-icons/fa'
 
+import getSummary from '../context/summary'
 import { fetchDecks } from '../context/decks'
+
 import './styles/Summary.css'
 import './styles/Base.css'
 
@@ -129,9 +131,12 @@ export default () => {
     }, [])
     return (
         <div className="bookTextContainer centralized">
-            <div className="bookTitle">
-                <span>{ book.title }</span>
-                <span>{ book.author }</span>
+            <div className="bookHeader">
+                <div className="bookTitle">
+                    <span>{ book.title }</span>
+                    <span>{ book.author }</span>
+                </div>
+                <FaBookmark className="bookmark" />
             </div>
             <div className="bookContent">
                 <p>

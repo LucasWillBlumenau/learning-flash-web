@@ -44,6 +44,13 @@
     text-decoration: underline;
 }
 
+.pageTitle {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 32px;
+    font-weight: 600;
+}
+
 
 @keyframes showModal {
     0% {
