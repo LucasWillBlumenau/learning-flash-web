@@ -37,7 +37,7 @@ export default ({ id, phrase, translatedPhrase, handleFlashcardClick }) => {
             <div className="flashcardButtons">
                 <span>Nível de domínio</span>
                 <div>
-                    <button
+                    <button 
                         onClick={() => {
                             handleFlashcardClick(id, false)
                             updateFlashcard(id, false)

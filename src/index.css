@@ -1,6 +1,10 @@
 :root {
-    --primary-bg-color: #1a4e5c;
-    --secondary-bg-color: #299696cc;
+    --primary-bg-color: #111;
+    --secondary-bg-color: #22222264;
+    --tertiary-bg-color: #111111bf;
+    --primary-color: #ff33d3;
+    --secondary-color: #ff33d3cc;
+    --content-box-shadow: 10px 10px 45px #00000066;
 }
 
 * {
@@ -15,9 +19,7 @@ html {
 
 body {
     color: #fff;
-    background-image: linear-gradient(-120deg, #1f3121ee, #0d1a1dee,#294b55dd);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-color: #222;
     overflow-x: hidden;
     min-height: 100vh;
 }
@@ -42,7 +44,7 @@ ul {
 @media screen and (min-width: 900px) {
     .pageContent {
         width: calc(100vw - 4rem);
-        height: auto;
+        min-height: 100vh;
         left: 4rem;
     }
 }
@@ -50,6 +52,7 @@ ul {
 @media screen and (max-width: 900px) {
     .pageContent {
         width: 100vw;
-        min-height: 100vh;
+        min-height: calc(100vh - 3rem);
+        margin-bottom: 3rem;
     }
 }

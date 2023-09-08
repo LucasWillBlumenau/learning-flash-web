@@ -5,8 +5,8 @@ import { FaBookmark } from 'react-icons/fa'
 import getSummary from '../context/summary'
 import { fetchDecks } from '../context/decks'
 
-import './styles/Summary.css'
 import './styles/Base.css'
+import './styles/Summary.css'
 
 
 export default () => {
@@ -81,10 +81,10 @@ export default () => {
                         <span>{ translatedPhrase }</span>
                     </div>
                     <div className="addCardButtonsContainer">
-                        <button onClick={() => {
+                        <button className="button" onClick={() => {
                             addFlashcard()
                         }}>Adicionar</button>
-                        <button onClick={() => {
+                        <button className="button" onClick={() => {
                             setModalVisible(false)
                         }}>Fechar</button>
                     </div>

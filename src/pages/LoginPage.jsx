@@ -67,7 +67,7 @@ export default () => {
                         <span>{ warning }</span>
                     </span>
                 }
-                <p style={{fontSize: '30px', fontWeight: '600', marginBottom: '15px'}}>Faça seu login</p>
+                <p style={{fontSize: '30px', fontWeight: '600', marginBottom: '15px'}}>Login</p>
                 <div className="inputWrapper">
                     <label htmlFor="usernameInput">Nome de Usuário:</label>
                     <input ref={usernameInput} type="text" required/>

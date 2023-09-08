@@ -12,6 +12,6 @@
     height: 80vh;
     max-height: 80vh;
     aspect-ratio: 1;
-    background-color: #22222264;
-    box-shadow: 10px 10px 45px #00000066;
+    background-color: var(--secondary-bg-color);
+    box-shadow: var(--content-box-shadow);
 }

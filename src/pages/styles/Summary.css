@@ -6,7 +6,7 @@
 .bookHeader {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     width: 95%;
     margin-bottom: 5px;
 }
@@ -34,7 +34,9 @@
     font-size: 20px;
     padding: 35px 15px;
     height: 75vh;
-    background: linear-gradient(-120deg, var(--primary-bg-color), #2a444add);
+    background-color: var(--secondary-bg-color);
+    box-shadow: var(--content-box-shadow);
+    line-height: 1.5;
     border-radius: 10px;
     overflow-y: auto;
     width: 95%;
@@ -118,17 +120,6 @@
     align-items: center;
     margin: 1rem 0;
     gap: 15px;
-}
-
-.addCardButtonsContainer button {
-    font-size: 18px;
-    font-weight: 600;
-    background-color: var(--secondary-bg-color);
-    color: #fff;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 8px;
 }
 
 @media screen and (min-width: 900px){

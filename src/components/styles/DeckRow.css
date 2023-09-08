@@ -13,13 +13,13 @@
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
-    background-color: var(--secondary-bg-color);
+    background-color: var(--secondary-color);
     color: #fff;
 }
 
 
 .flashcardRow:nth-child(odd) {
-    background-color: #22222264;
+    background-color: var(--secondary-bg-color);
 }
 
 .flashcardRow:nth-child(even) {

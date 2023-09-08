@@ -1,6 +1,6 @@
 .button {
     padding: 5px 8px;
-    background-color: var(--secondary-bg-color);
+    background-color: var(--primary-color);
     color: #fff;
     font-size: 18px;
     font-weight: 600;
@@ -29,19 +29,20 @@
 }
 
 .popup {
-    background: linear-gradient(-120deg, var(--primary-bg-color), #2a444a);
+    background-color: var(--tertiary-bg-color);
     animation: showModal;
     animation-duration: 500ms;
     z-index: 10;
 }
 
 .link {
-    color: #299696;
+    color: var(--secondary-color);
     font-weight: 600;
 }
 
 .link:hover {
     text-decoration: underline;
+    opacity: 1;
 }
 
 .pageTitle {

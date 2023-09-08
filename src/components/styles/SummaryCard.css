@@ -1,14 +1,13 @@
 .summaryCard {
     background-color: var(--secondary-bg-color);
+    box-shadow: var(--content-box-shadow);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 10px 10px 45px #02404822;
 }
 
 .bookImage {
     width: 100%;
     height: 70%;
-    /* background-color: #fff; */
 }
 
 .bookImage img {
