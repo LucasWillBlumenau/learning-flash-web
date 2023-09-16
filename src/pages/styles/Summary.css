@@ -31,6 +31,9 @@
 }
 
 .bookContent {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     font-size: 20px;
     padding: 35px 15px;
     height: 75vh;
@@ -61,7 +64,7 @@
     max-height: 100px;
     overflow: auto;
     width: 100%;
-    border-bottom: 3px solid var(--primary-bg-color);
+    border-bottom: 1px solid #fff;
 }
 
 .decksList span {
@@ -106,7 +109,7 @@
 }
 
 .modalPhraseContainer span:first-child{
-    border-bottom: 3px solid var(--primary-bg-color);
+    border-bottom: 1px solid #fff;
     padding-bottom: 5px;
 }
 

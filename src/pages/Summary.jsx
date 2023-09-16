@@ -12,7 +12,7 @@ import './styles/Summary.css'
 export default () => {
     const { bookID } = useParams()
     const [book, setBook] = useState({})
-    const [textContent, setTextContent] = useState([])
+    const [paragraphs, setParagraphs] = useState([])
     const [modalVisible, setModalVisible] = useState(false)
     const [phrase, setPhrase] = useState()
     const [translatedPhrase, setTranslatedPhrase] = useState()
@@ -93,7 +93,7 @@ export default () => {
         )
     }
 
-    const renderTextContent = (textContent) => {
+    const createParagraph = (textContent) => {
         const splitedText = textContent.match(/[^\.!\?]+[\.\!\?]/g)
         const content = splitedText.map((phrase, i) => {
             return (
@@ -114,15 +114,16 @@ export default () => {
                 </span>
             )
         })
-        setTextContent(content)
+        return content
     }
 
     const renderBookInfo = async () => {
         const response = await getSummary(bookID)
         if (response.ok) {
             const data = await response.json()
-            renderTextContent(data.text_content)
+            const paragraphs = data.text_content.split('\r\n\r\n')
             setBook(data)
+            setParagraphs(paragraphs.map(createParagraph))
         }
     }
 
@@ -139,9 +140,7 @@ export default () => {
                 <FaBookmark className="bookmark" />
             </div>
             <div className="bookContent">
-                <p>
-                    { textContent }
-                </p>
+                    { paragraphs.map(paragraph => (<p>{paragraph}</p>))}
             </div>
             {modalVisible &&
             <FlashcardsModal 

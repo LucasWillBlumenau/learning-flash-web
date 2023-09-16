@@ -29,7 +29,7 @@
 }
 
 .popup {
-    background-color: var(--tertiary-bg-color);
+    background-color: var(--primary-bg-color);
     animation: showModal;
     animation-duration: 500ms;
     z-index: 10;

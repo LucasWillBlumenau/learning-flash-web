@@ -13,9 +13,13 @@
 
 .summaryInfoContainer {
     display: flex;
-    align-items: top;
-    padding-top: 2rem;
-    font-weight: 800;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 25px;
+    font-size: 24px;
+    font-weight: 500;
+    width: 50%;
 }
 
 .summaryCardContainer {
@@ -31,10 +35,17 @@
         gap: 2rem;
     }
 
-    .summaryInfoContainer {
-        justify-content: flex-end;
+    .mainBookTitle {
+        font-weight: 800;
         font-size: 48px;
-        width: 50%;
+    }
+
+    .mainBookInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+        width: 100%;
     }
 
     .summaryCardContainer {

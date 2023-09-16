@@ -43,7 +43,7 @@ export default () => {
                                 title={book.title}
                                 author={book.author}
                                 width="300px"
-                                height="350px"
+                                image={book.image? `http://127.0.0.1:8000${book.image}`: null}
                             />
                         </Link>
                     )

@@ -35,8 +35,8 @@ export default () => {
                             <SummaryCard 
                                 title={book.title}
                                 author={book.author}
+                                image={book.image? `http://127.0.0.1:8000${book.image}`: null}
                                 width="300px"
-                                height="350px"
                             />
                         </Link>
                     )

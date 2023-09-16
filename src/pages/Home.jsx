@@ -8,11 +8,14 @@ import './styles/Home.css'
 
 
 export default () => {
+    const [weekBook, setWeekBook] = useState()
     const [books, setBooks] = useState([])
     
     const renderSummaries = async () => {
         const data = await getSummaries()
-        setBooks(data)
+        const [firstBook, ...otherBook] = data
+        setWeekBook(firstBook)
+        setBooks(otherBook)
     }
 
     useEffect(() => {
@@ -20,19 +23,21 @@ export default () => {
     }, [])
     return (
         <div className="homePageWrapper">
-            <div className="mainSummary">
+            
+            {weekBook && <div className="mainSummary">
                 <div className="summaryInfoContainer">
-                    <span>Principal Resumo da Semana</span>
+                    <span className="mainBookTitle">Resumo da Semana</span>
+                    <div className="mainBookInfo">
+                        <span>{weekBook.title}</span>
+                        <span>{weekBook.author}</span>
+                    </div>
                 </div>
                 <div className="summaryCardContainer">
-                    <SummaryCard 
-                        title="Os Sofrimentos do Jovem Werther"
-                        author="Johann Wolfgang von Goethe"
-                        width="285px"
-                        height="310px"
-                    />
+                    <Link to={`/summaries/${weekBook.id}/`}>
+                        <img style={{borderRadius: '15px'}} src={`http://127.0.0.1:8000${weekBook.image}`} alt="image" width="300px" height="450px"/>
+                    </Link>
                 </div>            
-            </div>
+            </div>}
 
             <SummariesSection>
                 {books.map((summary, idx) => {
@@ -41,6 +46,7 @@ export default () => {
                             <SummaryCard
                                 title={summary.title}
                                 author={summary.author}
+                                image={summary.image? `http://127.0.0.1:8000${summary.image}`: null}
                             />
                         </Link>
                     )

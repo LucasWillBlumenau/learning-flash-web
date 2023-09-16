@@ -1,10 +1,10 @@
 import './styles/SummaryCard.css'
 
-export default ({ width = "215px", height = "275px", title, author } ) => {
+export default ({ width = "215px", height = "275px", title, author, image } ) => {
     return (
-        <div className="summaryCard" style={{minWidth: width, maxWidth: width, height: height}}>
+        <div className="summaryCard" style={{minWidth: width, maxWidth: width, aspectRatio: 54 / 90}}>
             <div className="bookImage">
-                {/* <img src="src/assets/img/1984.392024a0.jpg" alt={`${props.title} image`} /> */}
+                {image && <img src={image} alt={`${title} image`} />}
             </div>
             <div className="bookInfo">
                 <span>{ title }</span>
