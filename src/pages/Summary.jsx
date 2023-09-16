@@ -103,12 +103,24 @@ export default () => {
             },
             body: JSON.stringify(data),
         })
-        console.log(await response.json())
+        if (response.ok) {
+            book.is_favorite = true
+        }
     }
 
     const removeFromFavorites = async () => {
         const data = { summary: bookID }
-        const response = await fetch()
+        const response = await fetch('http://localhost:8000/api/favorites/', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'Application/JSON',
+                'Authorization': `Token ${localStorage.getItem('authtoken')}`
+            },
+            body: JSON.stringify(data),
+        })
+        if (response.ok) {
+            book.is_favorite = false
+        }
     }
 
     const createParagraph = textContent => {
@@ -155,7 +167,7 @@ export default () => {
                     <span>{ book.title }</span>
                     <span>{ book.author_name }</span>
                 </div>
-                <FaBookmark className="bookmark" onClick={addToFavorites}/>
+                <FaBookmark className="bookmark" onClick={book.is_favorite? removeFromFavorites: addToFavorites}/>
             </div>
             <div className="bookContent">
                     { paragraphs.map((paragraph, index) => (<p key={index}>{paragraph}</p>))}
