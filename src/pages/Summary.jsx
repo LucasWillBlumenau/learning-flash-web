@@ -93,7 +93,25 @@ export default () => {
         )
     }
 
-    const createParagraph = (textContent) => {
+    const addToFavorites = async () => {
+        const data = { summary: bookID }
+        const response = await fetch('http://localhost:8000/api/favorites/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/JSON',
+                'Authorization': `Token ${localStorage.getItem('authtoken')}`
+            },
+            body: JSON.stringify(data),
+        })
+        console.log(await response.json())
+    }
+
+    const removeFromFavorites = async () => {
+        const data = { summary: bookID }
+        const response = await fetch()
+    }
+
+    const createParagraph = textContent => {
         const splitedText = textContent.match(/[^\.!\?]+[\.\!\?]/g)
         const content = splitedText.map((phrase, i) => {
             return (
@@ -135,12 +153,12 @@ export default () => {
             <div className="bookHeader">
                 <div className="bookTitle">
                     <span>{ book.title }</span>
-                    <span>{ book.author }</span>
+                    <span>{ book.author_name }</span>
                 </div>
-                <FaBookmark className="bookmark" />
+                <FaBookmark className="bookmark" onClick={addToFavorites}/>
             </div>
             <div className="bookContent">
-                    { paragraphs.map(paragraph => (<p>{paragraph}</p>))}
+                    { paragraphs.map((paragraph, index) => (<p key={index}>{paragraph}</p>))}
             </div>
             {modalVisible &&
             <FlashcardsModal 
