@@ -1,0 +1,23 @@
+.heartIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.heartIcon {
+    width: 100px;
+    height: 100px;
+    background: url('../../assets/img/heart.png');
+    background-position: left;
+}
+
+.heartIcon.favorited {
+    animation: favoriteAnimation 0.8s steps(28) forwards;
+}
+
+@keyframes favoriteAnimation {
+    to {
+        background-position: right;
+    }
+}

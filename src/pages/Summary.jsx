@@ -1,6 +1,7 @@
-import { useParams, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { FaBookmark } from 'react-icons/fa'
+import { useParams, Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+
+import HeartIcon from '../components/HeartIcon'
 
 import getSummary from '../context/summary'
 import { fetchDecks } from '../context/decks'
@@ -16,6 +17,7 @@ export default () => {
     const [modalVisible, setModalVisible] = useState(false)
     const [phrase, setPhrase] = useState()
     const [translatedPhrase, setTranslatedPhrase] = useState()
+    const [isFavorited, setIsFavorited] = useState()
 
     const FlashcardsModal = ({ phrase, translatedPhrase }) => {
         const [decks, setDecks] = useState(null)
@@ -104,7 +106,7 @@ export default () => {
             body: JSON.stringify(data),
         })
         if (response.ok) {
-            book.is_favorite = true
+            setIsFavorited(true)
         }
     }
 
@@ -119,7 +121,7 @@ export default () => {
             body: JSON.stringify(data),
         })
         if (response.ok) {
-            book.is_favorite = false
+            setIsFavorited(false)
         }
     }
 
@@ -153,6 +155,7 @@ export default () => {
             const data = await response.json()
             const paragraphs = data.text_content.split('\r\n\r\n')
             setBook(data)
+            setIsFavorited(data.is_favorite)
             setParagraphs(paragraphs.map(createParagraph))
         }
     }
@@ -167,10 +170,13 @@ export default () => {
                     <span>{ book.title }</span>
                     <span>{ book.author_name }</span>
                 </div>
-                <FaBookmark className="bookmark" onClick={book.is_favorite? removeFromFavorites: addToFavorites}/>
+                <HeartIcon 
+                    isFavorited={isFavorited}
+                    onClick={isFavorited? removeFromFavorites: addToFavorites}
+                />
             </div>
             <div className="bookContent">
-                    { paragraphs.map((paragraph, index) => (<p key={index}>{paragraph}</p>))}
+                { paragraphs.map((paragraph, index) => (<p key={index}>{paragraph}</p>))}
             </div>
             {modalVisible &&
             <FlashcardsModal 
