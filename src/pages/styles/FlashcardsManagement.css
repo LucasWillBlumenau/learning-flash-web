@@ -31,15 +31,30 @@
     font-weight: 600;
 }
 
-.flashcardsList .listItem {
+.listItem {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    font-size: 18px;
+
+}
+
+.listItem:last-child {
+    margin-bottom: 3rem;
+}
+
+.flashcardsList .listItem .phraseContainer {
     display: flex;
     align-items: center;
     gap: 15px;
     min-width: min-content;
-    font-size: 18px;
-    white-space: nowrap;
+    width: 80%;
+    overflow-x: auto;
 }
 
+.nextApparitionInfo {
+    text-align: center;
+}
 
 .addFlashcardsForm {
     flex-direction: column;

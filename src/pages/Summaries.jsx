@@ -4,6 +4,8 @@ import { Link } from "react-router-dom"
 import SummaryCard from "../components/SummaryCard"
 import SummariesGrid from "../components/SummariesGrid"
 import getSummaries from '../context/summaries'
+
+import './styles/Base.css'
 import './styles/Summaries.css'
 
 export default () => {
@@ -15,9 +17,11 @@ export default () => {
         setBooks(data)
     }
 
-    const searchBook = () => {
+    const searchBook = event => {
+        event.preventDefault()
         renderSummaries(input.current.value)
     }
+
 
     useEffect(() => {
         renderSummaries()
@@ -26,14 +30,10 @@ export default () => {
         <div className="summariesPage">
             <div className="summariesPageTop">
                 <span>Confira Todos os Resumos:</span>
-                <div className="searchBarContainer">
+                <form onSubmit={searchBook} className="searchForm centralized">
                     <FaSearch onClick={searchBook} />
-                    <input ref={input} type="text" placeholder="Pesquisar resumos:" onKeyDown={(event) => {
-                        if (event.key == 'Enter') {
-                            searchBook()
-                        }
-                    }}/>
-                </div>
+                    <input ref={input} type="text" placeholder="Pesquise o nome do livro:" />
+                </form>
             </div>
             <SummariesGrid>
                 {books.map((book, idx) => {

@@ -25,7 +25,7 @@ export default () => {
             setFlashcards(newFlashcards)
             setLastIndex(lastIndex - 1)
         } else {
-            const remaingFlashcard = flashcards.filter(flashcard => flashcard.id === id)[0]
+            const [remaingFlashcard] = flashcards.filter(flashcard => flashcard.id === id)
             setFlashcards([...newFlashcards, remaingFlashcard])
         }
     }
@@ -60,7 +60,8 @@ export default () => {
     return (
         <div className="gameContainer centralized">
            {gameStarted?
-            (flashcards !== null && <FlashcardsSlider 
+            (flashcards !== null &&
+            <FlashcardsSlider 
                 cardVisible={cardVisible}
                 setCardVisible={setCardVisible}
                 lastIndex={lastIndex}

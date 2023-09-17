@@ -9,7 +9,7 @@ import './styles/Home.css'
 
 export default () => {
     const [weekBook, setWeekBook] = useState()
-    const [books, setBooks] = useState([])
+    const [books, setBooks] = useState()
     
     const renderSummaries = async () => {
         const data = await getSummaries()
@@ -24,7 +24,8 @@ export default () => {
     return (
         <div className="homePageWrapper">
             
-            {weekBook && <div className="mainSummary">
+            {weekBook &&
+            <div className="mainSummary">
                 <div className="summaryInfoContainer">
                     <span className="mainBookTitle">Resumo da Semana</span>
                     <div className="mainBookInfo">
@@ -38,7 +39,8 @@ export default () => {
                     </Link>
                 </div>            
             </div>}
-
+            
+            {books !== undefined && 
             <SummariesSection>
                 {books.map((summary, idx) => {
                     return (
@@ -51,18 +53,7 @@ export default () => {
                         </Link>
                     )
                 })}
-            </SummariesSection>
-            
-            {/* 
-                Sessão 1 - Semi-Feito
-                Principal Resumo da Semana
-
-                Sessão 2 - Feito
-                Scroll page com alguns registros de resumos
-
-                Sessão 3
-                Aréa com opções para gerenciamento de Flashcards
-            */}
+            </SummariesSection>}
         </div>
     );
 }

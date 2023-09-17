@@ -6,8 +6,9 @@ import './styles/Decks.css'
 import PlusIcon from '../components/PlusIcon'
 
 export default () => {
-    const [decks, setDecks] = useState(null)
+    const [decks, setDecks] = useState()
     const [modalVisible, setModalVisible] = useState(false)
+    
     const deckNameInput = useRef()
     const deckDescriptionInput = useRef()
     const form = useRef()
@@ -67,12 +68,13 @@ export default () => {
 
     const renderDecks = async () => {
         const response = await fetchDecks()
-        if (response.ok) {
-            const data = await response.json()
-            setDecks(data)
-        } else {
+        if (!response.ok) {
             alert('Problemas ao carregar decks...')
+            return
         }
+        const data = await response.json()
+        setDecks(data)
+        
     }
 
     useEffect(() => {
@@ -83,10 +85,10 @@ export default () => {
         <div className="content centralized">
             <div className="decksWrapper">
                 <div className="tableWrapper">
-                    {decks !== null?  
+                    {decks !== undefined?
                         <DecksTable>
-                            {decks === []? 
-                                'vazio...':
+                            {decks.length === 0? 
+                                <h1 style={{width: '80%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>Nenhum deck foi adicionado ainda</h1>:
                                 decks.map(({id, name, description}, idx) => {
                                     return (
                                         <DeckRow 

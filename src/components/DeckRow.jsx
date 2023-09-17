@@ -17,10 +17,10 @@ export default ({ id, name, description, renderDecks }) => {
         })
         if (response.ok) {
             renderDecks()
-        } else {
-            alert('Erro ao deletar flashcard')
-            
+            return
         }
+        alert('Erro ao deletar flashcard')
+        
     }
 
     return (
@@ -33,7 +33,7 @@ export default ({ id, name, description, renderDecks }) => {
                         </button>
                     </Link>
                     <Link to={`/decks/${id}/edit`}>
-                        <button className="optionButton" title="Editar Deck">
+                        <button className="optionButton" title="Adicionar/Remover Flashcards">
                             <FaPlus />
                         </button>
                     </Link>

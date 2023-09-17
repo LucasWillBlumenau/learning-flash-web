@@ -12,7 +12,7 @@ import './styles/Summary.css'
 
 export default () => {
     const { bookID } = useParams()
-    const [book, setBook] = useState({})
+    const [book, setBook] = useState()
     const [paragraphs, setParagraphs] = useState([])
     const [modalVisible, setModalVisible] = useState(false)
     const [phrase, setPhrase] = useState()
@@ -165,19 +165,22 @@ export default () => {
     }, [])
     return (
         <div className="bookTextContainer centralized">
-            <div className="bookHeader">
-                <div className="bookTitle">
-                    <span>{ book.title }</span>
-                    <span>{ book.author_name }</span>
+            {book !== undefined &&
+            (<>
+                <div className="bookHeader">
+                    <div className="bookTitle">
+                        <span>{ book.title }</span>
+                        <span>{ book.author_name }</span>
+                    </div>
+                    <HeartIcon
+                        isFavorited={isFavorited}
+                        onClick={isFavorited? removeFromFavorites: addToFavorites}
+                    />
                 </div>
-                <HeartIcon 
-                    isFavorited={isFavorited}
-                    onClick={isFavorited? removeFromFavorites: addToFavorites}
-                />
-            </div>
-            <div className="bookContent">
-                { paragraphs.map((paragraph, index) => (<p key={index}>{paragraph}</p>))}
-            </div>
+                <div className="bookContent">
+                    { paragraphs.map((paragraph, index) => (<p key={index}>{paragraph}</p>))}
+                </div>
+            </>)}
             {modalVisible &&
             <FlashcardsModal 
                 phrase={phrase}

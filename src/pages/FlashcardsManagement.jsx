@@ -8,7 +8,7 @@ import { FaTrashAlt } from "react-icons/fa"
 
 export default () => {
     const { deckID } = useParams()
-    const [flashcards, setFlashcards] = useState(null)
+    const [flashcards, setFlashcards] = useState()
     const [modalVisible, setModalVisible] = useState(false)
     
     const Modal = () => {
@@ -100,20 +100,25 @@ export default () => {
             <div style={{position: 'relative'}}>
                 <ul className="flashcardsList">
                     <li className="listTop centralized">Confira Todos os Seus Cards</li>
-                    {flashcards !== null && flashcards.map((flashcard, idx) => {
+                    {flashcards !== undefined && flashcards.map(({ id, phrase, days_to_appear }, idx) => {
                         return (
                             <li className="listItem" key={idx}>
-                                <button className="button   " onClick={() => {
-                                    deleteFlashcard(flashcard.id, idx)
-                                }}><FaTrashAlt /></button>
-                                <span>{ flashcard.phrase }</span>
+                                <div className="phraseContainer">
+                                    <button className="button   " onClick={() => {
+                                        deleteFlashcard(id, idx)
+                                    }}><FaTrashAlt /></button>
+                                    <span>{ phrase }</span>
+                                </div>
+                                {days_to_appear === 0?
+                                <span className="nextApparitionInfo">Disponível para estudo</span>:
+                                days_to_appear === 1?
+                                <span className="nextApparitionInfo">Próxima aparicão em { days_to_appear } dia</span>:
+                                <span className="nextApparitionInfo">Próxima aparicão em { days_to_appear } dias</span>}
                             </li>
                         )
                     })}
                 </ul>
-                <PlusIcon onClick={() => {
-                    setModalVisible(true)
-                }}/>
+                <PlusIcon onClick={() => setModalVisible(true)}/>
             </div>
             {modalVisible && <Modal />}
         </div>

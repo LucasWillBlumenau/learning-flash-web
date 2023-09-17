@@ -22,14 +22,6 @@
     align-items: flex-start;
 }
 
-.bookTitle span:first-child {
-    font-size: 40px;
-}
-
-.bookTitle span:last-child {
-    font-size: 22px;
-}
-
 .bookContent {
     display: flex;
     flex-direction: column;
@@ -129,10 +121,26 @@
     .bookTextContainer {
         min-height: 100vh;
     }
+
+    .bookTitle span:first-child {
+        font-size: 40px;
+    }
+
+    .bookTitle span:last-child {
+        font-size: 22px;
+    }
 }
 
 @media screen and (max-width: 900px){
     .bookTextContainer {
         min-height: calc(100vh - 3rem);
+    }
+
+    .bookTitle span:first-child {
+        font-size: 30px;
+    }
+    
+    .bookTitle span:last-child {
+        font-size: 20px;
     }
 }

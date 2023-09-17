@@ -7,25 +7,22 @@ import './styles/Flashcard.css'
 export default ({ id, phrase, translatedPhrase, handleFlashcardClick }) => {
     const [cardPhrase, setPhrase] = useState(phrase)
 
-    const updateFlashcard = (flashcardID, hasGoodDomainLevel) => {
+    const updateFlashcard = async (flashcardID, hasGoodDomainLevel) => {
         const data = { has_good_domain_level: hasGoodDomainLevel }
-        fetch(`http://127.0.0.1:8000/api/flashcards/${flashcardID}/`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/flashcards/${flashcardID}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'Application/JSON',
                 'Authorization': `Token ${localStorage.getItem('authtoken')}`
             },
             body: JSON.stringify(data)
-        }).then(res => {
-            if(res.status == 201) {
-                console.log('flashcard atualizado')
-            } else {
-                res.json().then(data => {
-                        console.log(data)
-                    }
-                )
-            }
         })
+        
+        if (!response.ok) {
+            alert('Houve algum erro ao atualizar status do flashcard')
+        }
+
+
     }
     return (
         <div className="flashcard">

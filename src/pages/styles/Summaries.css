@@ -7,7 +7,10 @@
 
 .summariesPageTop {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    gap: 15px;
     padding-top: 2rem;
     width: 100%;
 }
@@ -17,25 +20,23 @@
     font-weight: 600;
 }
 
-.searchBarContainer {
-    display: flex;
-    align-items: center;
+.searchForm {
     gap: 15px;
+    width: 50%;
 }
 
-.searchBarContainer svg {
+.searchForm svg {
     cursor: pointer;
 }
 
-.searchBarContainer input {
+.searchForm input {
     border-radius: 5px;
     border: none;
     padding: 3px 5px;
     font-size: 18px;
-    width: min-content;
 }
 
-.searchBarContainer input:focus {
+.searchForm input:focus {
     outline: 2px solid #3a3a98;
 }
 
@@ -47,16 +48,22 @@
     .summariesPageTop {
         justify-content: space-around;
     }
+
+    .searchForm input {
+        width: 50%;
+    }
 }
 
 @media screen and (max-width:900px) {
     .summariesPage {
         min-height: calc(100vh - 3rem);
     }
- 
-    .summariesPageTop {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
+
+    .searchForm {
+        width: 80%;
+    }
+    
+    .searchForm input {
+        width: 80%;
     }
 }
