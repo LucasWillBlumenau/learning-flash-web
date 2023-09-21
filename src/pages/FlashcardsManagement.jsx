@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
 import PlusIcon from '../components/PlusIcon'
 import { fetchFlashcards } from '../context/flashcards'
+import FlashcardsList, { FlashcardsListItem } from "../components/FlashcardsList"
 import './styles/FlashcardsManagement.css'
 import './styles/Base.css'
-import { FaTrashAlt } from "react-icons/fa"
+
 
 export default () => {
     const { deckID } = useParams()
@@ -87,7 +88,7 @@ export default () => {
                 'Authorization': `Token ${localStorage.getItem('authtoken')}`
             }
         })
-        if (response.status === 204) {
+        if (response.status === 200) {
             const newFlashcards = Array.from(flashcards)
             newFlashcards.splice(flashcardIndex, 1)
             setFlashcards(newFlashcards)
@@ -98,26 +99,16 @@ export default () => {
     return (
         <div className="flashcardManagement centralized">
             <div style={{position: 'relative'}}>
-                <ul className="flashcardsList">
-                    <li className="listTop centralized">Confira Todos os Seus Cards</li>
-                    {flashcards !== undefined && flashcards.map(({ id, phrase, days_to_appear }, idx) => {
-                        return (
-                            <li className="listItem" key={idx}>
-                                <div className="phraseContainer">
-                                    <button className="button   " onClick={() => {
-                                        deleteFlashcard(id, idx)
-                                    }}><FaTrashAlt /></button>
-                                    <span>{ phrase }</span>
-                                </div>
-                                {days_to_appear === 0?
-                                <span className="nextApparitionInfo">Disponível para estudo</span>:
-                                days_to_appear === 1?
-                                <span className="nextApparitionInfo">Próxima aparicão em { days_to_appear } dia</span>:
-                                <span className="nextApparitionInfo">Próxima aparicão em { days_to_appear } dias</span>}
-                            </li>
-                        )
-                    })}
-                </ul>
+                <FlashcardsList>
+                    {flashcards !== undefined && flashcards.map(({ id, phrase, days_to_appear }, i) => (
+                        <FlashcardsListItem 
+                            onClickOnTrashIcon={() => deleteFlashcard(id, i)}
+                            daysToAppear={days_to_appear}
+                            phrase={phrase}
+                            key={i}
+                        />
+                    ))}
+                </FlashcardsList>
                 <PlusIcon onClick={() => setModalVisible(true)}/>
             </div>
             {modalVisible && <Modal />}

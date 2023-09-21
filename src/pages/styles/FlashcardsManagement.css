@@ -2,60 +2,6 @@
     height: 100%;
 }
 
-.flashcardsList {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-radius: 15px;
-    min-height: 500px;
-    max-height: 60vh;
-    width: 800px;
-    max-width: 95vw;
-    overflow: auto;
-    background-color: var(--secondary-bg-color);
-    box-shadow: var(--content-box-shadow);
-}
-
-.flashcardsList li {
-    padding: 0 15px;
-    min-height: 40px;
-    width: 100%;
-}
-
-.flashcardsList .listTop {
-    position: sticky;
-    top: 0;
-    left: 0;
-    background-color: #000;
-    font-size: 22px;
-    font-weight: 600;
-}
-
-.listItem {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-    font-size: 18px;
-
-}
-
-.listItem:last-child {
-    margin-bottom: 3rem;
-}
-
-.flashcardsList .listItem .phraseContainer {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    min-width: min-content;
-    width: 80%;
-    overflow-x: auto;
-}
-
-.nextApparitionInfo {
-    text-align: center;
-}
-
 .addFlashcardsForm {
     flex-direction: column;
     gap: 1rem;

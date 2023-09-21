@@ -7,14 +7,18 @@
 }
 
 .optionButton {
+    padding: 8px;
     border: none;
-    padding: 3px 5px;
     font-size: 18px;
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
     background-color: var(--secondary-color);
     color: #fff;
+}
+
+.optionButton svg {
+    flex: 1;
 }
 
 
