@@ -22,11 +22,6 @@ export default () =>  {
                     <ProfileOption title="Alterar senha" />
                     <ProfileOption title="Fazer logout" onClick={logout}/>
                 </ProfileOptions>
-                <ProfileOptions title="Preferências">
-                    <Link to='/favorites/'>
-                        <ProfileOption title="Favoritos" />
-                    </Link>
-                </ProfileOptions>
             </div>
         </div>
     )
