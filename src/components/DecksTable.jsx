@@ -8,7 +8,6 @@ export default ({ children }) => {
                     <th className="tableHeader">Opções</th>
                     <th className="tableHeader">Nome</th>
                     <th className="tableHeader">Descrição</th>
-                    {/* <th>Qtde. Flashcards</th> */}
                 </tr>
             </thead>
             <tbody>

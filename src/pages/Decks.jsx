@@ -5,6 +5,7 @@ import { fetchDecks } from '../context/decks'
 import './styles/Decks.css'
 import PlusIcon from '../components/PlusIcon'
 
+
 export default () => {
     const [decks, setDecks] = useState()
     const [modalVisible, setModalVisible] = useState(false)
@@ -65,6 +66,30 @@ export default () => {
         )
     }
 
+    const Decks = ({ decks }) => {
+        if (decks.length === 0) {
+            return (
+                <div className="centralized" style={{width: '100%', height: '100%'}}>
+                    <h1>Nenhum deck foi adicionado ainda</h1>
+                </div>
+            )
+        }
+        return(
+            <DecksTable>
+                {decks.map(({id, name, description}, i) => (
+                    <DeckRow 
+                        key={i}
+                        id={id}
+                        name={name}
+                        description={description}
+                        renderDecks={renderDecks}
+                    />
+                ))}
+            </DecksTable>
+        )
+    
+    }
+    
 
     const renderDecks = async () => {
         const response = await fetchDecks()
@@ -86,24 +111,10 @@ export default () => {
             <div className="decksWrapper">
                 <div className="tableWrapper">
                     {decks !== undefined?
-                        <DecksTable>
-                            {decks.length === 0? 
-                                <h1 style={{width: '80%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>Nenhum deck foi adicionado ainda</h1>:
-                                decks.map(({id, name, description}, idx) => {
-                                    return (
-                                        <DeckRow 
-                                            key={idx}
-                                            id={id}
-                                            name={name}
-                                            description={description}
-                                            renderDecks={renderDecks}
-                                        />
-                                    )
-                                })
-                            }
-                        </DecksTable>:
-                        <div style={{width: "100%", height: '100%', display: 'flex', justifyContent: 'center', alignItems:'center', fontSize: '35px'}}>Carregando...</div>
-                    }
+                    <Decks decks={decks}/>:
+                    <div className="centralized" style={{width: "100%", height: '100%', fontSize: '35px'}}>
+                        Carregando...
+                    </div>}
                 </div>
                 <PlusIcon onClick={() => {
                     setModalVisible(true)

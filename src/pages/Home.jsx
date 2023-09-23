@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SummaryCard from '../components/SummaryCard';
 import SummariesSection from '../components/SummariesSection';
+import CheckedAlert from '../components/CheckedAlert';
 import getSummaries from '../context/summaries'
 
 import './styles/Home.css'
@@ -23,7 +24,6 @@ export default () => {
     }, [])
     return (
         <div className="homePageWrapper">
-            
             {weekBook &&
             <div className="mainSummary">
                 <div className="summaryInfoContainer">

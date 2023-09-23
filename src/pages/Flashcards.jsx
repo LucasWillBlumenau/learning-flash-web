@@ -7,7 +7,6 @@ import FlashcardsSlider from '../components/FlascardSlider'
 import { fetchFlashcards } from '../context/flashcards'
 
 import './styles/Flashcards.css'
-import './styles/Base.css'
 
 
 export default () => {

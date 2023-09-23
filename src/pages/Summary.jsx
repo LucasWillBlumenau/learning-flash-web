@@ -2,11 +2,11 @@ import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 import HeartIcon from '../components/HeartIcon'
+import CheckedAlert from '../components/CheckedAlert'
 
 import getSummary from '../context/summary'
 import { fetchDecks } from '../context/decks'
 
-import './styles/Base.css'
 import './styles/Summary.css'
 
 
@@ -15,6 +15,7 @@ export default () => {
     const [book, setBook] = useState()
     const [paragraphs, setParagraphs] = useState([])
     const [modalVisible, setModalVisible] = useState(false)
+    const [alertActive, setAlertActive] = useState(false)
     const [phrase, setPhrase] = useState()
     const [translatedPhrase, setTranslatedPhrase] = useState()
     const [isFavorited, setIsFavorited] = useState()
@@ -47,8 +48,8 @@ export default () => {
             })
 
             if (response.ok) {
-                alert('Flashcard adicionado com sucesso!')
                 setModalVisible(false)
+                setAlertActive(true)
             }
         }
 
@@ -151,13 +152,14 @@ export default () => {
 
     const renderBookInfo = async () => {
         const response = await getSummary(bookID)
-        if (response.ok) {
-            const data = await response.json()
-            const paragraphs = data.text_content.split('\r\n\r\n')
-            setBook(data)
-            setIsFavorited(data.is_favorite)
-            setParagraphs(paragraphs.map(createParagraph))
+        if (!response.ok) {
+            return
         }
+        const data = await response.json()
+        const paragraphs = data.text_content.split('\r\n\r\n')
+        setBook(data)
+        setIsFavorited(data.is_favorite)
+        setParagraphs(paragraphs.map(createParagraph))
     }
 
     useEffect(() => {
@@ -186,6 +188,14 @@ export default () => {
                 phrase={phrase}
                 translatedPhrase={translatedPhrase}
             />}
+            {alertActive && 
+                <CheckedAlert 
+                    message="Flashcard adicionado com sucesso"
+                    timeToDisapear={800}
+                    active={alertActive}
+                    setActive={setAlertActive}
+                />
+            }
         </div>
     )
 }

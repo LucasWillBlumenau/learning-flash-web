@@ -4,7 +4,6 @@ import PlusIcon from '../components/PlusIcon'
 import { fetchFlashcards } from '../context/flashcards'
 import FlashcardsList, { FlashcardsListItem } from "../components/FlashcardsList"
 import './styles/FlashcardsManagement.css'
-import './styles/Base.css'
 
 
 export default () => {
@@ -80,7 +79,7 @@ export default () => {
     }, [])
 
 
-    const deleteFlashcard = async (flascardID, flashcardIndex) => {
+    const deleteFlashcard = async flascardID => {
         const response = await fetch(`http://127.0.0.1:8000/api/flashcards/${flascardID}/`, {
             method: 'DELETE',
             headers: {
@@ -89,8 +88,7 @@ export default () => {
             }
         })
         if (response.status === 200) {
-            const newFlashcards = Array.from(flashcards)
-            newFlashcards.splice(flashcardIndex, 1)
+            const newFlashcards = flashcards.filter(flascard => flascard.id !== flascardID)
             setFlashcards(newFlashcards)
         }
     
@@ -102,7 +100,7 @@ export default () => {
                 <FlashcardsList>
                     {flashcards !== undefined && flashcards.map(({ id, phrase, days_to_appear }, i) => (
                         <FlashcardsListItem 
-                            onClickOnTrashIcon={() => deleteFlashcard(id, i)}
+                            onClickOnTrashIcon={() => deleteFlashcard(id)}
                             daysToAppear={days_to_appear}
                             phrase={phrase}
                             key={i}

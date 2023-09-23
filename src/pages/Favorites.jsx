@@ -2,7 +2,6 @@ import SummaryCard from '../components/SummaryCard'
 import SummariesGrid from '../components/SummariesGrid'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import './styles/Base.css'
 
 
 export default () => {

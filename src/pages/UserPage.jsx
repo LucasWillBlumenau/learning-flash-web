@@ -1,5 +1,4 @@
 import './styles/UserPage.css'
-import './styles/Base.css'
 
 import { ProfileOptions, ProfileOption } from '../components/ProfileOptions'
 import { useNavigate , Link } from 'react-router-dom'

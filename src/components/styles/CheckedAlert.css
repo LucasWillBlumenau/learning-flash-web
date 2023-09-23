@@ -1,0 +1,14 @@
+.checkedIconWrapper {
+    flex-direction: column;
+    gap: 15px;
+    font-size: 50px;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+    background-color: var(--primary-bg-color);
+}
+
+.checkedIconWrapper p {
+    font-size: 22px;
+}

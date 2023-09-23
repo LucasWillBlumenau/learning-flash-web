@@ -5,7 +5,6 @@ import SummaryCard from "../components/SummaryCard"
 import SummariesGrid from "../components/SummariesGrid"
 import getSummaries from '../context/summaries'
 
-import './styles/Base.css'
 import './styles/Summaries.css'
 
 export default () => {

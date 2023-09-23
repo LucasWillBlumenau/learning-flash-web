@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useRef, useState } from 'react'
-import './styles/Base.css'
 import './styles/Forms.css'
 
 
