@@ -6,25 +6,23 @@ import './styles/FlashcardSlider.css'
 export default ({ children, cardVisible, setCardVisible, lastIndex }) => {
     const [flashcard, setFlashcard] = useState()
     const [index, setIndex] = useState(0)
+    
+    const leftArrowClickEvent = () => index > 0 && setIndex(index - 1)
+
+    const rightArrowClickEvent = () => index < lastIndex && setIndex(index + 1)
+
     useEffect(() => {        
         setFlashcard(children[index > lastIndex? lastIndex: index])
         setCardVisible(true)
     }, [index, children])
+
     return (
-        <div style={{display: 'flex', alignItems: 'center', gap: '15px', position: 'relative', maxWidth: '85vw'}}>
-            <div className="arrowIcon" style={{opacity: index === 0? 0.3: 1}} onClick={() => {
-                if(index > 0) {
-                    setIndex(index - 1)
-                }
-            }} >
+        <div className="gamePanel">
+            <div className={index === 0? 'arrowIcon disabled': 'arrowIcon'} onClick={leftArrowClickEvent} >
                 <FaArrowLeft />
             </div>
                 { cardVisible && flashcard }
-            <div className="arrowIcon" style={{opacity: index === lastIndex? 0.3: 1}} onClick={() => {
-                if (index < lastIndex) {
-                    setIndex(index + 1)
-                }
-            }}>
+            <div className={index === lastIndex? 'arrowIcon disabled': 'arrowIcon'} onClick={rightArrowClickEvent}>
                 <FaArrowRight />
             </div>
         </div>

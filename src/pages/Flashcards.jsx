@@ -9,13 +9,43 @@ import { fetchFlashcards } from '../context/flashcards'
 import './styles/Flashcards.css'
 
 
+const StartGameMessage = ({ flashcardsAmount }) => (
+    flashcardsAmount === 0?
+    <p>Você tem {flashcardsAmount} flashcard para estudar!</p>:
+    <p>Você tem {flashcardsAmount} flashcards para estudar!</p>
+)
+
+const GamePanel = ({ flashcards, setGameStarted }) => {
+
+    const navigate = useNavigate()
+
+    const startGame = () => setGameStarted(true)
+
+    const getBackToDecksPage = () => navigate('/decks')
+
+    return (
+        <div className="startGameMenu centralized">
+            {(flashcards.length === 0? 
+                <>
+                    <p>Você não tem nenhum flashcard para estudar hoje!</p>
+                    <button className="button" onClick={getBackToDecksPage}>Ver decks</button>
+                </>:
+                <>
+                    <StartGameMessage flashcardsAmount={flashcards.length} />
+                    <button className="button" onClick={startGame}>Começar jogo</button>
+                </>
+            )}
+        </div>
+    )
+}
+
+
 export default () => {
     const { deckID } = useParams()
     const [gameStarted, setGameStarted] = useState(false)
     const [flashcards, setFlashcards] = useState(null)
     const [cardVisible, setCardVisible] = useState(false)
     const [lastIndex, setLastIndex] = useState()
-    const navigate = useNavigate()
 
     const handleFlashcardClick = (id, hasGoodDomainLevel) => {
         setCardVisible(false)
@@ -69,26 +99,10 @@ export default () => {
                 {flashcards.length === 0? setGameStarted(false): Flashcards()}
             </FlashcardsSlider>):
             (flashcards !== null && 
-                <div className="startGameMenu centralized">
-                    
-                    {(flashcards.length === 0? 
-                        <>
-                            <p>Você não tem nenhum flashcard para estudar hoje!</p>
-                            <button className="button" onClick={() => {
-                                navigate('/decks')
-                            }}>Ver decks</button>
-                        </>:
-                        <>
-                            {(flashcards.length === 1?
-                            <p>Você tem {flashcards.length} flashcard para estudar!</p>:
-                            <p>Você tem {flashcards.length} flashcards para estudar!</p>
-                            )}
-                            <button className="button" onClick={() => {
-                                setGameStarted(true)
-                            }}>Começar jogo</button>
-                        </>
-                    )}
-                </div>
+                <GamePanel 
+                    flashcards={flashcards}
+                    setGameStarted={setGameStarted}
+                />
             )}
         </div>
     )

@@ -35,7 +35,7 @@ export default () => {
                 </div>
                 <div className="summaryCardContainer">
                     <Link to={`/summaries/${weekBook.id}/`}>
-                        <img style={{borderRadius: '15px'}} src={`http://127.0.0.1:8000${weekBook.image}`} alt="image" width="300px" height="450px"/>
+                        <img style={{borderRadius: '15px'}} src={`http://localhost:8000${weekBook.image}`} alt="image" width="300px" height="450px"/>
                     </Link>
                 </div>            
             </div>}
@@ -48,7 +48,7 @@ export default () => {
                             <SummaryCard
                                 title={summary.title}
                                 author={summary.author}
-                                image={summary.image? `http://127.0.0.1:8000${summary.image}`: null}
+                                image={summary.image? `http://localhost:8000${summary.image}`: null}
                             />
                         </Link>
                     )
