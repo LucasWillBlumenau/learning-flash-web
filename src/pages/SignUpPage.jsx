@@ -8,7 +8,7 @@ const SucessPopup = () => {
         <div className="accountCreatedModal">
             <div className="accountCreatedPopup">
                 <p>Conta criada com sucesso!</p>
-                <Link className="accountCreationLink" to='/login'>Ir para a tela de login</Link>
+                <Link className="link" to='/login'>Ir para a tela de login</Link>
             </div>
         </div>
     )
@@ -56,7 +56,7 @@ export default () => {
         }
     }
 
-    const showWarning = (warningMessage) => {
+    const showWarning = warningMessage => {
         setWarning(warningMessage)
         setWarningVisible(true)
         setTimeout(() => {
@@ -64,7 +64,7 @@ export default () => {
         }, 5000)
     }
 
-    const signUp = (event) => {
+    const signUp = event => {
         event.preventDefault()
         if (passwordInput.current.value !== confirmPasswordInput.current.value) {
             showWarning('As senhas estão diferentes uma da outra')
@@ -80,9 +80,7 @@ export default () => {
             <div className="learningFlashInformation">
                 <img src="src/assets/img/LearningFlash.png" alt="logo" />
             </div>
-            <form method="POST" className="form" onSubmit={(event) => {
-                signUp(event)
-            }}>
+            <form method="POST" className="form" onSubmit={(event) => signUp(event)}>
                 {warningVisible &&
                     <div className="warningMessage" style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
                         <span>{warning}</span>

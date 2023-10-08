@@ -105,7 +105,8 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    background: --primary-bg-color;
+    background: var(--primary-bg-color);
+    box-shadow: var(--content-box-shadow);
     border-radius: 15px;
     max-width: 95vw;
     text-align: center;
