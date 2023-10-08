@@ -11,7 +11,7 @@
     width: 600px;
     max-width: 95vw;
     min-height: 200px;
-    background-color: #00000055;
+    background-color: var(--quaternary-bg-color);
     border-radius: 15px;
     padding: 10px 15px;
 }

@@ -14,7 +14,7 @@
     border-radius: 5px;
     cursor: pointer;
     background-color: var(--secondary-color);
-    color: #fff;
+    color: var(--text-color);
 }
 
 .optionButton svg {
@@ -27,7 +27,7 @@
 }
 
 .flashcardRow:nth-child(even) {
-    background-color: #00000055;
+    background-color: var(--quaternary-bg-color);
 }
 
 

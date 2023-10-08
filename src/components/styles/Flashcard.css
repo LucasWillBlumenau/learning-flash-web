@@ -4,7 +4,7 @@
     justify-content: space-evenly;
     width: 600px;
     min-height: 200px;
-    background-color: #00000055;
+    background-color: var(--quaternary-bg-color);
     border-radius: 15px;
     padding: 10px 15px;
 }
@@ -41,7 +41,7 @@
     border-radius: 5px;
     padding: 5px 8px;
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--text-color);
     font-size: 18px;
     cursor: pointer;
 }

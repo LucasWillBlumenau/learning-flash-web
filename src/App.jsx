@@ -15,14 +15,22 @@ import Favorites from './pages/Favorites'
 
 const Protected = ({ children }) => {
     const token = localStorage.getItem('authtoken')
-    if (token) {
+    if (token)
         return children
-    }
     return <Navigate to="/login" />
 }
  
 
+const setTheme = () => {
+    const useLightTheme = JSON.parse(localStorage.getItem('useLightTheme'))
+    if (useLightTheme)
+        document.body.setAttribute('class', 'light')
+
+}
+
 const App = () => {
+    setTheme()
+
     return (
         <BrowserRouter>
             <Routes>

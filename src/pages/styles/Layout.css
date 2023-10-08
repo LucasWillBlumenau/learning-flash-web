@@ -2,7 +2,7 @@
     position: fixed;
     display: flex;
     justify-content : center;
-    background: #000;
+    background: var(--menu-bg-color);
     z-index: 3;
 }
 

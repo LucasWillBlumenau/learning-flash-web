@@ -44,17 +44,15 @@ export default () => {
             <MainSummary summary={weekBook} />
             {books !== undefined && 
             <SummariesSection>
-                {books.map((summary, idx) => {
-                    return (
-                        <Link to={`/summaries/${summary.id}/`} key={idx}>
-                            <SummaryCard
-                                title={summary.title}
-                                author={summary.author}
-                                image={summary.image? `http://localhost:8000${summary.image}`: null}
-                            />
-                        </Link>
-                    )
-                })}
+                {books.map((summary, idx) => (
+                    <Link to={`/summaries/${summary.id}/`} key={idx}>
+                        <SummaryCard
+                            title={summary.title}
+                            author={summary.author}
+                            image={summary.image? `http://localhost:8000${summary.image}`: null}
+                        />
+                    </Link>
+                ))}
             </SummariesSection>}
         </div>
     );

@@ -1,5 +1,6 @@
 import { FaUser, FaHome, FaBook, FaBookmark, FaEnvelopeSquare } from 'react-icons/fa'
 import { Outlet, Link } from 'react-router-dom';
+import ToggleThemeButton from '../components/ToggleThemeButton.';
 import './styles/Layout.css'
 
 
@@ -33,6 +34,7 @@ const NavBar = () => {
             <NavItem icon={<FaBook />} link="/summaries" title="Resumos" />
             <NavItem icon={<FaBookmark />} link="/favorites" title="Favoritos" />
             <NavItem icon={<FaUser />} link="/user" title="Conta" />
+            <NavItem icon={<ToggleThemeButton />} title="Tema" />
         </NavList>
     )
 }

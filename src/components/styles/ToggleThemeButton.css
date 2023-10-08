@@ -1,0 +1,21 @@
+.toggleTheme {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid var(--text-color);
+    overflow: hidden;
+}
+
+.toggleTheme div {
+    height: 100%;
+    width: 50%;
+}
+
+.toggleTheme div:first-child {
+    background-color: var(--text-color);
+}
+
+.toggleTheme div:last-child {
+    background-color: var(--menu-bg-color);
+}

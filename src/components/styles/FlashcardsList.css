@@ -12,17 +12,11 @@
     box-shadow: var(--content-box-shadow);
 }
 
-.flashcardsList li {
-    padding: 0 15px;
-    min-height: 40px;
-    width: 100%;
-}
-
 .flashcardsList .listTop {
     position: sticky;
     top: 0;
     left: 0;
-    background-color: #000;
+    background-color: var(--menu-bg-color);
     font-size: 22px;
     font-weight: 600;
 }
@@ -30,9 +24,11 @@
 .listItem {
     display: flex;
     align-items: center;
+    padding: 0 15px;
+    width: 100%;
     margin: 5px 0;
     font-size: 18px;
-
+    min-height: min-content;
 }
 
 .listItem:last-child {

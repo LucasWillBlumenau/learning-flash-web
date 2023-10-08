@@ -2,10 +2,28 @@
     --primary-bg-color: #111;
     --secondary-bg-color: #22222264;
     --tertiary-bg-color: #111111bf;
+    --quaternary-bg-color: #00000055;
+    --menu-bg-color: #000;
+    --body-bg-color: #222;
+    --text-color: #fff;
     --primary-color: #ff33d3;
     --secondary-color: #ff33d3cc;
     --content-box-shadow: 10px 10px 45px #00000066;
 }
+
+.light {
+    --primary-bg-color: #eee;
+    --secondary-bg-color: #dddddd64;
+    --tertiary-bg-color: #eeeeeebf;
+    --quaternary-bg-color: #ffffff55;
+    --menu-bg-color: #fff;
+    --body-bg-color: #ddd;
+    --text-color: #000;
+    --primary-color: #a881f5;
+    --secondary-color: #945eff;
+    --content-box-shadow: 10px 10px 65px #00000033;
+}
+
 
 * {
     padding: 0;
@@ -18,10 +36,11 @@ html {
 }
 
 body {
-    color: #fff;
-    background-color: #222;
+    color: var(--text-color);
+    background-color: var(--body-bg-color);
     overflow-x: hidden;
     min-height: 100vh;
+    transition: background 500ms, color 500ms;
 }
 
 #root, .pageContent {
@@ -30,7 +49,7 @@ body {
 
 a {
     text-decoration: none;
-    color: #fff;
+    color: var(--text-color);
 }
 
 ul {
