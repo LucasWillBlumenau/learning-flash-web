@@ -1,0 +1,15 @@
+.learningFlashInformation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.learningFlashInformation img {
+    width: 135px;
+    height: 115px;
+}

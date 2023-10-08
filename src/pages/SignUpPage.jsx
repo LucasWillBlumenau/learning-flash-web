@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useRef, useState } from 'react'
+import Logo from '../components/Logo'
 import './styles/Forms.css'
 
 
@@ -77,9 +78,7 @@ export default () => {
     return (
         <div className="loginFormWrapper">
             {accountCreated && <SucessPopup />}
-            <div className="learningFlashInformation">
-                <img src="src/assets/img/LearningFlash.png" alt="logo" />
-            </div>
+            <Logo />
             <form method="POST" className="form" onSubmit={(event) => signUp(event)}>
                 {warningVisible &&
                     <div className="warningMessage" style={{display: 'flex', alignItems: 'center', gap: '5px'}}>

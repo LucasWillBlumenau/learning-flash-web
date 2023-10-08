@@ -8,6 +8,7 @@
     --text-color: #fff;
     --primary-color: #ff33d3;
     --secondary-color: #ff33d3cc;
+    --hover-item-color: #ffffff22;
     --content-box-shadow: 10px 10px 45px #00000066;
 }
 
@@ -21,6 +22,7 @@
     --text-color: #000;
     --primary-color: #a881f5;
     --secondary-color: #945eff;
+    --hover-item-color: #00000022;
     --content-box-shadow: 10px 10px 65px #00000033;
 }
 

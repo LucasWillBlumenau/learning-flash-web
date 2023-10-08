@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
+import Logo from '../components/Logo'
 import './styles/Forms.css'
 
 
@@ -53,11 +54,11 @@ export default () => {
         }
     }
 
+    
+
     return (
         <div className="loginFormWrapper">
-            <div className="learningFlashInformation">
-                <img src="src/assets/img/LearningFlash.png" alt="logo" />
-            </div>
+            <Logo />
             <form method="POST" className="form" onSubmit={(event) => {
                 logIn(event)
             }}>

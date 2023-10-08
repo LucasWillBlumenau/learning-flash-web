@@ -2,7 +2,12 @@ import { FaUser, FaHome, FaBook, FaBookmark, FaEnvelopeSquare } from 'react-icon
 import { Outlet, Link } from 'react-router-dom';
 import ToggleThemeButton from '../components/ToggleThemeButton.';
 import './styles/Layout.css'
+import { useState } from 'react';
 
+
+const DropDownCard = ({ title }) => (
+    <div className="dropDownCard">{title}</div>
+)
 
 const NavList = ({ children }) => {
     return (
@@ -16,11 +21,16 @@ const NavList = ({ children }) => {
 }
 
 const NavItem = ({ icon, link, title }) => {
+    const [dropDownVisible, setDropDownVisible] = useState(false)
+
     return (
         <li className="navItem">
-            <Link to={link}>
+            <Link to={link}
+            onMouseOver={() => setDropDownVisible(true)}
+            onMouseLeave={() => setDropDownVisible(false)}
+            >
                 {icon}
-                <span className="navItemText">{title}</span>
+                {dropDownVisible && <DropDownCard title={title}/>}
             </Link>
         </li>
     )

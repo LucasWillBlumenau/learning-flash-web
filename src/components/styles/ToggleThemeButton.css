@@ -5,6 +5,7 @@
     border-radius: 50%;
     border: 2px solid var(--text-color);
     overflow: hidden;
+    cursor: inherit;
 }
 
 .toggleTheme div {

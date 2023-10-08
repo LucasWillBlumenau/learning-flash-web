@@ -28,8 +28,17 @@
 }
 
 .navItem:hover {
-    background-color: #ffffff22;
+    background-color: var(--hover-item-color);
     transition: 200ms ease;
+}
+
+.dropDownCard {
+    position: absolute;
+    border-radius: 5px;
+    padding: 5px;
+    left: 3.5rem;
+    background-color: var(--body-bg-color);
+    box-shadow: var(--content-box-shadow);
 }
 
 .navItem a {
@@ -55,20 +64,6 @@
     .navbarWrapper ul {
         flex-direction: column;
         height: 100%;
-    }
-
-    .navbarWrapper:hover {
-        width: 12rem;
-        transition: 200ms;
-    }
-
-    .navbarWrapper:hover ul {
-        width: 100%;
-        transition: 200ms;
-    }
-
-    .navbarWrapper:hover .navItemText {
-        display: inline;
     }
     
     .navbarWrapper a {
