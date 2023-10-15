@@ -1,11 +1,14 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from 'react'
 import { FaSearch } from 'react-icons/fa'
-import { Link } from "react-router-dom"
-import SummaryCard from "../components/SummaryCard"
-import SummariesGrid from "../components/SummariesGrid"
+import { Link } from 'react-router-dom'
+
+import SummaryCard from '../components/SummaryCard'
+import SummariesGrid from '../components/SummariesGrid'
+
 import getSummaries from '../context/summaries'
 
 import './styles/Summaries.css'
+
 
 export default () => {
     const [books, setBooks] = useState([])

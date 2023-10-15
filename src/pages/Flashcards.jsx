@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
-
-import Flashcard from "../components/Flashcard"
-import FlashcardsSlider from '../components/FlascardSlider'
+import { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 
 import { fetchFlashcards } from '../context/flashcards'
+
+import Flashcard from '../components/Flashcard'
+import FlashcardsSlider from '../components/FlascardSlider'
 
 import './styles/Flashcards.css'
 

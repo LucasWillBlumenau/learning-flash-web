@@ -1,8 +1,12 @@
-import { useState, useEffect, useRef } from "react"
-import { useParams } from "react-router-dom"
+import { useState, useEffect, useRef } from 'react'
+import { useParams } from 'react-router-dom'
+
 import PlusIcon from '../components/PlusIcon'
+import FlashcardsList, { FlashcardsListItem } from '../components/FlashcardsList'
+
 import { fetchFlashcards } from '../context/flashcards'
-import FlashcardsList, { FlashcardsListItem } from "../components/FlashcardsList"
+import API_URL from '../context/api-url'
+
 import './styles/FlashcardsManagement.css'
 
 
@@ -80,7 +84,7 @@ export default () => {
 
 
     const deleteFlashcard = async flascardID => {
-        const response = await fetch(`http://127.0.0.1:8000/api/flashcards/${flascardID}/`, {
+        const response = await fetch(`${API_URL}/api/flashcards/${flascardID}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'Application/JSON',

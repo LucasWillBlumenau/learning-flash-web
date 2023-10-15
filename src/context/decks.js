@@ -1,5 +1,8 @@
+import API_URL from "./api-url"
+
+
 const fetchDecks = async () => {
-    const response = await fetch('http://127.0.0.1:8000/api/decks/', {
+    const response = await fetch(`${API_URL}/api/decks/`, {
         headers: {
             'Authorization': `Token ${localStorage.getItem('authtoken')}`
         }

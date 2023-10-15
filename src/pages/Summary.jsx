@@ -6,6 +6,7 @@ import CheckedAlert from '../components/CheckedAlert'
 
 import getSummary from '../context/summary'
 import { fetchDecks } from '../context/decks'
+import API_URL from '../context/api-url'
 
 import './styles/Summary.css'
 
@@ -38,7 +39,7 @@ export default () => {
             }
             
             const body = { phrase: phrase, translated_phrase: translatedPhrase }    
-            const response = await fetch(`http://127.0.0.1:8000/api/decks/${deckID}/flashcards/`, {
+            const response = await fetch(`${API_URL}/api/decks/${deckID}/flashcards/`, {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'Application/JSON',
@@ -98,7 +99,7 @@ export default () => {
 
     const addToFavorites = async () => {
         const data = { summary: bookID }
-        const response = await fetch('http://localhost:8000/api/favorites/', {
+        const response = await fetch(`${API_URL}/api/favorites/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'Application/JSON',
@@ -113,7 +114,7 @@ export default () => {
 
     const removeFromFavorites = async () => {
         const data = { summary: bookID }
-        const response = await fetch('http://localhost:8000/api/favorites/', {
+        const response = await fetch(`${API_URL}/api/favorites/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'Application/JSON',

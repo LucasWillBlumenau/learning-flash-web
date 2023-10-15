@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
 import SummaryCard from '../components/SummaryCard';
 import SummariesSection from '../components/SummariesSection';
 import getSummaries from '../context/summaries'
+
+import API_URL from '../context/api-url';
 
 import './styles/Home.css'
 
@@ -18,7 +21,7 @@ const MainSummary = ({ summary }) => summary && (
         </div>
         <div className="summaryCardContainer">
             <Link to={`/summaries/${summary.id}/`}>
-                <img style={{borderRadius: '15px'}} src={`http://localhost:8000${summary.image}`} alt="image" width="300px" height="450px"/>
+                <img style={{borderRadius: '15px'}} src={`${API_URL}${summary.image}`} alt="image" width="300px" height="450px"/>
             </Link>
         </div>            
     </div> 

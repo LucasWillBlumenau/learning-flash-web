@@ -1,5 +1,8 @@
-export default async (bookID) => {
-    const summary = await fetch(`http://127.0.0.1:8000/api/summaries/${bookID}`, {
+import API_URL from "./api-url"
+
+
+export default async bookID => {
+    const summary = await fetch(`${API_URL}/api/summaries/${bookID}`, {
         headers: {
             'Authorization': `Token ${localStorage.getItem('authtoken')}`
         }

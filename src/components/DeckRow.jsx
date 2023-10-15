@@ -1,4 +1,3 @@
-import './styles/DeckRow.css'
 import {
     FaTrashAlt,
     FaPen,
@@ -6,10 +5,14 @@ import {
 } from 'react-icons/fa'
 import  { Link } from 'react-router-dom'
 
+import API_URL from '../context/api-url'
+
+import './styles/DeckRow.css'
+
 
 export default ({ id, name, description, renderDecks }) => {
     const deleteDeck = async () => {
-        const response = await fetch(`http://127.0.0.1:8000/api/decks/${id}/`, {
+        const response = await fetch(`${API_URL}/api/decks/${id}/`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Token ${localStorage.getItem('authtoken')}`

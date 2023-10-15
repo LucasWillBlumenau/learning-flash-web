@@ -1,13 +1,16 @@
-import SummaryCard from '../components/SummaryCard'
-import SummariesGrid from '../components/SummariesGrid'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+
+import API_URL from '../context/api-url'
+
+import SummaryCard from '../components/SummaryCard'
+import SummariesGrid from '../components/SummariesGrid'
 
 
 export default () => {
     const [books, setBooks] = useState()
     const fetchFavorites = async () => {
-        const response = await fetch('http://localhost:8000/api/favorites/', {
+        const response = await fetch(`${API_URL}/api/favorites/`, {
             headers: {
                 'Authorization': `Token ${localStorage.getItem('authtoken')}`
             }

@@ -1,6 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
+
 import Logo from '../components/Logo'
+
+import API_URL from '../context/api-url'
+
 import './styles/Forms.css'
 
 
@@ -30,7 +34,7 @@ export default () => {
     
         setLoginMessage('Carrengando...')
         loginButton.current.disabled = true
-        const response = await fetch('http://127.0.0.1:8000/api/login/', {
+        const response = await fetch(`${API_URL}/api/login/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'Application/JSON'

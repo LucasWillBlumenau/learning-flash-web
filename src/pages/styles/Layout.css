@@ -33,6 +33,7 @@
 }
 
 .dropDownCard {
+    display: none;
     position: absolute;
     border-radius: 5px;
     padding: 5px;
@@ -74,6 +75,10 @@
 
     .navItem:last-child {
         margin-top: auto;
+    }
+
+    .navItem:hover .dropDownCard {
+        display: inline;
     }
 }
 

@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState } from "react"
+
 import DeckRow from "../components/DeckRow"
 import DecksTable from '../components/DecksTable'
-import { fetchDecks } from '../context/decks'
-import './styles/Decks.css'
 import PlusIcon from '../components/PlusIcon'
+
+import API_URL from "../context/api-url"
+import { fetchDecks } from '../context/decks'
+
+
+import './styles/Decks.css'
 
 
 export default () => {
@@ -23,7 +28,7 @@ export default () => {
                 description: description,
             }
             
-            const response = await fetch('http://127.0.0.1:8000/api/decks/', {
+            const response = await fetch(`${API_URL}/api/decks/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'Application/json', 
@@ -108,6 +113,7 @@ export default () => {
 
     return (
         <div className="content centralized">
+            <h2 className="pageTitle">Confira Seus Decks</h2>
             <div className="decksWrapper">
                 <div className="tableWrapper">
                     {decks !== undefined?

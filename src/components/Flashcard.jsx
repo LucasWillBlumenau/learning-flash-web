@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import './styles/Flashcard.css'
 
+import API_URL from '../context/api-url'
+
+import './styles/Flashcard.css'
 
 
 
@@ -9,7 +11,7 @@ export default ({ id, phrase, translatedPhrase, handleFlashcardClick }) => {
 
     const updateFlashcard = async (flashcardID, hasGoodDomainLevel) => {
         const data = { has_good_domain_level: hasGoodDomainLevel }
-        const response = await fetch(`http://127.0.0.1:8000/api/flashcards/${flashcardID}/`, {
+        const response = await fetch(`${API_URL}/api/flashcards/${flashcardID}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'Application/JSON',
