@@ -68,19 +68,16 @@ export default () => {
         } 
     }
 
-    const Flashcards = () => {
-        
-        return flashcards.map((flashcard, idx) => {
-            return (
-                <Flashcard key={idx}
-                    id={flashcard.id}
-                    phrase={flashcard.phrase}
-                    translatedPhrase={flashcard.translated_phrase}
-                    handleFlashcardClick={handleFlashcardClick}
-                />
-            )
-        })
-    }
+    const Flashcards = () => (
+        flashcards.map((flashcard, idx) => (
+            <Flashcard key={idx}
+                id={flashcard.id}
+                phrase={flashcard.phrase}
+                translatedPhrase={flashcard.translated_phrase}
+                handleFlashcardClick={handleFlashcardClick}
+            />
+        ))
+    )
 
     useEffect(() => {
         renderFlashcards()

@@ -52,7 +52,7 @@ export default () => {
                         <SummaryCard
                             title={summary.title}
                             author={summary.author}
-                            image={summary.image? `http://localhost:8000${summary.image}`: null}
+                            image={summary.image? `${API_URL}${summary.image}`: null}
                         />
                     </Link>
                 ))}

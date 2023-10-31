@@ -133,7 +133,7 @@ export default () => {
             return (
                 <span key={i} onClick={async () => {
                     const query = phrase.trim().toLowerCase().split(' ').join('%20')
-                    const url = `http://127.0.0.1:8000/api/phrases/${query}`
+                    const url = `${API_URL}/api/phrases/${query}`
                     const response = await fetch(url)
                     if (response.ok) {
                         const data = await response.json()

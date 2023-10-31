@@ -6,6 +6,7 @@ import SummaryCard from '../components/SummaryCard'
 import SummariesGrid from '../components/SummariesGrid'
 
 import getSummaries from '../context/summaries'
+import API_URL from '../context/api-url'
 
 import './styles/Summaries.css'
 
@@ -45,7 +46,7 @@ export default () => {
                                 title={book.title}
                                 author={book.author}
                                 width="300px"
-                                image={book.image? `http://127.0.0.1:8000${book.image}`: null}
+                                image={book.image? `${API_URL}${book.image}`: null}
                             />
                         </Link>
                     )
