@@ -1,0 +1,45 @@
+.helpMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 25px 35px;
+    border-radius: 5px;
+    width: 500px;
+    height: 600px;
+    max-width: 95%;
+    max-height: 95%;
+    position: relative;
+}
+
+.helpTip {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+}
+
+.helpTip {
+    vertical-align: center;
+}
+
+.closeMenuIcon {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--text-color);
+    color: var(--menu-bg-color);
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 26px;
+    cursor: pointer;
+    transition: 120ms;
+}
+
+.closeMenuIcon:hover {
+    background-color: var(--menu-bg-color);
+    color: var(--text-color);
+    outline: 1px solid var(--text-color);
+    transition: 120ms;
+}

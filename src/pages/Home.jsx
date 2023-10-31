@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
-import SummaryCard from '../components/SummaryCard';
-import SummariesSection from '../components/SummariesSection';
+import SummaryCard from '../components/SummaryCard'
+import SummariesSection from '../components/SummariesSection'
+
 import getSummaries from '../context/summaries'
-
-import API_URL from '../context/api-url';
+import API_URL from '../context/api-url'
 
 import './styles/Home.css'
 
@@ -43,20 +43,22 @@ export default () => {
         renderSummaries()
     }, [])
     return (
-        <div className="homePageWrapper">
-            <MainSummary summary={weekBook} />
-            {books !== undefined && 
-            <SummariesSection>
-                {books.map((summary, idx) => (
-                    <Link to={`/summaries/${summary.id}/`} key={idx}>
-                        <SummaryCard
-                            title={summary.title}
-                            author={summary.author}
-                            image={summary.image? `${API_URL}${summary.image}`: null}
-                        />
-                    </Link>
-                ))}
-            </SummariesSection>}
-        </div>
+        <>
+            <div className="homePageWrapper">
+                <MainSummary summary={weekBook} />
+                {books !== undefined && 
+                <SummariesSection>
+                    {books.map((summary, idx) => (
+                        <Link to={`/summaries/${summary.id}/`} key={idx}>
+                            <SummaryCard
+                                title={summary.title}
+                                author={summary.author}
+                                image={summary.image? `${API_URL}${summary.image}`: null}
+                            />
+                        </Link>
+                    ))}
+                </SummariesSection>}
+            </div>
+        </>
     );
 }
