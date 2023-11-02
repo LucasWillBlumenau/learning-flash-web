@@ -1,5 +1,4 @@
 .navbarWrapper {
-    position: fixed;
     display: flex;
     justify-content : center;
     background: var(--menu-bg-color);
@@ -84,9 +83,9 @@
 
 @media screen and (max-width: 900px) {
     .navbarWrapper {
-        bottom: 0;
-        height: 3rem;
-        width: 100vw;
+        min-height: 3rem;
+        max-height: 3rem;
+        width: 100%;
     }
 
     .navbarWrapper ul {

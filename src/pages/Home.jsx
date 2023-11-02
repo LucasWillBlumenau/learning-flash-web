@@ -34,9 +34,9 @@ export default () => {
     
     const renderSummaries = async () => {
         const data = await getSummaries()
-        const [firstBook, ...otherBook] = data
+        const [firstBook, ...otherBooks] = data
         setWeekBook(firstBook)
-        setBooks(otherBook)
+        setBooks(otherBooks)
     }
 
     useEffect(() => {

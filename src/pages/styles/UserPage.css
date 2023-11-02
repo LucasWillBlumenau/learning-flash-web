@@ -1,6 +1,5 @@
 .userPageWrapper {
-    width: 100%;
-    min-height: calc(100vh - 3rem);
+    flex: 1;
 }
 
 .infoWrapper {

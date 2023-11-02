@@ -1,9 +1,9 @@
 import './styles/SummariesSection.css'
 
-export default ({ children }) => {
+export default ({ title, children }) => {
     return (
         <section className="summariesSection">
-            <span className="sectionTitle">Resumos disponíveis para leitura:</span>
+            <span className="sectionTitle">{title}</span>
             <div className="summariesContainer">
                 { children }
             </div>
