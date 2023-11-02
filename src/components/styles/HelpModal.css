@@ -1,16 +1,24 @@
 .helpMenu {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 30px;
-    padding: 25px 35px;
+    flex-direction: column;
     border-radius: 5px;
+    padding: 4rem 0;
     width: 500px;
     height: 600px;
     max-width: 95%;
     max-height: 95%;
     position: relative;
+    overflow: hidden;
+}
+
+.tipsSlider {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    transition: 120ms;
+    flex: 1;
 }
 
 .helpTip {
@@ -18,6 +26,9 @@
     flex-direction: column;
     gap: 8px;
     text-align: center;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 10px;
 }
 
 .helpTip {
@@ -42,4 +53,27 @@
     color: var(--text-color);
     outline: 1px solid var(--text-color);
     transition: 120ms;
+}
+
+.tipsOptions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.tipOption {
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--tertiary-bg-color);
+    box-shadow: var(--content-box-shadow);
+    cursor: pointer;
+}
+
+.tipOption.selected {
+    scale: 1.25;
+    transition: 120ms;
+    background-color: var(--hover-item-color);
 }
