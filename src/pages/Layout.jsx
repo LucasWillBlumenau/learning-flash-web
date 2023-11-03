@@ -12,45 +12,50 @@ const NavList = ({ children }) =>(
     </div>
 )
 
-const NavItemLink = ({ icon, link, title }) => (
+const NavItemLink = ({ icon, to, label }) => (
     <li className="navItem">
-        <Link to={link}>
-            {icon}<div className="dropDownCard">{title}</div>
-        </Link>
+        <Link to={to}>{icon}<div className="dropDownCard">{label}</div></Link>
     </li>
 )
 
-const NavItemClick = ({ icon, onClick, title }) => (
+const NavItemClickable = ({ icon, onClick, label }) => (
     <li className="navItem" onClick={onClick}>
-        <Link>
-            {icon}<div className="dropDownCard">{title}</div>
-        </Link>
+        <Link>{icon}<div className="dropDownCard">{label}</div></Link>
     </li>
 )
 
-const NavItem = ({ icon, title }) => (
-    <li className="navItem">
-        <Link>
-            {icon}<div className="dropDownCard">{title}</div>
-        </Link>
-    </li>
-)
+const NavBar = ({ setShowHelpMenu }) => {
 
-const NavBar = ({ setShowHelpMenu }) => (
-    <NavList>
-        <NavItemLink icon={<FaHome />} link="/" title="Início" />
-        <NavItemLink icon={<FaEnvelopeSquare />} link="/decks" title="Decks" />
-        <NavItemLink icon={<FaBook />} link="/summaries" title="Resumos" />
-        <NavItemLink icon={<FaBookmark />} link="/favorites" title="Favoritos" />
-        <NavItemLink icon={<FaUser />} link="/user" title="Conta" />
-        <NavItemClick icon={<FaQuestionCircle />} onClick={() => setShowHelpMenu(true)} title="Ajuda" />
-        <NavItem icon={<ToggleThemeButton />} title="Tema" />
-    </NavList>
-)
+    const toggleTheme = () => {
+        const useLightTheme = JSON.parse(localStorage.getItem('useLightTheme'))
+        localStorage.setItem('useLightTheme', !useLightTheme)
+        document.body.classList.toggle('light')
+    }
+
+    return (
+        <NavList>
+            <NavItemLink icon={<FaHome />} to="/" label="Início" />
+            <NavItemLink icon={<FaEnvelopeSquare />} to="/decks" label="Decks" />
+            <NavItemLink icon={<FaBook />} to="/summaries" label="Resumos" />
+            <NavItemLink icon={<FaBookmark />} to="/favorites" label="Favoritos" />
+            <NavItemLink icon={<FaUser />} to="/user" label="Conta" />
+            <NavItemClickable icon={<FaQuestionCircle />} onClick={() => setShowHelpMenu(true)} label="Ajuda" />
+            <NavItemClickable icon={<ToggleThemeButton />} onClick={toggleTheme} label="Tema" />
+        </NavList>
+    )
+}
 
 export default () => {
 
-    const [showHelpMenu, setShowHelpMenu] = useState(false)
+    const checkIfItsFirstUserVisit = () => {
+        const localStoreData = JSON.parse(localStorage.getItem('isFirstUseVisit'))
+        const isFirstUserVisit = localStoreData || localStoreData === null
+        if (isFirstUserVisit)
+            localStorage.setItem('isFirstUseVisit', false)
+        return isFirstUserVisit
+        
+    }
+    const [showHelpMenu, setShowHelpMenu] = useState(checkIfItsFirstUserVisit())
 
     return (
         <>

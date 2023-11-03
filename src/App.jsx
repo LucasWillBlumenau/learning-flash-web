@@ -19,16 +19,29 @@ const Protected = ({ children }) => {
         return children
     return <Navigate to="/login" />
 }
- 
-
-const setTheme = () => {
-    const useLightTheme = JSON.parse(localStorage.getItem('useLightTheme'))
-    if (useLightTheme)
-        document.body.setAttribute('class', 'light')
-
-}
 
 const App = () => {
+
+    const checkIfUserUsesLightTheme = () => {
+        if (window.matchMedia)
+            return !window.matchMedia('(prefers-color-scheme: dark)').matches
+        return true
+    }
+    
+    const mustUseLightTheme = () => {
+        let useLightTheme = localStorage.getItem('useLightTheme')
+        if (useLightTheme === null) {
+            useLightTheme = checkIfUserUsesLightTheme()
+            localStorage.setItem('useLightTheme', useLightTheme)
+        }
+        return useLightTheme
+    }
+
+    const setTheme = () => {
+        if (mustUseLightTheme())
+            document.body.setAttribute('class', 'light')
+    }
+    
     setTheme()
 
     return (

@@ -11,12 +11,12 @@ const HelpTip = ({ tipTitle, tipDescription }) => (
 )
 
 const HelpTipsContainer = ({ children, setShowHelpMenu }) => {
-    
+
     const [currentItem, setCurrentItem] = useState(0)
 
     return (
-        <div className="modal">
-            <div className="popup helpMenu">
+        <div className="modal" onClick={() => setShowHelpMenu(false)}>
+            <div className="popup helpMenu" onClick={event => event.stopPropagation()}>
                 <FaArrowLeft className="closeMenuIcon" onClick={() => setShowHelpMenu(false)} />
                 <div className="tipsSlider" style={{transform: `translateX(${currentItem * -100}%)`}}>
                     {children}
@@ -47,10 +47,13 @@ export default ({ setShowHelpMenu }) => {
         },
         {
             title: "Adicione seus flashcards lendo os resumos",
-            description: "Ao clicar em uma das frases enquanto você lê um resumo, um popup com a frase em que você clicou e sua tradução será exibido para que você a adicione em um de seus decks.",
+            description: "Ao clicar em uma das frases enquanto você lê um resumo, um popup com a frase em que você clicou e sua tradução será exibido para que você adicione-a a um de seus decks.",
         }
 
     ]
+
+        
+
 
     return (
         <HelpTipsContainer setShowHelpMenu={setShowHelpMenu}>
