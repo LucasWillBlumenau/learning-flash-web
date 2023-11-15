@@ -22,8 +22,9 @@ const HelpTipsContainer = ({ children, setShowHelpMenu }) => {
                     {children}
                 </div>
                 <div className="tipsOptions">
-                    {children.map((_, index) => (
+                    {children.map(({ title }, index) => (
                         <button
+                            key={title}
                             className={index !== currentItem? 'tipOption': 'tipOption selected'}
                             onClick={() => setCurrentItem(index)}>
                         </button>
@@ -58,7 +59,8 @@ export default ({ setShowHelpMenu }) => {
     return (
         <HelpTipsContainer setShowHelpMenu={setShowHelpMenu}>
             {tips.map(tip => (
-                <HelpTip 
+                <HelpTip
+                    key={tip.title}
                     tipTitle={tip.title}
                     tipDescription={tip.description}
                 />

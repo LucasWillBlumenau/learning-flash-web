@@ -1,6 +1,6 @@
 import './styles/SummaryCard.css'
 
-export default ({ width = "215px", height = "275px", title, author, image } ) => {
+export default ({ width = "250px", title, author, image } ) => {
     return (
         <div className="summaryCard" style={{minWidth: width, maxWidth: width, aspectRatio: 54 / 90}}>
             <div className="bookImage">
