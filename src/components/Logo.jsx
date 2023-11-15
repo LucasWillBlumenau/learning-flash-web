@@ -7,7 +7,7 @@ export default () => {
     return (
         <div className="learningFlashInformation">
             <img
-                src={`src/assets/img/${useLightTheme()? 'LearningFlashDark': 'LearningFlash'}.png`}
+                src={`/src/assets/img/${useLightTheme()? 'LearningFlashDark': 'LearningFlash'}.png`}
                 alt="logo"
             />
         </div>
