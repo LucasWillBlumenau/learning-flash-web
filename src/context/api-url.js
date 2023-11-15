@@ -1,2 +1,2 @@
-const API_URL= 'http://lucaswill.pythonanywhere.com'
+const API_URL= 'https://lucaswill.pythonanywhere.com'
 export default API_URL
