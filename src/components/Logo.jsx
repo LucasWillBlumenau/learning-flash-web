@@ -1,4 +1,6 @@
 import './styles/Logo.css'
+import DarkImage from '../../public/img/LearningFlashDark.png'
+import LightImage from '../../public/img/LearningFlash.png'
 
 
 export default () => {
@@ -7,7 +9,7 @@ export default () => {
     return (
         <div className="learningFlashInformation">
             <img
-                src={`../../../public/img/${useLightTheme()? 'LearningFlashDark': 'LearningFlash'}.png`}
+                src={useLightTheme()? DarkImage: LightImage}
                 alt="logo"
             />
         </div>
