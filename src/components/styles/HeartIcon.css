@@ -8,7 +8,7 @@
 .heartIcon {
     width: 100px;
     height: 100px;
-    background: url('../../assets/img/heart.png');
+    background: url('/public/img/heart.png');
     background-position: left;
 }
 
