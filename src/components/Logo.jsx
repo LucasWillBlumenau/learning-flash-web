@@ -8,11 +8,7 @@ export default () => {
 
     return (
         <div className="learningFlashInformation">
-            <img
-                src={useLightTheme()? DarkImage: LightImage}
-                alt="logo"
-            />
+            <img src={useLightTheme()? DarkImage: LightImage} alt="logo"/>
         </div>
-
     )
 }

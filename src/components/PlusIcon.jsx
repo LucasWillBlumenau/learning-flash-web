@@ -1,10 +1,10 @@
 import { FaPlus } from "react-icons/fa"
-import './styles/PlusIcon.css'
+import './styles/Icon.css'
 
 
 export default ({onClick}) => {
     return (
-        <div className="plusIcon" onClick={onClick}>
+        <div className="icon" style={{right: '15px'}} onClick={onClick}>
             <FaPlus />
         </div>
     )

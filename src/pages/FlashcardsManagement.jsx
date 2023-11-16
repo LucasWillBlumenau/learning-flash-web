@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import PlusIcon from '../components/PlusIcon'
+import LeftArrowIcon from '../components/LeftArrowIcon'
 import FlashcardsList, { FlashcardsListItem } from '../components/FlashcardsList'
 
 import { fetchFlashcards } from '../context/flashcards'
@@ -14,6 +15,7 @@ export default () => {
     const { deckID } = useParams()
     const [flashcards, setFlashcards] = useState()
     const [modalVisible, setModalVisible] = useState(false)
+    const navigate = useNavigate()
     
     const Modal = () => {
         const phraseInput = useRef()
@@ -112,6 +114,7 @@ export default () => {
                     ))}
                 </FlashcardsList>
                 <PlusIcon onClick={() => setModalVisible(true)}/>
+                <LeftArrowIcon onClick={() => navigate('/decks')}/>
             </div>
             {modalVisible && <Modal />}
         </div>

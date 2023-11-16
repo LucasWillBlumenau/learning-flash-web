@@ -2,14 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 1;
     gap: 25px;
 }
 
 .summariesPageTop {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 15px;
     margin-top: 2rem;
     width: 100%;
@@ -18,6 +16,7 @@
 .summariesPageTop span {
     font-size: 28px;
     font-weight: 600;
+    text-align: center;
 }
 
 .searchForm {
@@ -41,10 +40,6 @@
 }
 
 @media screen and (min-width:900px) {
-    .summariesPage {
-        min-height: 100vh;
-    }
-
     .summariesPageTop {
         justify-content: space-around;
     }
@@ -55,10 +50,6 @@
 }
 
 @media screen and (max-width:900px) {
-    .summariesPage {
-        min-height: calc(100vh - 3rem);
-    }
-
     .searchForm {
         width: 80%;
     }

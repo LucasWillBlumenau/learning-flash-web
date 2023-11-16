@@ -6,8 +6,6 @@
 .decksWrapper {
     position: relative;
     aspect-ratio: 1;    
-    height: 80vh;
-    max-width: 90vw;
 }
 
 .tableWrapper {
@@ -73,6 +71,12 @@
     .buttonsContainer {
         width: 100%;
     }
+
+    .decksWrapper {
+        height: 600px;
+        max-height: 70vh;
+        max-width: 90vw;
+    }
 }
 
 @media screen and (max-width: 900px){    
@@ -90,6 +94,11 @@
 
     .buttonsContainer {
         width: 90%;
+    }
+
+    .decksWrapper {
+        flex: 1;
+        max-width: 95%;
     }
 
 }

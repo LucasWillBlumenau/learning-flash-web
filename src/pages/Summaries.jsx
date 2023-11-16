@@ -31,7 +31,7 @@ export default () => {
     }, [])
     return (
         <div className="summariesPage">
-            <div className="summariesPageTop">
+            <div className="summariesPageTop centralized">
                 <span>Confira Todos os Resumos:</span>
                 <form onSubmit={searchBook} className="searchForm centralized">
                     <FaSearch onClick={searchBook} />
@@ -45,7 +45,6 @@ export default () => {
                             <SummaryCard 
                                 title={book.title}
                                 author={book.author}
-                                width="300px"
                                 image={book.image? `${API_URL}${book.image}`: null}
                             />
                         </Link>

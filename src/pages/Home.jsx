@@ -54,6 +54,7 @@ export default () => {
                                 title={summary.title}
                                 author={summary.author}
                                 image={summary.image? `${API_URL}${summary.image}`: null}
+                                width="260px"
                             />
                         </Link>
                     ))}

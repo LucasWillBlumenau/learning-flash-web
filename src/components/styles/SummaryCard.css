@@ -33,3 +33,14 @@
     height: 50%;
 }
 
+@media screen and (min-width: 900px) {
+    .summaryCard {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .summaryCard {
+        width: 250px;
+    }
+}

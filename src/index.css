@@ -46,8 +46,6 @@ body {
 
 #root {
     display: flex;
-    min-height: 100vh;
-    max-height: 100vh;
 }
 
 a {
@@ -134,8 +132,17 @@ ul {
     }
 }
 
+@media screen and (min-width: 900px) {
+    #root {
+       min-height: 100vh;
+       max-height: 100vh;
+    }
+}
+
 @media screen and (max-width: 900px) {
     #root {
-        flex-direction: column-reverse;
+       flex-direction: column-reverse;
+       min-height: 100svh;
+       max-height: 100svh;
     }
 }

@@ -1,8 +1,10 @@
 import './styles/SummaryCard.css'
 
-export default ({ width = "250px", title, author, image } ) => {
+export default ({ width, title, author, image } ) => {
+
+    const styles = width? { aspectRatio: 54 / 90, width }: { aspectRatio: 54 / 90 }
     return (
-        <div className="summaryCard" style={{minWidth: width, maxWidth: width, aspectRatio: 54 / 90}}>
+        <div className="summaryCard" style={styles}>
             <div className="bookImage">
                 {image && <img src={image} alt={`${title} image`} />}
             </div>

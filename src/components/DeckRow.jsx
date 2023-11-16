@@ -28,8 +28,8 @@ export default ({ id, name, description, renderDecks }) => {
 
     return (
         <tr className="flashcardRow">
-            <td>
-                <div className="optionButtonsContainer">
+            <td className="cell">
+                <div className="optionButtonsContainer centralized">
                     <Link to={`/decks/${id}`}>
                         <button className="optionButton centralized" title="Praticar Deck">
                             <FaPlay />
@@ -50,12 +50,12 @@ export default ({ id, name, description, renderDecks }) => {
                     </Link>
                 </div>
             </td>
-            <td>
+            <td className="cell">
                 <div>
                     { name }
                 </div>
             </td>
-            <td>
+            <td className="cell">
                 <div>
                     { description }
                 </div>

@@ -1,11 +1,3 @@
-
-.optionButtonsContainer {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-}
-
 .optionButton {
     padding: 8px;
     border: none;
@@ -31,18 +23,36 @@
 }
 
 
-@media screen and (max-width: 900px){
+.cell {
+    text-align: center;
+}
+
+@media screen and (min-width: 900px){
+
+    .cell {
+        padding: 10px 15px;
+    }
+
+
     .optionButtonsContainer {
-        flex-direction: column;
+        gap: 10px;
+    }
+
+}
+
+@media screen and (max-width: 900px){
+
+    .cell {
+        padding: 10px 5px;
+    }
+    
+    .optionButtonsContainer {
+        gap: 5px;
     }
     
     .optionButtonsContainer a {
-        width: 100%;
         display: flex;
         justify-content: center;
     }
-    
-    .optionButton {
-        width: 45%;
-    }
+
 }
