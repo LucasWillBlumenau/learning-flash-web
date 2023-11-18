@@ -1,6 +1,6 @@
 import { FaUser, FaHome, FaBook, FaBookmark, FaEnvelopeSquare, FaQuestionCircle } from 'react-icons/fa'
 import { Outlet, Link } from 'react-router-dom'
-import ToggleThemeButton from '../components/ToggleThemeButton.'
+import ToggleThemeButton from '../components/ToggleThemeButton'
 import HelpModal from '../components/HelpModal'
 import './styles/Layout.css'
 import { useState } from 'react'
