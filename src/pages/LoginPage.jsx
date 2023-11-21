@@ -32,7 +32,7 @@ export default () => {
             password: passwordInput.current.value,
         }
     
-        setLoginMessage('Carrengando...')
+        setLoginMessage('Carregando...')
         loginButton.current.disabled = true
         const response = await fetch(`${API_URL}/api/login/`, {
             method: 'POST',
