@@ -32,7 +32,7 @@ export default () => {
             password: passwordInput.current.value,
         }
     
-        setLoginMessage('Carregando...')
+        setLoginMessage(<div className="loader"></div>)
         loginButton.current.disabled = true
         const response = await fetch(`${API_URL}/api/login/`, {
             method: 'POST',
@@ -82,7 +82,8 @@ export default () => {
                 </div>
                 <div className="buttonsWrapper">
                     {/* <button id="createAccountButton">Criar Conta</button> */}
-                    <button ref={loginButton}>{loginMessage}</button>
+                    <button ref={loginButton} className="centralized">{loginMessage}</button>
+                    
                 </div>
                 <p>Novo Por Aqui? <Link className="link" to="/signup">Crie Sua Conta!</Link></p>
             </form>

@@ -27,9 +27,9 @@ const NavItemClickable = ({ icon, onClick, label }) => (
 const NavBar = ({ setShowHelpMenu }) => {
 
     const toggleTheme = () => {
-        const useLightTheme = JSON.parse(localStorage.getItem('useLightTheme'))
-        localStorage.setItem('useLightTheme', !useLightTheme)
-        document.body.classList.toggle('light')
+        const useLightTheme = !JSON.parse(localStorage.getItem('useLightTheme'))
+        localStorage.setItem('useLightTheme', useLightTheme)
+        document.body.setAttribute('class', useLightTheme? 'light': '')
     }
 
     return (

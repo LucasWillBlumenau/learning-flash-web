@@ -29,7 +29,7 @@ const App = () => {
     }
     
     const mustUseLightTheme = () => {
-        let useLightTheme = localStorage.getItem('useLightTheme')
+        let useLightTheme = JSON.parse(localStorage.getItem('useLightTheme'))
         if (useLightTheme === null) {
             useLightTheme = checkIfUserUsesLightTheme()
             localStorage.setItem('useLightTheme', useLightTheme)
