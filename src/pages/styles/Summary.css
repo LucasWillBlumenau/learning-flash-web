@@ -50,6 +50,12 @@
     margin: 1rem 0;
 }
 
+.phrase:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .decksList {
     display: flex;
     flex-direction: column;

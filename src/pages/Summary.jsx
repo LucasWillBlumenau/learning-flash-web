@@ -126,12 +126,14 @@ export default () => {
             setIsFavorited(false)
         }
     }
-
+    const phrases = []
     const createParagraph = textContent => {
         const splitedText = textContent.match(/[^\.!\?]+[\.\!\?]/g)
+
         const content = splitedText.map((phrase, i) => {
+            phrases.push(phrase)
             return (
-                <span key={i} onClick={async () => {
+                <span className="phrase" key={i} onClick={async () => {
                     const query = phrase.trim().toLowerCase().split(' ').join('%20')
                     const url = `${API_URL}/api/phrases/${query}`
                     const response = await fetch(url)

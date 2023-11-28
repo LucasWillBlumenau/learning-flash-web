@@ -50,6 +50,10 @@
     cursor: pointer;
 }
 
+.flashcard .link {
+    cursor: pointer;
+}
+
 @keyframes flashcardAnimation {
     from {
         font-size: 0;
