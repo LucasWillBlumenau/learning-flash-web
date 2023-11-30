@@ -20,12 +20,12 @@ To get started with the project, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/seu-usuario/LearningFlash.git
+   git clone https://github.com/seu-usuario/learning-flash-web.git
    ```
 
 2. **Install Dependencies:**
    ```bash
-   cd LearningFlash
+   cd learning-flash-web
    npm install
    ```
 
